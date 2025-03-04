@@ -1,0 +1,454 @@
+<!DOCTYPE html><html lang="ja"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v5.4.1"><meta name="description" content="初心者向け Webアプリ開発講座 - Kinova"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"><title>サーバーとやりとりしよう - 初心者向け Webアプリ開発講座</title><link rel="stylesheet" href="/kinova-programming-blog/_astro/about.D2UCx2-4.css"></head> <body class="min-h-screen bg-gray-50"> <header class="bg-white shadow-sm"> <div class="container mx-auto px-4 py-4 flex justify-between items-center"> <a class="flex items-center gap-2"> <img src="https://kinova.jp/assets/img/logo.png" alt="Kinova Logo" class="h-10"> <span class="text-kinova-gray font-semibold text-xl">Webアプリ開発講座</span> </a> </div> </header> <main>  <div class="container mx-auto px-4 py-12"> <div class="max-w-4xl mx-auto"> <!-- ヘッダーセクション --> <div class="bg-gradient-to-r from-kinova-teal to-kinova-orange rounded-lg shadow-lg overflow-hidden mb-12"> <div class="p-8 text-white"> <div class="flex items-center gap-2 mb-4"> <span class="text-sm bg-white/20 px-3 py-1 rounded-full">Web開発</span> <span class="text-sm">2025年2月15日</span> </div> <h1 class="text-4xl font-bold mb-4">サーバーとやりとりしよう</h1> <p class="text-xl opacity-90 mb-6">
+Webアプリの「入力」と「出力」の仕組み、サーバーとのデータのやり取り方法を初心者にも分かりやすく解説します。APIって何？JSONって何？実際に動くコードで学んでいきましょう！
+</p> <div class="flex items-center gap-3"> <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-kinova-teal"> <span class="text-xl">🌐</span> </div> <div> <p class="font-medium">Kinova編集部</p> </div> </div> </div> </div> <!-- 目次 --> <div class="bg-white rounded-lg shadow-md p-6 mb-12"> <h2 class="text-xl font-semibold mb-4 text-kinova-gray">目次</h2> <ul class="space-y-3"> <li> <a href="#intro" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors"> <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">1</span>
+Webアプリは「入力」と「出力」の繰り返し！
+</a> </li> <li> <a href="#request-response" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors"> <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">2</span>
+データを送る方法（GET, POSTって何？）
+</a> </li> <li> <a href="#json" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors"> <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">3</span>
+JSONってどんなデータの形？
+</a> </li> <li> <a href="#api" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors"> <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">4</span>
+APIって何？（データをやりとりするためのルール）
+</a> </li> <li> <a href="#create-api" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors"> <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">5</span>
+自分でAPIを作ってみよう（Node.js + Express）
+</a> </li> <li> <a href="#fetch-api" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors"> <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">6</span>
+JavaScriptからAPIを呼び出してみよう
+</a> </li> </ul> </div> <!-- 本文 --> <div class="space-y-12"> <!-- はじめに --> <section id="intro" class="bg-white rounded-lg shadow-md p-8"> <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center"> <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">1</span>
+Webアプリは「入力」と「出力」の繰り返し！
+</h2> <p class="text-gray-700 mb-6">
+皆さんが日常的に使っているWebアプリケーション（LINEやTwitter、Amazonなど）は、
+            ユーザーからの「入力」を受け取り、それに応じた「出力」を返すという仕組みで動いています。
+            この「入力」と「出力」のやり取りがどのように行われているのか、基本的な仕組みを見ていきましょう。
+</p> <div class="bg-gradient-to-r from-blue-100 to-indigo-100 p-6 rounded-lg mb-6"> <div class="bg-white rounded-lg shadow-md p-6 border-2 border-blue-300"> <h3 class="text-xl font-semibold text-blue-700 mb-4 flex items-center"> <span class="text-3xl mr-3">🔄</span>
+Webアプリの基本的な流れ
+</h3> <div class="relative"> <!-- Animation container --> <div class="flex flex-col items-center mb-8"> <div class="flex flex-col md:flex-row items-center justify-center gap-6 relative"> <!-- User side --> <div class="text-center"> <div class="bg-blue-50 rounded-lg p-4 border-2 border-blue-200 relative z-10"> <span class="text-4xl block mb-2">👩‍💻</span> <p class="font-medium text-blue-700">ユーザー</p> </div> </div> <!-- Arrows --> <div class="flex flex-col items-center"> <div class="bg-blue-500 text-white px-4 py-2 rounded-lg mb-2 shadow-md"> <span class="whitespace-nowrap">入力 →</span> </div> <div class="bg-indigo-500 text-white px-4 py-2 rounded-lg shadow-md"> <span class="whitespace-nowrap">← 出力</span> </div> </div> <!-- App side --> <div class="text-center"> <div class="bg-indigo-50 rounded-lg p-4 border-2 border-indigo-200 relative z-10"> <span class="text-4xl block mb-2">💻</span> <p class="font-medium text-indigo-700">Webアプリ</p> </div> </div> </div> <!-- Examples --> <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 w-full"> <div class="bg-blue-50 rounded-lg p-4 border border-blue-200"> <h4 class="font-semibold text-blue-700 mb-2">入力の例</h4> <ul class="space-y-1 text-gray-700"> <li class="flex items-start"> <span class="text-blue-500 mr-2">•</span> <span>フォームに情報を入力して送信</span> </li> <li class="flex items-start"> <span class="text-blue-500 mr-2">•</span> <span>ボタンをクリック</span> </li> <li class="flex items-start"> <span class="text-blue-500 mr-2">•</span> <span>画面をスクロール</span> </li> <li class="flex items-start"> <span class="text-blue-500 mr-2">•</span> <span>画像をアップロード</span> </li> </ul> </div> <div class="bg-indigo-50 rounded-lg p-4 border border-indigo-200"> <h4 class="font-semibold text-indigo-700 mb-2">出力の例</h4> <ul class="space-y-1 text-gray-700"> <li class="flex items-start"> <span class="text-indigo-500 mr-2">•</span> <span>検索結果の表示</span> </li> <li class="flex items-start"> <span class="text-indigo-500 mr-2">•</span> <span>新しいページへの移動</span> </li> <li class="flex items-start"> <span class="text-indigo-500 mr-2">•</span> <span>エラーメッセージの表示</span> </li> <li class="flex items-start"> <span class="text-indigo-500 mr-2">•</span> <span>データの更新（いいね数の増加など）</span> </li> </ul> </div> </div> </div> </div> <div class="bg-gray-50 p-4 rounded-lg"> <h4 class="font-semibold text-gray-700 mb-2">具体例：Twitterでツイートを投稿する場合</h4> <ol class="list-decimal ml-6 space-y-2 text-gray-700"> <li><strong>入力</strong>：ユーザーがテキストボックスにツイート内容を入力し、「ツイートする」ボタンをクリック</li> <li><strong>処理</strong>：サーバーがツイート内容を受け取り、データベースに保存</li> <li><strong>出力</strong>：タイムラインにツイートが表示される</li> </ol> </div> </div> <div class="text-center text-sm text-indigo-700 bg-indigo-50 p-3 rounded-lg mt-4">
+Webアプリケーションは、このような「入力」と「出力」のサイクルを繰り返すことで、<br>
+ユーザーとインタラクティブなやり取りを実現しています。<br>
+この記事では、このやり取りがどのように行われるのかを詳しく見ていきます。
+</div> </div> <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4"> <div class="flex"> <div class="flex-shrink-0"> <svg class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path> </svg> </div> <div class="ml-3"> <p class="text-sm text-yellow-700"> <strong>ポイント：</strong> Webアプリケーションでは、ユーザーの入力に応じてサーバーとデータのやり取りを行います。このデータのやり取りを「通信」と呼び、この通信の仕組みを理解することが、Webアプリ開発の基本となります。
+</p> </div> </div> </div> </section> <!-- リクエストとレスポンス --> <section id="request-response" class="bg-white rounded-lg shadow-md p-8"> <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center"> <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">2</span>
+データを送る方法（GET, POSTって何？）
+</h2> <p class="text-gray-700 mb-6">
+Webアプリケーションでは、クライアント（ブラウザ）とサーバーの間でデータをやり取りするために、
+            HTTPというプロトコル（通信規約）を使用します。HTTPには、データを送る方法として主に「GET」と「POST」という
+            2つのメソッドがあります。それぞれの特徴と使い分けを見ていきましょう。
+</p> <div class="bg-gradient-to-r from-green-100 to-teal-100 p-6 rounded-lg mb-6"> <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6"> <div> <div class="bg-white rounded-lg shadow-md p-6 border-2 border-green-300 h-full"> <div class="flex items-center mb-4"> <span class="text-3xl mr-3">🔍</span> <h3 class="text-xl font-semibold text-green-700">GETメソッド</h3> </div> <p class="text-gray-700 mb-4"> <strong>特徴：</strong> データをURLの一部（クエリパラメータ）として送信します。
+</p> <div class="bg-green-50 p-4 rounded-lg mb-4"> <h4 class="font-semibold text-green-700 mb-2">例：検索エンジンでの検索</h4> <p class="text-sm text-gray-700 mb-2">URLの例：</p> <div class="bg-gray-100 p-2 rounded text-sm font-mono mb-2 overflow-x-auto">
+https://example.com/search?<span class="text-green-600">q=プログラミング&lang=ja</span> </div> <p class="text-sm text-gray-700"> <span class="text-green-600">q=プログラミング&lang=ja</span> の部分がクエリパラメータです。<br>
+「q」（検索キーワード）と「lang」（言語）というパラメータに値を設定しています。
+</p> </div> <div class="space-y-2"> <div class="flex items-start"> <span class="text-green-500 mr-2 mt-1">✓</span> <span><strong>メリット</strong>：URLをブックマークできる、共有しやすい</span> </div> <div class="flex items-start"> <span class="text-green-500 mr-2 mt-1">✓</span> <span><strong>用途</strong>：データの取得、検索、フィルタリングなど</span> </div> <div class="flex items-start"> <span class="text-red-500 mr-2 mt-1">✗</span> <span><strong>デメリット</strong>：URLに情報が露出する、送れるデータ量に制限がある</span> </div> </div> </div> </div> <div> <div class="bg-white rounded-lg shadow-md p-6 border-2 border-teal-300 h-full"> <div class="flex items-center mb-4"> <span class="text-3xl mr-3">📤</span> <h3 class="text-xl font-semibold text-teal-700">POSTメソッド</h3> </div> <p class="text-gray-700 mb-4"> <strong>特徴：</strong> データをリクエストの本文（ボディ）に含めて送信します。
+</p> <div class="bg-teal-50 p-4 rounded-lg mb-4"> <h4 class="font-semibold text-teal-700 mb-2">例：ログインフォーム</h4> <p class="text-sm text-gray-700 mb-2">HTMLフォームの例：</p> <div class="bg-gray-100 p-2 rounded text-sm font-mono mb-2 overflow-x-auto">
+&lt;form <span class="text-teal-600">method="POST"</span> action="/login"&gt;
+  &lt;input type="email" name="email"&gt;
+  &lt;input type="password" name="password"&gt;
+  &lt;button type="submit"&gt;ログイン&lt;/button&gt;
+&lt;/form&gt;
+</div> <p class="text-sm text-gray-700">
+フォームが送信されると、メールアドレスとパスワードがリクエストのボディに含まれて送信されます。URLには表示されません。
+</p> </div> <div class="space-y-2"> <div class="flex items-start"> <span class="text-teal-500 mr-2 mt-1">✓</span> <span><strong>メリット</strong>：URLに情報が露出しない、大量のデータを送れる</span> </div> <div class="flex items-start"> <span class="text-teal-500 mr-2 mt-1">✓</span> <span><strong>用途</strong>：フォーム送信、ファイルアップロード、データの作成・更新など</span> </div> <div class="flex items-start"> <span class="text-red-500 mr-2 mt-1">✗</span> <span><strong>デメリット</strong>：URLをブックマークできない、キャッシュされにくい</span> </div> </div> </div> </div> </div> <div class="bg-white rounded-lg shadow-md p-6 border-2 border-teal-200"> <h3 class="text-xl font-semibold text-teal-700 mb-4 flex items-center"> <span class="text-3xl mr-3">🔄</span>
+その他のHTTPメソッド
+</h3> <p class="text-gray-700 mb-4">
+GETとPOST以外にも、以下のようなHTTPメソッドがあります。これらは主にRESTful APIで使用されます。
+</p> <div class="grid grid-cols-1 md:grid-cols-2 gap-4"> <div class="bg-teal-50 p-4 rounded-lg"> <h4 class="font-semibold text-teal-700 mb-2">PUT</h4> <p class="text-sm text-gray-700">
+リソース（データ）を<strong>更新</strong>するために使用します。指定したリソースを完全に置き換えます。
+</p> </div> <div class="bg-teal-50 p-4 rounded-lg"> <h4 class="font-semibold text-teal-700 mb-2">PATCH</h4> <p class="text-sm text-gray-700">
+リソースの<strong>一部を更新</strong>するために使用します。PUTと違い、指定した部分だけを更新します。
+</p> </div> <div class="bg-teal-50 p-4 rounded-lg"> <h4 class="font-semibold text-teal-700 mb-2">DELETE</h4> <p class="text-sm text-gray-700">
+指定したリソースを<strong>削除</strong>するために使用します。
+</p> </div> <div class="bg-teal-50 p-4 rounded-lg"> <h4 class="font-semibold text-teal-700 mb-2">OPTIONS</h4> <p class="text-sm text-gray-700">
+サーバーがサポートしているメソッドの<strong>情報を取得</strong>するために使用します。
+</p> </div> </div> </div> <div class="text-center text-sm text-teal-700 bg-teal-50 p-3 rounded-lg mt-4">
+HTTPメソッドを適切に使い分けることで、Webアプリケーションの機能を<br>
+より明確に設計することができます。特にAPIを設計する際には、<br>
+それぞれのメソッドの特性を理解して使い分けることが重要です。
+</div> </div> <div class="bg-blue-50 border-l-4 border-blue-400 p-4"> <div class="flex"> <div class="flex-shrink-0"> <svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path> </svg> </div> <div class="ml-3"> <p class="text-sm text-blue-700"> <strong>覚えておくポイント：</strong> 一般的に、「データを取得する」操作にはGETメソッド、「データを送信・作成・更新する」操作にはPOSTメソッドを使います。パスワードなどの機密情報を送る場合は、必ずPOSTメソッドを使いましょう。
+</p> </div> </div> </div> </section> <!-- JSONとは --> <section id="json" class="bg-white rounded-lg shadow-md p-8"> <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center"> <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">3</span>
+JSONってどんなデータの形？
+</h2> <p class="text-gray-700 mb-6">
+Webアプリケーションでデータをやり取りする際、そのデータはどのような形式で送受信されるのでしょうか？
+            現在のWebアプリケーション開発では、「JSON」（JavaScript Object Notation）という形式が広く使われています。
+            JSONとは何か、どのように使われるのかを見ていきましょう。
+</p> <div class="bg-gradient-to-r from-purple-100 to-pink-100 p-6 rounded-lg mb-6"> <div class="bg-white rounded-lg shadow-md p-6 border-2 border-purple-300 mb-6"> <div class="flex items-center mb-4"> <span class="text-3xl mr-3">📄</span> <h3 class="text-xl font-semibold text-purple-700">JSONとは？</h3> </div> <p class="text-gray-700 mb-4">
+JSONは、データを表現するためのテキスト形式で、人間にも読みやすく、コンピュータでも処理しやすい形式です。
+                JavaScriptのオブジェクト記法をベースにしていますが、多くのプログラミング言語でサポートされています。
+</p> <div class="bg-purple-50 p-4 rounded-lg mb-4"> <h4 class="font-semibold text-purple-700 mb-2">JSONの基本構造</h4> <div class="grid grid-cols-1 md:grid-cols-2 gap-4"> <div> <p class="text-sm text-gray-700 mb-2">JSONオブジェクト：</p> <div class="bg-gray-100 p-2 rounded text-sm font-mono overflow-x-auto"><pre><code>
+{
+  &lt;span class=&quot;text-purple-600&quot;&gt;&quot;name&quot;&lt;/span&gt;: &lt;span class=&quot;text-green-600&quot;&gt;&quot;山田太郎&quot;&lt;/span&gt;,
+  &lt;span class=&quot;text-purple-600&quot;&gt;&quot;age&quot;&lt;/span&gt;: &lt;span class=&quot;text-blue-600&quot;&gt;25&lt;/span&gt;,
+  &lt;span class=&quot;text-purple-600&quot;&gt;&quot;isStudent&quot;&lt;/span&gt;: &lt;span class=&quot;text-red-600&quot;&gt;false&lt;/span&gt;,
+  &lt;span class=&quot;text-purple-600&quot;&gt;&quot;hobbies&quot;&lt;/span&gt;: [
+    &lt;span class=&quot;text-green-600&quot;&gt;&quot;読書&quot;&lt;/span&gt;,
+    &lt;span class=&quot;text-green-600&quot;&gt;&quot;プログラミング&quot;&lt;/span&gt;
+  ]
+}
+                    </code></pre></div> </div> <div> <p class="text-sm text-gray-700 mb-2">JSONの配列：</p> <div class="bg-gray-100 p-2 rounded text-sm font-mono overflow-x-auto"><pre><code>
+[
+  {
+    &lt;span class=&quot;text-purple-600&quot;&gt;&quot;id&quot;&lt;/span&gt;: &lt;span class=&quot;text-blue-600&quot;&gt;1&lt;/span&gt;,
+    &lt;span class=&quot;text-purple-600&quot;&gt;&quot;text&quot;&lt;/span&gt;: &lt;span class=&quot;text-green-600&quot;&gt;&quot;牛乳を買う&quot;&lt;/span&gt;
+  },
+  {
+    &lt;span class=&quot;text-purple-600&quot;&gt;&quot;id&quot;&lt;/span&gt;: &lt;span class=&quot;text-blue-600&quot;&gt;2&lt;/span&gt;,
+    &lt;span class=&quot;text-purple-600&quot;&gt;&quot;text&quot;&lt;/span&gt;: &lt;span class=&quot;text-green-600&quot;&gt;&quot;レポートを書く&quot;&lt;/span&gt;
+  }
+]
+                    </code></pre></div> </div> </div> </div> <div class="bg-purple-50 p-4 rounded-lg"> <h4 class="font-semibold text-purple-700 mb-2">JSONのデータ型</h4> <div class="grid grid-cols-1 md:grid-cols-2 gap-4"> <div> <ul class="space-y-1 text-sm"> <li class="flex items-start"> <span class="text-purple-500 mr-2">•</span> <span><strong>文字列</strong>：<code class="bg-gray-100 px-1 py-0.5 rounded">"こんにちは"</code></span> </li> <li class="flex items-start"> <span class="text-purple-500 mr-2">•</span> <span><strong>数値</strong>：<code class="bg-gray-100 px-1 py-0.5 rounded">42</code>, <code class="bg-gray-100 px-1 py-0.5 rounded">3.14</code></span> </li> <li class="flex items-start"> <span class="text-purple-500 mr-2">•</span> <span><strong>真偽値</strong>：<code class="bg-gray-100 px-1 py-0.5 rounded">true</code>, <code class="bg-gray-100 px-1 py-0.5 rounded">false</code></span> </li> </ul> </div> <div> <ul class="space-y-1 text-sm"> <li class="flex items-start"> <span class="text-purple-500 mr-2">•</span> <span><strong>配列</strong>：<code class="bg-gray-100 px-1 py-0.5 rounded">["りんご", "バナナ"]</code></span> </li> <li class="flex items-start"> <span class="text-purple-500 mr-2">•</span> <span><strong>オブジェクト</strong>：<code class="bg-gray-100 px-1 py-0.5 rounded">{&quot;name&quot;: &quot;太郎&quot;}</code></span> </li> <li class="flex items-start"> <span class="text-purple-500 mr-2">•</span> <span><strong>null</strong>：<code class="bg-gray-100 px-1 py-0.5 rounded">null</code></span> </li> </ul> </div> </div> </div> </div> <div class="bg-white rounded-lg shadow-md p-6 border-2 border-pink-300"> <div class="flex items-center mb-4"> <span class="text-3xl mr-3">🔄</span> <h3 class="text-xl font-semibold text-pink-700">JSONの使い方</h3> </div> <p class="text-gray-700 mb-4">
+Webアプリケーションでは、JSONを使ってクライアントとサーバー間でデータをやり取りします。
+                JavaScriptでJSONを扱う方法を見てみましょう。
+</p> <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4"> <div class="bg-pink-50 p-4 rounded-lg"> <h4 class="font-semibold text-pink-700 mb-2">JavaScriptオブジェクト → JSON文字列</h4> <div class="bg-gray-100 p-2 rounded text-sm font-mono mb-2 overflow-x-auto"><pre><code>
+const user = {
+  name: &quot;山田太郎&quot;,
+  age: 25,
+  isStudent: false
+};
+
+// オブジェクトをJSON文字列に変換
+const jsonString = JSON.stringify(user);
+console.log(jsonString);
+// 出力: {&quot;name&quot;:&quot;山田太郎&quot;,&quot;age&quot;:25,&quot;isStudent&quot;:false}
+                  </code></pre></div> <p class="text-sm text-gray-700"> <code>JSON.stringify()</code> を使って、JavaScriptオブジェクトをJSON文字列に変換します。
+</p> </div> <div class="bg-pink-50 p-4 rounded-lg"> <h4 class="font-semibold text-pink-700 mb-2">JSON文字列 → JavaScriptオブジェクト</h4> <div class="bg-gray-100 p-2 rounded text-sm font-mono mb-2 overflow-x-auto"><pre><code>
+const jsonString = &#39;{&quot;name&quot;:&quot;山田太郎&quot;,&quot;age&quot;:25,&quot;isStudent&quot;:false}&#39;;
+
+// JSON文字列をオブジェクトに変換
+const user = JSON.parse(jsonString);
+console.log(user.name); // 出力: 山田太郎
+console.log(user.age);  // 出力: 25
+                  </code></pre></div> <p class="text-sm text-gray-700"> <code>JSON.parse()</code> を使って、JSON文字列をJavaScriptオブジェクトに変換します。
+</p> </div> </div> <div class="bg-pink-50 p-4 rounded-lg"> <h4 class="font-semibold text-pink-700 mb-2">実際の使用例：APIからデータを取得</h4> <div class="bg-gray-100 p-2 rounded text-sm font-mono overflow-x-auto"><pre><code></code>
+// APIからデータを取得する例
+fetch(&#39;https://api.example.com/users&#39;)
+  .then(response =&gt; response.json()) // レスポンスをJSONとして解析
+  .then(data =&gt; {
+    console.log(data); // 取得したデータを処理
+    
+    // 例：ユーザー一覧を表示
+    const userList = document.getElementById(&#39;user-list&#39;);
+    data.forEach(user =&gt; {
+      const li = document.createElement(&#39;li&#39;);
+      li.textContent = user.name;
+      userList.appendChild(li);
+    });
+  })
+  .catch(error =&gt; console.error(&#39;エラー:&#39;, error));
+                </pre></div> </div> </div> <div class="text-center text-sm text-pink-700 bg-pink-50 p-3 rounded-lg mt-4">
+JSONは、その単純さと柔軟性から、Webアプリケーションでのデータ交換形式として広く採用されています。<br>
+特にAPIを通じてデータをやり取りする際には、ほぼ標準的に使用されています。<br>
+JavaScriptでは <code>JSON.stringify()</code> と <code>JSON.parse()</code> を使って簡単に変換できます。
+</div> </div> <div class="bg-purple-50 border-l-4 border-purple-400 p-4"> <div class="flex"> <div class="flex-shrink-0"> <svg class="h-5 w-5 text-purple-400" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path> </svg> </div> <div class="ml-3"> <p class="text-sm text-purple-700"> <strong>JSONの注意点：</strong> JSONでは、キー（プロパティ名）は必ずダブルクォーテーション（"）で囲む必要があります。また、末尾のカンマは許可されていません。JavaScriptのオブジェクトリテラルとは若干ルールが異なるので注意しましょう。
+</p> </div> </div> </div> </section> <!-- APIとは --> <section id="api" class="bg-white rounded-lg shadow-md p-8"> <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center"> <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">4</span>
+APIって何？（データをやりとりするためのルール）
+</h2> <p class="text-gray-700 mb-6">
+Webアプリケーションでは、「API」（Application Programming Interface）という言葉をよく耳にします。
+            APIとは何か、どのような役割を果たすのか、そしてなぜ重要なのかを見ていきましょう。
+</p> <div class="bg-gradient-to-r from-amber-100 to-yellow-100 p-6 rounded-lg mb-6"> <div class="bg-white rounded-lg shadow-md p-6 border-2 border-amber-300 mb-6"> <div class="flex items-center mb-4"> <span class="text-3xl mr-3">🔌</span> <h3 class="text-xl font-semibold text-amber-700">APIとは？</h3> </div> <p class="text-gray-700 mb-4">
+APIは、異なるソフトウェアコンポーネント間の通信方法を定義したインターフェースです。
+                簡単に言えば、「データやサービスにアクセスするためのルール」のことです。
+</p> <div class="bg-amber-50 p-4 rounded-lg mb-4"> <h4 class="font-semibold text-amber-700 mb-2">APIを例えると...</h4> <div class="flex flex-col md:flex-row items-center gap-6"> <div class="md:w-1/3 text-center"> <span class="text-6xl block mb-2">🍽️</span> </div> <div class="md:w-2/3"> <p class="text-gray-700">
+APIはレストランのウェイターのようなものです。お客さん（クライアント）は直接キッチン（サーバー）に入って料理を作ることはできませんが、ウェイター（API）を通じて注文（リクエスト）を出し、料理（レスポンス）を受け取ることができます。
+</p> <p class="text-gray-700 mt-2">
+ウェイターは注文の取り方（リクエストの形式）と料理の出し方（レスポンスの形式）というルールに従って働いています。これがAPIの役割です。
+</p> </div> </div> </div> <div class="grid grid-cols-1 md:grid-cols-2 gap-4"> <div class="bg-amber-50 p-4 rounded-lg"> <h4 class="font-semibold text-amber-700 mb-2">APIの種類</h4> <ul class="space-y-1 text-sm"> <li class="flex items-start"> <span class="text-amber-500 mr-2">•</span> <span><strong>Web API</strong>：HTTPを使ってインターネット経由でアクセスするAPI</span> </li> <li class="flex items-start"> <span class="text-amber-500 mr-2">•</span> <span><strong>RESTful API</strong>：REST原則に従ったWeb API</span> </li> <li class="flex items-start"> <span class="text-amber-500 mr-2">•</span> <span><strong>SOAP API</strong>：XMLベースのメッセージング規約を使用するAPI</span> </li> <li class="flex items-start"> <span class="text-amber-500 mr-2">•</span> <span><strong>GraphQL API</strong>：クライアントが必要なデータを指定できるAPI</span> </li> </ul> </div> <div class="bg-amber-50 p-4 rounded-lg"> <h4 class="font-semibold text-amber-700 mb-2">APIの利点</h4> <ul class="space-y-1 text-sm"> <li class="flex items-start"> <span class="text-amber-500 mr-2">•</span> <span><strong>再利用性</strong>：同じAPIを複数のアプリケーションで使用できる</span> </li> <li class="flex items-start"> <span class="text-amber-500 mr-2">•</span> <span><strong>分離</strong>：クライアントとサーバーの実装を分離できる</span> </li> <li class="flex items-start"> <span class="text-amber-500 mr-2">•</span> <span><strong>スケーラビリティ</strong>：クライアントとサーバーを独立してスケールできる</span> </li> <li class="flex items-start"> <span class="text-amber-500 mr-2">•</span> <span><strong>互換性</strong>：異なる言語やプラットフォーム間での連携が可能</span> </li> </ul> </div> </div> </div> <div class="bg-white rounded-lg shadow-md p-6 border-2 border-yellow-300"> <div class="flex items-center mb-4"> <span class="text-3xl mr-3">🌐</span> <h3 class="text-xl font-semibold text-yellow-700">RESTful APIの基本</h3> </div> <p class="text-gray-700 mb-4">
+現在、Web APIの中で最も一般的なのは「RESTful API」です。RESTは「Representational State Transfer」の略で、
+                Webの基本的な仕組みに沿ったAPIの設計原則です。
+</p> <div class="bg-yellow-50 p-4 rounded-lg mb-4"> <h4 class="font-semibold text-yellow-700 mb-2">RESTful APIの特徴</h4> <ul class="space-y-2 text-gray-700"> <ul class="space-y-2 text-gray-700"> <li class="flex items-start"> <span class="text-yellow-500 mr-2">•</span> <span><strong>リソース指向</strong>：データやサービスを「リソース」として扱い、URLで識別する</span> </li> <li class="flex items-start"> <span class="text-yellow-500 mr-2">•</span> <span><strong>HTTPメソッド</strong>：GET, POST, PUT, DELETE などのHTTPメソッドを使用して操作を表現</span> </li> <li class="flex items-start"> <span class="text-yellow-500 mr-2">•</span> <span><strong>ステートレス</strong>：各リクエストは独立しており、サーバーはセッション状態を保持しない</span> </li> <li class="flex items-start"> <span class="text-yellow-500 mr-2">•</span> <span><strong>統一インターフェース</strong>：一貫した方法でリソースにアクセスできる</span> </li> </ul> </ul></div> <div class="bg-yellow-50 p-4 rounded-lg"> <h4 class="font-semibold text-yellow-700 mb-2">RESTful APIの例</h4> <div class="overflow-x-auto"> <table class="min-w-full bg-white"> <thead> <tr> <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">操作</th> <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">HTTPメソッド</th> <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">URL</th> <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">説明</th> </tr> </thead> <tbody> <tr> <td class="py-2 px-4 border-b border-gray-200">タスク一覧の取得</td> <td class="py-2 px-4 border-b border-gray-200 text-green-600">GET</td> <td class="py-2 px-4 border-b border-gray-200 font-mono text-sm">/api/tasks</td> <td class="py-2 px-4 border-b border-gray-200">すべてのタスクを取得</td> </tr> <tr> <td class="py-2 px-4 border-b border-gray-200">特定のタスクの取得</td> <td class="py-2 px-4 border-b border-gray-200 text-green-600">GET</td> <td class="py-2 px-4 border-b border-gray-200 font-mono text-sm">/api/tasks/123</td> <td class="py-2 px-4 border-b border-gray-200">ID 123のタスクを取得</td> </tr> <tr> <td class="py-2 px-4 border-b border-gray-200">新しいタスクの作成</td> <td class="py-2 px-4 border-b border-gray-200 text-blue-600">POST</td> <td class="py-2 px-4 border-b border-gray-200 font-mono text-sm">/api/tasks</td> <td class="py-2 px-4 border-b border-gray-200">新しいタスクを作成</td> </tr> <tr> <td class="py-2 px-4 border-b border-gray-200">タスクの更新</td> <td class="py-2 px-4 border-b border-gray-200 text-orange-600">PUT</td> <td class="py-2 px-4 border-b border-gray-200 font-mono text-sm">/api/tasks/123</td> <td class="py-2 px-4 border-b border-gray-200">ID 123のタスクを更新</td> </tr> <tr> <td class="py-2 px-4 border-b border-gray-200">タスクの削除</td> <td class="py-2 px-4 border-b border-gray-200 text-red-600">DELETE</td> <td class="py-2 px-4 border-b border-gray-200 font-mono text-sm">/api/tasks/123</td> <td class="py-2 px-4 border-b border-gray-200">ID 123のタスクを削除</td> </tr> </tbody> </table> </div> </div> </div> <div class="text-center text-sm text-yellow-700 bg-yellow-50 p-3 rounded-lg mt-4">
+APIは、異なるシステム間でデータをやり取りするための「共通言語」のような役割を果たします。<br>
+特にWebアプリケーション開発では、フロントエンド（ユーザーインターフェース）と<br>
+バックエンド（サーバー側の処理）を分離するために、APIが重要な役割を果たしています。
+</div> </div> <div class="bg-orange-50 border-l-4 border-orange-400 p-4"> <div class="flex"> <div class="flex-shrink-0"> <svg class="h-5 w-5 text-orange-400" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path> </svg> </div> <div class="ml-3"> <p class="text-sm text-orange-700"> <strong>公開APIの例：</strong> 多くの企業やサービスが公開APIを提供しています。例えば、Twitter APIを使ってツイートを取得したり、Google Maps APIを使って地図を表示したり、OpenWeather APIを使って天気情報を取得したりすることができます。これらのAPIを利用することで、自分のアプリケーションに様々な機能を追加することができます。
+</p> </div> </div> </div> </section> <!-- APIを作る --> <section id="create-api" class="bg-white rounded-lg shadow-md p-8"> <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center"> <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">5</span>
+自分でAPIを作ってみよう（Node.js + Express）
+</h2> <p class="text-gray-700 mb-6">
+ここでは、Node.jsとExpressというフレームワークを使って、簡単なAPIを作成する方法を見ていきます。
+            TODOアプリのためのAPIを例に、基本的なCRUD（Create, Read, Update, Delete）操作を実装してみましょう。
+</p> <div class="bg-gradient-to-r from-green-100 to-emerald-100 p-6 rounded-lg mb-6"> <div class="bg-white rounded-lg shadow-md p-6 border-2 border-green-300 mb-6"> <div class="flex items-center mb-4"> <span class="text-3xl mr-3">🛠️</span> <h3 class="text-xl font-semibold text-green-700">準備：必要なパッケージのインストール</h3> </div> <p class="text-gray-700 mb-4">
+まずは、必要なパッケージをインストールします。ターミナルで以下のコマンドを実行してください。
+</p> <div class="bg-gray-100 p-3 rounded text-sm font-mono mb-4 overflow-x-auto">
+npm init -y
+npm install express cors body-parser
+</div> <div class="bg-green-50 p-4 rounded-lg"> <h4 class="font-semibold text-green-700 mb-2">インストールするパッケージの説明</h4> <ul class="space-y-2 text-sm"> <li class="flex items-start"> <span class="text-green-500 mr-2">•</span> <span><strong>express</strong>：Node.jsのWebアプリケーションフレームワーク。APIの作成を簡単にします。</span> </li> <li class="flex items-start"> <span class="text-green-500 mr-2">•</span> <span><strong>cors</strong>：Cross-Origin Resource Sharing（異なるオリジン間でのリソース共有）を有効にするミドルウェア。</span> </li> <li class="flex items-start"> <span class="text-green-500 mr-2">•</span> <span><strong>body-parser</strong>：リクエストのボディをパースするためのミドルウェア。</span> </li> </ul> </div> </div> <div class="bg-white rounded-lg shadow-md p-6 border-2 border-emerald-300 mb-6"> <div class="flex items-center mb-4"> <span class="text-3xl mr-3">📝</span> <h3 class="text-xl font-semibold text-emerald-700">ステップ1：サーバーの作成</h3> </div> <p class="text-gray-700 mb-4">
+プロジェクトのルートディレクトリに <code>server.js</code> というファイルを作成し、以下のコードを記述します。
+</p> <div class="bg-gray-100 p-3 rounded text-sm font-mono mb-4 overflow-x-auto"><pre><code>
+const express = require(&#39;express&#39;);
+const cors = require(&#39;cors&#39;);
+const bodyParser = require(&#39;body-parser&#39;);
+
+// Expressアプリケーションの初期化
+const app = express();
+const PORT = 3000;
+
+// ミドルウェアの設定
+app.use(cors());
+app.use(bodyParser.json());
+
+// 仮のデータストア（実際のアプリではデータベースを使用します）
+let tasks = [
+  { id: 1, text: &#39;Expressを学ぶ&#39;, completed: false },
+  { id: 2, text: &#39;APIを作成する&#39;, completed: false },
+  { id: 3, text: &#39;フロントエンドと接続する&#39;, completed: false }
+];
+
+// サーバーの起動
+app.listen(PORT, () =&gt; {
+  console.log(\`サーバーが http://localhost:\${PORT} で起動しました\`);
+});
+              </code></pre></div> <div class="bg-emerald-50 p-4 rounded-lg"> <h4 class="font-semibold text-emerald-700 mb-2">コードの説明</h4> <ul class="space-y-2 text-sm"> <li class="flex items-start"> <span class="text-emerald-500 mr-2">•</span> <span>必要なモジュールを読み込んでいます。</span> </li> <li class="flex items-start"> <span class="text-emerald-500 mr-2">•</span> <span>Expressアプリケーションを初期化し、使用するポート番号を設定しています。</span> </li> <li class="flex items-start"> <span class="text-emerald-500 mr-2">•</span> <span>CORS（異なるオリジン間でのリソース共有）を有効にし、JSONリクエストを解析できるようにしています。</span> </li> <li class="flex items-start"> <span class="text-emerald-500 mr-2">•</span> <span>仮のデータストアとして、タスクの配列を作成しています。実際のアプリではデータベースを使用します。</span> </li> <li class="flex items-start"> <span class="text-emerald-500 mr-2">•</span> <span>指定したポートでサーバーを起動しています。</span> </li> </ul> </div> </div> <div class="bg-white rounded-lg shadow-md p-6 border-2 border-emerald-300"> <div class="flex items-center mb-4"> <span class="text-3xl mr-3">🔄</span> <h3 class="text-xl font-semibold text-emerald-700">ステップ2：APIエンドポイントの作成</h3> </div> <p class="text-gray-700 mb-4">
+次に、タスクの取得、作成、更新、削除を行うためのAPIエンドポイントを作成します。
+<code>server.js</code> ファイルに以下のコードを追加してください。
+</p> <div class="bg-gray-100 p-3 rounded text-sm font-mono mb-4 overflow-x-auto"><pre><code>
+// 全てのタスクを取得するエンドポイント
+app.get(&#39;/api/tasks&#39;, (req, res) =&gt; {
+  res.json(tasks);
+});
+
+// 特定のタスクを取得するエンドポイント
+app.get(&#39;/api/tasks/:id&#39;, (req, res) =&gt; {
+  const taskId = parseInt(req.params.id);
+  const task = tasks.find(t =&gt; t.id === taskId);
+  
+  if (!task) {
+    return res.status(404).json({ message: &#39;タスクが見つかりません&#39; });
+  }
+  
+  res.json(task);
+});
+
+// 新しいタスクを作成するエンドポイント
+app.post(&#39;/api/tasks&#39;, (req, res) =&gt; {
+  const { text } = req.body;
+  
+  if (!text) {
+    return res.status(400).json({ message: &#39;テキストは必須です&#39; });
+  }
+  
+  // 新しいIDを生成（実際のアプリではもっと堅牢な方法を使用します）
+  const newId = tasks.length &gt; 0 ? Math.max(...tasks.map(t =&gt; t.id)) + 1 : 1;
+  
+  const newTask = {
+    id: newId,
+    text,
+    completed: false
+  };
+  
+  tasks.push(newTask);
+  res.status(201).json(newTask);
+});
+
+// タスクを更新するエンドポイント
+app.put(&#39;/api/tasks/:id&#39;, (req, res) =&gt; {
+  const taskId = parseInt(req.params.id);
+  const taskIndex = tasks.findIndex(t =&gt; t.id === taskId);
+  
+  if (taskIndex === -1) {
+    return res.status(404).json({ message: &#39;タスクが見つかりません&#39; });
+  }
+  
+  const { text, completed } = req.body;
+  
+  // 既存のタスクを更新
+  tasks[taskIndex] = {
+    ...tasks[taskIndex],
+    text: text !== undefined ? text : tasks[taskIndex].text,
+    completed: completed !== undefined ? completed : tasks[taskIndex].completed
+  };
+  
+  res.json(tasks[taskIndex]);
+});
+
+// タスクを削除するエンドポイント
+app.delete(&#39;/api/tasks/:id&#39;, (req, res) =&gt; {
+  const taskId = parseInt(req.params.id);
+  const taskIndex = tasks.findIndex(t =&gt; t.id === taskId);
+  
+  if (taskIndex === -1) {
+    return res.status(404).json({ message: &#39;タスクが見つかりません&#39; });
+  }
+  
+  // タスクを削除
+  const deletedTask = tasks[taskIndex];
+  tasks.splice(taskIndex, 1);
+  
+  res.json(deletedTask);
+});
+              </code></pre></div> <div class="bg-emerald-50 p-4 rounded-lg"> <h4 class="font-semibold text-emerald-700 mb-2">作成したAPIエンドポイント</h4> <div class="overflow-x-auto"> <table class="min-w-full bg-white"> <thead> <tr> <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">エンドポイント</th> <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">HTTPメソッド</th> <th class="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">説明</th> </tr> </thead> <tbody> <tr> <td class="py-2 px-4 border-b border-gray-200 font-mono text-sm">/api/tasks</td> <td class="py-2 px-4 border-b border-gray-200 text-green-600">GET</td> <td class="py-2 px-4 border-b border-gray-200">すべてのタスクを取得</td> </tr> <tr> <td class="py-2 px-4 border-b border-gray-200 font-mono text-sm">/api/tasks/:id</td> <td class="py-2 px-4 border-b border-gray-200 text-green-600">GET</td> <td class="py-2 px-4 border-b border-gray-200">特定のタスクを取得</td> </tr> <tr> <td class="py-2 px-4 border-b border-gray-200 font-mono text-sm">/api/tasks</td> <td class="py-2 px-4 border-b border-gray-200 text-blue-600">POST</td> <td class="py-2 px-4 border-b border-gray-200">新しいタスクを作成</td> </tr> <tr> <td class="py-2 px-4 border-b border-gray-200 font-mono text-sm">/api/tasks/:id</td> <td class="py-2 px-4 border-b border-gray-200 text-orange-600">PUT</td> <td class="py-2 px-4 border-b border-gray-200">タスクを更新</td> </tr> <tr> <td class="py-2 px-4 border-b border-gray-200 font-mono text-sm">/api/tasks/:id</td> <td class="py-2 px-4 border-b border-gray-200 text-red-600">DELETE</td> <td class="py-2 px-4 border-b border-gray-200">タスクを削除</td> </tr> </tbody> </table> </div> </div> </div> <div class="text-center text-sm text-emerald-700 bg-emerald-50 p-3 rounded-lg mt-4">
+これで、基本的なCRUD操作（作成、読み取り、更新、削除）を行うAPIが完成しました。<br>
+サーバーを起動するには、ターミナルで <code>node server.js</code> を実行します。<br>
+実際のアプリでは、データベースを使用してデータを永続化することが一般的です。
+</div> </div> <div class="bg-green-50 border-l-4 border-green-400 p-4"> <div class="flex"> <div class="flex-shrink-0"> <svg class="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path> </svg> </div> <div class="ml-3"> <p class="text-sm text-green-700"> <strong>APIのテスト方法：</strong> 作成したAPIをテストするには、<a href="https://www.postman.com/" target="_blank" class="text-green-600 hover:underline">Postman</a>や<a href="https://insomnia.rest/" target="_blank" class="text-green-600 hover:underline">Insomnia</a>などのAPIクライアントツールを使用すると便利です。これらのツールを使うと、様々なHTTPリクエストを簡単に送信し、レスポンスを確認することができます。
+</p> </div> </div> </div> </section> <!-- APIを呼び出す --> <section id="fetch-api" class="bg-white rounded-lg shadow-md p-8"> <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center"> <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">6</span>
+JavaScriptからAPIを呼び出してみよう
+</h2> <p class="text-gray-700 mb-6">
+作成したAPIをフロントエンド（ブラウザ側）から呼び出す方法を見ていきましょう。
+            JavaScriptの <code>fetch</code> APIを使って、サーバーとデータをやり取りする方法を学びます。
+</p> <div class="bg-gradient-to-r from-blue-100 to-indigo-100 p-6 rounded-lg mb-6"> <div class="bg-white rounded-lg shadow-md p-6 border-2 border-blue-300 mb-6"> <div class="flex items-center mb-4"> <span class="text-3xl mr-3">📡</span> <h3 class="text-xl font-semibold text-blue-700">fetch APIとは？</h3> </div> <p class="text-gray-700 mb-4"> <code>fetch</code> APIは、JavaScriptからHTTPリクエストを送信するための標準的なAPIです。
+                XMLHttpRequest（XHR）の代替として設計され、より使いやすく、Promiseベースのインターフェースを提供します。
+</p> <div class="bg-blue-50 p-4 rounded-lg"> <h4 class="font-semibold text-blue-700 mb-2">fetch APIの基本的な使い方</h4> <div class="bg-gray-100 p-3 rounded text-sm font-mono mb-2 overflow-x-auto"><pre><code>
+fetch(url, options)
+  .then(response =&gt; {
+    // レスポンスの処理
+    return response.json(); // JSONとしてパース
+  })
+  .then(data =&gt; {
+    // データの処理
+    console.log(data);
+  })
+  .catch(error =&gt; {
+    // エラーの処理
+    console.error(&#39;エラー:&#39;, error);
+  });
+                </code></pre></div> <p class="text-sm text-gray-700"> <code>fetch</code> は Promise を返すため、<code>then</code> と <code>catch</code> を使ってレスポンスやエラーを処理できます。
+                  また、async/await 構文を使うとさらに読みやすくなります。
+</p> </div> </div> <div class="bg-white rounded-lg shadow-md p-6 border-2 border-indigo-300"> <div class="flex items-center mb-4"> <span class="text-3xl mr-3">🔄</span> <h3 class="text-xl font-semibold text-indigo-700">APIを呼び出す例</h3> </div> <p class="text-gray-700 mb-4">
+先ほど作成したTODOアプリのAPIを呼び出す例を見てみましょう。
+                以下は、フロントエンド側のJavaScriptコードです。
+</p> <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4"> <div class="bg-indigo-50 p-4 rounded-lg"> <h4 class="font-semibold text-indigo-700 mb-2">タスク一覧の取得</h4> <div class="bg-gray-100 p-3 rounded text-sm font-mono overflow-x-auto"><pre><code>
+// タスク一覧を取得する関数
+async function fetchTasks() {
+  try {
+    const response = await fetch(&#39;http://localhost:3000/api/tasks&#39;);
+    
+    if (!response.ok) {
+      throw new Error(&#39;サーバーエラー&#39;);
+    }
+    
+    const tasks = await response.json();
+    displayTasks(tasks);
+  } catch (error) {
+    console.error(&#39;タスクの取得に失敗しました:&#39;, error);
+    showError(&#39;タスクの取得に失敗しました&#39;);
+  }
+}
+
+// タスクを表示する関数
+function displayTasks(tasks) {
+  const taskList = document.getElementById(&#39;task-list&#39;);
+  taskList.innerHTML = &#39;&#39;;
+  
+  tasks.forEach(task =&gt; {
+    const li = document.createElement(&#39;li&#39;);
+    li.className = &#39;task-item&#39;;
+    li.innerHTML = \`
+      &lt;input type=&quot;checkbox&quot; \${task.completed ? &#39;checked&#39; : &#39;&#39;} 
+        onchange=&quot;toggleTask(\${task.id}, this.checked)&quot;&gt;
+      &lt;span&gt;\${task.text}&lt;/span&gt;
+      &lt;button onclick=&quot;deleteTask(\${task.id})&quot;&gt;削除&lt;/button&gt;
+    \`;
+    taskList.appendChild(li);
+  });
+}
+
+// ページ読み込み時にタスク一覧を取得
+document.addEventListener(&#39;DOMContentLoaded&#39;, fetchTasks);
+                  </code></pre></div> </div> <div class="bg-indigo-50 p-4 rounded-lg"> <h4 class="font-semibold text-indigo-700 mb-2">新しいタスクの作成</h4> <div class="bg-gray-100 p-3 rounded text-sm font-mono overflow-x-auto"><pre><code>
+// 新しいタスクを作成する関数
+async function createTask(text) {
+  try {
+    const response = await fetch(&#39;http://localhost:3000/api/tasks&#39;, {
+      method: &#39;POST&#39;,
+      headers: {
+        &#39;Content-Type&#39;: &#39;application/json&#39;
+      },
+      body: JSON.stringify({ text })
+    });
+    
+    if (!response.ok) {
+      throw new Error(&#39;サーバーエラー&#39;);
+    }
+    
+    const newTask = await response.json();
+    console.log(&#39;新しいタスクが作成されました:&#39;, newTask);
+    
+    // タスク一覧を再取得して表示を更新
+    fetchTasks();
+  } catch (error) {
+    console.error(&#39;タスクの作成に失敗しました:&#39;, error);
+    showError(&#39;タスクの作成に失敗しました&#39;);
+  }
+}
+
+// フォーム送信時の処理
+document.getElementById(&#39;task-form&#39;).addEventListener(&#39;submit&#39;, function(e) {
+  e.preventDefault();
+  const input = document.getElementById(&#39;task-input&#39;);
+  const text = input.value.trim();
+  
+  if (text) {
+    createTask(text);
+    input.value = &#39;&#39;;
+  }
+});
+                  </code></pre></div> </div> </div> <div class="grid grid-cols-1 md:grid-cols-2 gap-6"> <div class="bg-indigo-50 p-4 rounded-lg"> <h4 class="font-semibold text-indigo-700 mb-2">タスクの完了状態を切り替える</h4> <div class="bg-gray-100 p-3 rounded text-sm font-mono overflow-x-auto"><pre><code>
+// タスクの完了状態を切り替える関数
+async function toggleTask(id, completed) {
+  try {
+    const response = await fetch(\`http://localhost:3000/api/tasks/\${id}\`, {
+      method: &#39;PUT&#39;,
+      headers: {
+        &#39;Content-Type&#39;: &#39;application/json&#39;
+      },
+      body: JSON.stringify({ completed })
+    });
+    
+    if (!response.ok) {
+      throw new Error(&#39;サーバーエラー&#39;);
+    }
+    
+    const updatedTask = await response.json();
+    console.log(&#39;タスクが更新されました:&#39;, updatedTask);
+  } catch (error) {
+    console.error(&#39;タスクの更新に失敗しました:&#39;, error);
+    showError(&#39;タスクの更新に失敗しました&#39;);
+    fetchTasks(); // エラー時は元の状態に戻すため再取得
+  }
+}
+                  </code></pre></div> </div> <div class="bg-indigo-50 p-4 rounded-lg"> <h4 class="font-semibold text-indigo-700 mb-2">タスクの削除</h4> <div class="bg-gray-100 p-3 rounded text-sm font-mono overflow-x-auto"><pre><code>
+// タスクを削除する関数
+async function deleteTask(id) {
+  if (!confirm(&#39;このタスクを削除してもよろしいですか？&#39;)) {
+    return;
+  }
+  
+  try {
+    const response = await fetch(\`http://localhost:3000/api/tasks/\${id}\`, {
+      method: &#39;DELETE&#39;
+    });
+    
+    if (!response.ok) {
+      throw new Error(&#39;サーバーエラー&#39;);
+    }
+    
+    const deletedTask = await response.json();
+    console.log(&#39;タスクが削除されました:&#39;, deletedTask);
+    
+    // タスク一覧を再取得して表示を更新
+    fetchTasks();
+  } catch (error) {
+    console.error(&#39;タスクの削除に失敗しました:&#39;, error);
+    showError(&#39;タスクの削除に失敗しました&#39;);
+  }
+}
+
+// エラーメッセージを表示する関数
+function showError(message) {
+  const errorDiv = document.getElementById(&#39;error-message&#39;);
+  errorDiv.textContent = message;
+  errorDiv.style.display = &#39;block&#39;;
+  
+  // 3秒後にエラーメッセージを非表示にする
+  setTimeout(() =&gt; {
+    errorDiv.style.display = &#39;none&#39;;
+  }, 3000);
+}
+                  </code></pre></div> </div> </div> </div> <div class="text-center text-sm text-indigo-700 bg-indigo-50 p-3 rounded-lg mt-4"> <code>fetch</code> APIを使うことで、JavaScriptからサーバーのAPIを簡単に呼び出すことができます。<br>
+非同期処理を使うことで、ユーザーインターフェースをブロックすることなく、<br>
+バックグラウンドでデータのやり取りを行うことができます。
+</div> </div> <div class="bg-blue-50 border-l-4 border-blue-400 p-4"> <div class="flex"> <div class="flex-shrink-0"> <svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor"> <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path> </svg> </div> <div class="ml-3"> <p class="text-sm text-blue-700"> <strong>async/await構文：</strong> 上記の例では、<code>async/await</code> 構文を使用しています。これはPromiseベースの非同期処理をより読みやすく書くための構文です。<code>async</code> 関数内では、<code>await</code> キーワードを使ってPromiseの結果を待つことができます。これにより、非同期コードを同期的に書いているかのように読みやすくなります。
+</p> </div> </div> </div> </section> </div> <!-- まとめ --> <div class="bg-white rounded-lg shadow-md p-8 mb-12"> <h2 class="text-2xl font-semibold text-kinova-gray mb-6">まとめ：サーバーとのやり取りの基本を理解しよう</h2> <p class="text-gray-700 mb-6">
+この記事では、Webアプリケーションにおけるサーバーとのデータのやり取りについて学びました。
+          HTTPメソッド（GET, POST）の違い、JSONデータ形式、APIの概念、そして実際にAPIを作成・呼び出す方法まで、
+          サーバーとの通信に関する基本的な知識を身につけることができました。
+</p> <div class="bg-gradient-to-r from-kinova-teal to-kinova-orange p-6 rounded-lg text-white mb-6"> <h3 class="text-xl font-semibold mb-4">今回学んだこと</h3> <ul class="space-y-2"> <li class="flex items-start"> <span class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">✓</span> <span>Webアプリは「入力」と「出力」の繰り返しで動いている</span> </li> <li class="flex items-start"> <span class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">✓</span> <span>データを送る方法（GET, POSTなどのHTTPメソッド）</span> </li> <li class="flex items-start"> <span class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">✓</span> <span>JSONというデータ形式の基本</span> </li> <li class="flex items-start"> <span class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">✓</span> <span>APIの概念と役割</span> </li> <li class="flex items-start"> <span class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">✓</span> <span>Node.jsとExpressを使ったAPIの作成方法</span> </li> <li class="flex items-start"> <span class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">✓</span> <span>JavaScriptのfetch APIを使ったサーバーとの通信方法</span> </li> </ul> </div> <p class="text-gray-700 mb-6">
+これらの知識は、Webアプリケーション開発の基礎となる重要な概念です。
+          フロントエンド（ブラウザ側）とバックエンド（サーバー側）を連携させることで、
+          ユーザーの操作に応じてデータを取得・更新・保存するインタラクティブなWebアプリケーションを
+          作成することができます。
+</p> </div> </div> </div>  </main> <footer class="bg-kinova-gray text-white py-8 mt-12"> <div class="container mx-auto px-4"> <div class="flex flex-col md:flex-row justify-between gap-8"> <div class="md:w-1/3"> <img src="https://kinova.jp/assets/img/logo.png" alt="Kinova Logo" class="h-12 mb-4"> <p class="text-gray-300">初心者の方でも分かりやすいWebアプリ開発の情報を提供します。</p> </div> </div> <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400"> <p>&copy; 2025 Kinova. All rights reserved.</p> </div> </div> </footer> </body></html>
