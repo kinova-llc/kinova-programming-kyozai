@@ -1,0 +1,30 @@
+---
+const categories = [
+  { name: "HTML/CSS", slug: "html-css", count: 8, color: "bg-blue-500" },
+  { name: "JavaScript", slug: "javascript", count: 12, color: "bg-yellow-500" },
+  { name: "Python", slug: "python", count: 10, color: "bg-green-500" },
+  { name: "プログラミング入門", slug: "beginners", count: 15, color: "bg-purple-500" },
+  { name: "Web開発", slug: "web-development", count: 7, color: "bg-red-500" },
+  { name: "アルゴリズム", slug: "algorithms", count: 5, color: "bg-indigo-500" }
+];
+---
+
+<div class="bg-white rounded-lg shadow-md p-6">
+  <h2 class="text-xl font-semibold mb-4 text-kinova-gray">カテゴリー</h2>
+  <ul class="space-y-2">
+    {categories.map(category => (
+      <li>
+        <a 
+          href={`/categories/${category.slug}`} 
+          class="flex items-center justify-between py-2 px-3 rounded-md hover:bg-gray-100 transition-colors"
+        >
+          <div class="flex items-center">
+            <span class={`w-3 h-3 rounded-full ${category.color} mr-3`}></span>
+            <span class="text-kinova-gray">{category.name}</span>
+          </div>
+          <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">{category.count}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>

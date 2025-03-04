@@ -1,0 +1,1491 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Newsletter from '../../components/Newsletter.astro';
+---
+
+<Layout title="TODOアプリを作ってみよう！ - 初心者向け Webアプリ開発講座">
+  <div class="container mx-auto px-4 py-12">
+    <div class="max-w-4xl mx-auto">
+      
+      <!-- ヘッダーセクション -->
+      <div class="bg-gradient-to-r from-kinova-teal to-kinova-orange rounded-lg shadow-lg overflow-hidden mb-12">
+        <div class="p-8 text-white">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-sm bg-white/20 px-3 py-1 rounded-full">プログラミング実践</span>
+            <span class="text-sm">2025年2月15日</span>
+          </div>
+          <h1 class="text-4xl font-bold mb-4">TODOアプリを作ってみよう！</h1>
+          <p class="text-xl opacity-90 mb-6">
+            これまで学んだ知識を活かして、実際に動くTODOアプリを作成しましょう。企画から実装、テスト、改善までの一連の流れを体験して、Webアプリ開発の全体像を理解しましょう！
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-kinova-teal">
+              <span class="text-xl">👩‍💻</span>
+            </div>
+            <div>
+              <p class="font-medium">Kinova編集部</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 目次 -->
+      <div class="bg-white rounded-lg shadow-md p-6 mb-12">
+        <h2 class="text-xl font-semibold mb-4 text-kinova-gray">目次</h2>
+        <ul class="space-y-3">
+          <li>
+            <a href="#planning" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors">
+              <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">1</span>
+              どんなTODOアプリにする？
+            </a>
+          </li>
+          <li>
+            <a href="#setup" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors">
+              <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">2</span>
+              プロジェクトの準備をしよう
+            </a>
+          </li>
+          <li>
+            <a href="#html-css" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors">
+              <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">3</span>
+              HTMLとCSSで画面を作ろう
+            </a>
+          </li>
+          <li>
+            <a href="#javascript" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors">
+              <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">4</span>
+              JavaScriptで機能を実装しよう
+            </a>
+          </li>
+          <li>
+            <a href="#storage" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors">
+              <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">5</span>
+              データを保存しよう
+            </a>
+          </li>
+          <li>
+            <a href="#improvement" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors">
+              <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">6</span>
+              アプリを改善しよう
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- 本文 -->
+      <div class="space-y-12">
+        <!-- どんなTODOアプリにする？ -->
+        <section id="planning" class="bg-white rounded-lg shadow-md p-8">
+          <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center">
+            <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">1</span>
+            どんなTODOアプリにする？
+          </h2>
+          
+          <p class="text-gray-700 mb-6">
+            まずは、どんなTODOアプリを作るか考えてみましょう。TODOアプリの基本的な機能は「タスクを追加・表示・完了・削除する」ことです。
+            シンプルながらも使いやすいアプリを目指しましょう。
+          </p>
+          
+          <div class="bg-gradient-to-r from-blue-100 to-indigo-100 p-6 rounded-lg mb-6">
+            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-blue-300">
+              <h3 class="text-xl font-semibold text-blue-700 mb-4 flex items-center">
+                <span class="text-3xl mr-3">🎯</span>
+                TODOアプリに必要な機能
+              </h3>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-blue-700 mb-2 flex items-center">
+                    <span class="text-xl mr-2">➕</span>
+                    タスクの追加
+                  </h4>
+                  <p class="text-gray-700 mb-2">
+                    新しいタスクを入力して追加できる機能
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">入力フォーム</span>
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">追加ボタン</span>
+                  </div>
+                </div>
+                
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-blue-700 mb-2 flex items-center">
+                    <span class="text-xl mr-2">📋</span>
+                    タスクの表示
+                  </h4>
+                  <p class="text-gray-700 mb-2">
+                    追加したタスクを一覧で表示する機能
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">リスト表示</span>
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">タスク数表示</span>
+                  </div>
+                </div>
+                
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-blue-700 mb-2 flex items-center">
+                    <span class="text-xl mr-2">✅</span>
+                    タスクの完了
+                  </h4>
+                  <p class="text-gray-700 mb-2">
+                    タスクを完了済みとしてマークする機能
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">チェックボックス</span>
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">打ち消し線</span>
+                  </div>
+                </div>
+                
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-blue-700 mb-2 flex items-center">
+                    <span class="text-xl mr-2">🗑️</span>
+                    タスクの削除
+                  </h4>
+                  <p class="text-gray-700 mb-2">
+                    不要になったタスクを削除する機能
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">削除ボタン</span>
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">確認ダイアログ</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="bg-indigo-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-indigo-700 mb-2">追加したい機能（余裕があれば）</h4>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <span class="text-indigo-500 mr-2">✓</span>
+                    <span>タスクの編集機能</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-indigo-500 mr-2">✓</span>
+                    <span>タスクの並べ替え機能</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-indigo-500 mr-2">✓</span>
+                    <span>タスクのカテゴリ分け</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-indigo-500 mr-2">✓</span>
+                    <span>期限の設定と通知機能</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="text-center text-sm text-indigo-700 bg-indigo-50 p-3 rounded-lg mt-4">
+              まずはシンプルな機能から実装し、動くアプリを作ることを目指しましょう。<br>
+              基本機能が完成したら、少しずつ機能を追加していくとよいでしょう。
+            </div>
+          </div>
+          
+          <div class="bg-gradient-to-r from-purple-100 to-pink-100 p-6 rounded-lg">
+            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-purple-300">
+              <h3 class="text-xl font-semibold text-purple-700 mb-4 flex items-center">
+                <span class="text-3xl mr-3">🎨</span>
+                TODOアプリのデザイン
+              </h3>
+              
+              <p class="text-gray-700 mb-4">
+                シンプルで使いやすいデザインを考えましょう。以下は基本的なレイアウトのイメージです：
+              </p>
+              
+              <div class="border-2 border-dashed border-purple-200 p-4 rounded-lg mb-6">
+                <div class="bg-gray-100 rounded-lg p-6">
+                  <div class="bg-white rounded-lg shadow-md p-4 mb-4">
+                    <h4 class="text-lg font-semibold text-center text-purple-700 mb-4">TODOアプリ</h4>
+                    
+                    <div class="flex mb-4">
+                      <div class="flex-grow h-10 bg-gray-200 rounded-l-md"></div>
+                      <div class="w-20 h-10 bg-purple-500 rounded-r-md"></div>
+                    </div>
+                    
+                    <div class="space-y-2 mb-4">
+                      <div class="flex items-center justify-between bg-gray-50 p-3 rounded-md border border-gray-200">
+                        <div class="flex items-center">
+                          <div class="w-5 h-5 bg-gray-300 rounded-sm mr-3"></div>
+                          <div class="h-4 w-32 bg-gray-300 rounded"></div>
+                        </div>
+                        <div class="w-5 h-5 bg-gray-300 rounded-full"></div>
+                      </div>
+                      
+                      <div class="flex items-center justify-between bg-gray-50 p-3 rounded-md border border-gray-200">
+                        <div class="flex items-center">
+                          <div class="w-5 h-5 bg-gray-300 rounded-sm mr-3"></div>
+                          <div class="h-4 w-40 bg-gray-300 rounded"></div>
+                        </div>
+                        <div class="w-5 h-5 bg-gray-300 rounded-full"></div>
+                      </div>
+                      
+                      <div class="flex items-center justify-between bg-gray-50 p-3 rounded-md border border-gray-200">
+                        <div class="flex items-center">
+                          <div class="w-5 h-5 bg-gray-300 rounded-sm mr-3"></div>
+                          <div class="h-4 w-36 bg-gray-300 rounded"></div>
+                        </div>
+                        <div class="w-5 h-5 bg-gray-300 rounded-full"></div>
+                      </div>
+                    </div>
+                    
+                    <div class="text-center">
+                      <div class="inline-block h-4 w-24 bg-gray-300 rounded"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-purple-50 rounded-lg p-4 text-center">
+                  <span class="text-3xl block mb-2">🎨</span>
+                  <h5 class="font-semibold text-purple-700 mb-1">シンプルなデザイン</h5>
+                  <p class="text-sm text-gray-700">
+                    必要な要素だけを配置し、シンプルで見やすいデザインにします。
+                  </p>
+                </div>
+                
+                <div class="bg-purple-50 rounded-lg p-4 text-center">
+                  <span class="text-3xl block mb-2">📱</span>
+                  <h5 class="font-semibold text-purple-700 mb-1">レスポンシブ対応</h5>
+                  <p class="text-sm text-gray-700">
+                    スマホでもパソコンでも使いやすいレイアウトにします。
+                  </p>
+                </div>
+                
+                <div class="bg-purple-50 rounded-lg p-4 text-center">
+                  <span class="text-3xl block mb-2">🌈</span>
+                  <h5 class="font-semibold text-purple-700 mb-1">カラーテーマ</h5>
+                  <p class="text-sm text-gray-700">
+                    見やすく、使いやすい色の組み合わせを選びます。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- プロジェクトの準備をしよう -->
+        <section id="setup" class="bg-white rounded-lg shadow-md p-8">
+          <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center">
+            <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">2</span>
+            プロジェクトの準備をしよう
+          </h2>
+          
+          <p class="text-gray-700 mb-6">
+            TODOアプリを作るために、まずはプロジェクトの準備をしましょう。
+            今回は、HTML、CSS、JavaScriptを使って、シンプルなTODOアプリを作ります。
+          </p>
+          
+          <div class="bg-gradient-to-r from-green-100 to-teal-100 p-6 rounded-lg mb-6">
+            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-green-300">
+              <h3 class="text-xl font-semibold text-green-700 mb-4 flex items-center">
+                <span class="text-3xl mr-3">📁</span>
+                プロジェクトの構成
+              </h3>
+              
+              <p class="text-gray-700 mb-4">
+                まずは、以下のようなフォルダとファイルを作成しましょう：
+              </p>
+              
+              <div class="bg-gray-800 text-white rounded-lg p-4 font-mono text-sm mb-6 overflow-x-auto">
+                <pre>todo-app/
+├── index.html     # HTMLファイル（画面の構造）
+├── styles.css     # CSSファイル（見た目のデザイン）
+└── script.js      # JavaScriptファイル（機能の実装）</pre>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div class="bg-green-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-green-700 mb-2 flex items-center">
+                    <span class="text-xl mr-2">📄</span>
+                    index.html
+                  </h4>
+                  <p class="text-gray-700 text-sm">
+                    Webページの構造を定義するHTMLファイル。入力フォーム、タスクリスト、ボタンなどの要素を配置します。
+                  </p>
+                </div>
+                
+                <div class="bg-green-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-green-700 mb-2 flex items-center">
+                    <span class="text-xl mr-2">🎨</span>
+                    styles.css
+                  </h4>
+                  <p class="text-gray-700 text-sm">
+                    Webページの見た目を整えるCSSファイル。色、サイズ、配置などのスタイルを定義します。
+                  </p>
+                </div>
+                
+                <div class="bg-green-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-green-700 mb-2 flex items-center">
+                    <span class="text-xl mr-2">⚙️</span>
+                    script.js
+                  </h4>
+                  <p class="text-gray-700 text-sm">
+                    Webページに機能を追加するJavaScriptファイル。タスクの追加、完了、削除などの処理を実装します。
+                  </p>
+                </div>
+              </div>
+              
+              <div class="bg-teal-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-teal-700 mb-2">プロジェクトの作成手順</h4>
+                <ol class="space-y-2">
+                  <li class="flex items-start">
+                    <span class="bg-teal-200 text-teal-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">1</span>
+                    <div>
+                      <p class="text-gray-700">
+                        デスクトップなどに「todo-app」というフォルダを作成します。
+                      </p>
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="bg-teal-200 text-teal-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">2</span>
+                    <div>
+                      <p class="text-gray-700">
+                        作成したフォルダ内に「index.html」、「styles.css」、「script.js」の3つのファイルを作成します。
+                      </p>
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="bg-teal-200 text-teal-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">3</span>
+                    <div>
+                      <p class="text-gray-700">
+                        VS Codeなどのエディタでフォルダを開き、各ファイルを編集していきます。
+                      </p>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+            
+            <div class="text-center text-sm text-teal-700 bg-teal-50 p-3 rounded-lg mt-4">
+              今回は、特別なフレームワークやライブラリを使わず、<br>
+              HTML、CSS、JavaScriptだけでTODOアプリを作ります。<br>
+              シンプルな構成で、Webアプリの基本的な仕組みを理解しましょう。
+            </div>
+          </div>
+        </section>
+        
+        <!-- HTMLとCSSで画面を作ろう -->
+        <section id="html-css" class="bg-white rounded-lg shadow-md p-8">
+          <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center">
+            <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">3</span>
+            HTMLとCSSで画面を作ろう
+          </h2>
+          
+          <p class="text-gray-700 mb-6">
+            まずは、HTMLとCSSを使って、TODOアプリの画面を作りましょう。
+            HTMLでページの構造を作り、CSSで見た目を整えます。
+          </p>
+          
+          <div class="bg-gradient-to-r from-yellow-100 to-amber-100 p-6 rounded-lg mb-6">
+            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-yellow-300 mb-6">
+              <h3 class="text-xl font-semibold text-yellow-700 mb-4 flex items-center">
+                <span class="text-3xl mr-3">📝</span>
+                HTMLで画面の構造を作る
+              </h3>
+              
+              <p class="text-gray-700 mb-4">
+                まずは、index.htmlファイルに以下のコードを書きましょう：
+              </p>
+              
+              <div class="bg-gray-800 text-white rounded-lg p-4 font-mono text-sm mb-4 overflow-x-auto">
+                <pre><code class="language-html">{String.raw`<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TODOアプリ</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>TODOアプリ</h1>
+    
+    <!-- タスク入力フォーム -->
+    <div class="todo-form">
+      <input type="text" id="task-input" placeholder="新しいタスクを入力...">
+      <button id="add-button">追加</button>
+    </div>
+    
+    <!-- タスクリスト -->
+    <ul id="task-list">
+      <!-- タスクはJavaScriptで動的に追加されます -->
+    </ul>
+    
+    <!-- タスク数表示 -->
+    <div class="task-counter">
+      <p id="task-counter">タスク: 0件</p>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>`}</code></pre>
+              </div>
+              
+              <div class="bg-yellow-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-yellow-700 mb-2">HTMLの解説</h4>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <span class="text-yellow-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-yellow-700">head要素</span>：メタ情報、タイトル、CSSファイルの読み込みを設定しています。
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-yellow-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-yellow-700">container</span>：アプリ全体を囲むコンテナです。
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-yellow-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-yellow-700">todo-form</span>：タスク入力フォームとボタンを配置しています。
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-yellow-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-yellow-700">task-list</span>：タスクを表示するリストです。JavaScriptで動的に追加します。
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-yellow-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-yellow-700">task-counter</span>：タスクの数を表示する部分です。
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-amber-300">
+              <h3 class="text-xl font-semibold text-amber-700 mb-4 flex items-center">
+                <span class="text-3xl mr-3">🎨</span>
+                CSSで見た目を整える
+              </h3>
+              
+              <p class="text-gray-700 mb-4">
+                次に、styles.cssファイルに以下のコードを書きましょう：
+              </p>
+              
+              <div class="bg-gray-800 text-white rounded-lg p-4 font-mono text-sm mb-4 overflow-x-auto">
+                <pre><code class="language-css">{String.raw`/* 全体のスタイル */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #3CBFC8;
+}
+
+/* フォームのスタイル */
+.todo-form {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+#task-input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+  font-size: 16px;
+}
+
+#add-button {
+  padding: 10px 15px;
+  background-color: #3CBFC8;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+#add-button:hover {
+  background-color: #FFBB55;
+}
+
+/* タスクリストのスタイル */
+#task-list {
+  list-style-type: none;
+  margin-bottom: 20px;
+}
+
+#task-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  border: 1px solid #eee;
+}
+
+.task-text {
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.delete-button {
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+  background-color: #ff5252;
+}
+
+/* タスクカウンターのスタイル */
+.task-counter {
+  text-align: center;
+  color: #666;
+  font-size: 14px;
+}`}</code></pre>
+              </div>
+              
+              <div class="bg-amber-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-amber-700 mb-2">CSSの解説</h4>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <span class="text-amber-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-amber-700">全体のスタイル</span>：フォントや背景色、コンテナのサイズなどを設定しています。
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-amber-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-amber-700">フォームのスタイル</span>：入力フォームとボタンのデザインを整えています。
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-amber-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-amber-700">タスクリストのスタイル</span>：タスク項目の表示スタイルを設定しています。
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-amber-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-amber-700">完了タスクのスタイル</span>：完了したタスクには打ち消し線を表示します。
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-amber-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-amber-700">削除ボタンのスタイル</span>：タスクを削除するボタンのデザインを設定しています。
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="text-center text-sm text-amber-700 bg-amber-50 p-3 rounded-lg mt-4">
+              HTMLとCSSだけでも、見た目の整ったTODOアプリの画面ができました。<br>
+              次は、JavaScriptを使って、実際に機能するアプリにしていきましょう。
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-lg shadow-md p-6 border-2 border-kinova-teal">
+            <h3 class="text-xl font-semibold text-kinova-teal mb-4">HTMLとCSSだけで作った画面</h3>
+            
+            <div class="bg-gray-100 rounded-lg p-6 mb-6">
+              <div class="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
+                <h1 class="text-center text-xl font-bold mb-4 text-kinova-teal">TODOアプリ</h1>
+                
+                <div class="flex mb-4">
+                  <input type="text" placeholder="新しいタスクを入力..." class="flex-grow px-3 py-2 border border-gray-300 rounded-l-md">
+                  <button class="bg-kinova-teal text-white px-4 py-2 rounded-r-md">追加</button>
+                </div>
+                
+                <ul class="space-y-2 mb-4">
+                  <li class="flex items-center justify-between bg-gray-50 p-3 rounded-md border border-gray-200">
+                    <div class="flex items-center">
+                      <input type="checkbox" class="mr-3">
+                      <span>メールを確認する</span>
+                    </div>
+                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">削除</button>
+                  </li>
+                  <li class="flex items-center justify-between bg-gray-50 p-3 rounded-md border border-gray-200">
+                    <div class="flex items-center">
+                      <input type="checkbox" class="mr-3">
+                      <span>買い物リストを作る</span>
+                    </div>
+                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">削除</button>
+                  </li>
+                  <li class="flex items-center justify-between bg-gray-50 p-3 rounded-md border border-gray-200">
+                    <div class="flex items-center">
+                      <input type="checkbox" checked class="mr-3">
+                      <span class="line-through text-gray-500">プログラミングの勉強をする</span>
+                    </div>
+                    <button class="bg-red-500 text-white text-xs px-2 py-1 rounded">削除</button>
+                  </li>
+                </ul>
+                
+                <div class="text-center text-gray-500 text-sm">
+                  タスク: 3件
+                </div>
+              </div>
+            </div>
+            
+            <p class="text-gray-700 text-center">
+              この画面はまだ機能しません。次のステップで、JavaScriptを使って機能を実装していきます。
+            </p>
+          </div>
+        </section>
+        
+        <!-- JavaScriptで機能を実装しよう -->
+        <section id="javascript" class="bg-white rounded-lg shadow-md p-8">
+          <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center">
+            <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">4</span>
+            JavaScriptで機能を実装しよう
+          </h2>
+          
+          <p class="text-gray-700 mb-6">
+            HTMLとCSSで画面ができたら、次はJavaScriptを使って機能を実装しましょう。
+            タスクの追加、完了、削除などの機能を実装します。
+          </p>
+          
+          <div class="bg-gradient-to-r from-red-100 to-pink-100 p-6 rounded-lg mb-6">
+            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-red-300">
+              <h3 class="text-xl font-semibold text-red-700 mb-4 flex items-center">
+                <span class="text-3xl mr-3">⚙️</span>
+                JavaScriptで機能を実装する
+              </h3>
+              
+              <p class="text-gray-700 mb-4">
+                script.jsファイルに以下のコードを書きましょう：
+              </p>
+              
+              <div class="bg-gray-800 text-white rounded-lg p-4 font-mono text-sm mb-4 overflow-x-auto">
+                <pre><code class="language-javascript">{String.raw`// DOM要素の取得
+const taskInput = document.getElementById('task-input');
+const addButton = document.getElementById('add-button');
+const taskList = document.getElementById('task-list');
+const taskCounter = document.getElementById('task-counter');
+
+// タスクの配列
+let tasks = [];
+
+// タスクを追加する関数
+function addTask() {
+  // 入力値を取得
+  const taskText = taskInput.value.trim();
+  
+  // 空の場合は何もしない
+  if (taskText === '') {
+    return;
+  }
+  
+  // 新しいタスクオブジェクトを作成
+  const task = {
+    id: Date.now(), // 一意のIDを生成
+    text: taskText,
+    completed: false
+  };
+  
+  // タスク配列に追加
+  tasks.push(task);
+  
+  // 入力フィールドをクリア
+  taskInput.value = '';
+  
+  // タスクリストを更新
+  renderTasks();
+}
+
+// タスクの完了状態を切り替える関数
+function toggleTask(id) {
+  // 該当するタスクを見つけて完了状態を反転
+  tasks = tasks.map(task => {
+    if (task.id === id) {
+      return { ...task, completed: !task.completed };
+    }
+    return task;
+  });
+  
+  // タスクリストを更新
+  renderTasks();
+}
+
+// タスクを削除する関数
+function deleteTask(id) {
+  // 該当するタスクを配列から削除
+  tasks = tasks.filter(task => task.id !== id);
+  
+  // タスクリストを更新
+  renderTasks();
+}
+
+// タスクリストを画面に表示する関数
+function renderTasks() {
+  // タスクリストをクリア
+  taskList.innerHTML = '';
+  
+  // タスク数を更新
+  taskCounter.textContent = \`タスク: \${tasks.length}件\`;
+  
+  // タスクがない場合
+  if (tasks.length === 0) {
+    const emptyMessage = document.createElement('li');
+    emptyMessage.textContent = 'タスクはありません。新しいタスクを追加してください。';
+    emptyMessage.style.textAlign = 'center';
+    emptyMessage.style.color = '#888';
+    emptyMessage.style.padding = '10px';
+    taskList.appendChild(emptyMessage);
+    return;
+  }
+  
+  // 各タスクを表示
+  tasks.forEach(task => {
+    // リスト項目を作成
+    const li = document.createElement('li');
+    
+    // チェックボックスを作成
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.checked = task.completed;
+    checkbox.addEventListener('change', () => toggleTask(task.id));
+    
+    // タスクテキストを作成
+    const span = document.createElement('span');
+    span.textContent = task.text;
+    span.className = 'task-text';
+    if (task.completed) {
+      span.classList.add('completed');
+    }
+    
+    // 削除ボタンを作成
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = '削除';
+    deleteButton.className = 'delete-button';
+    deleteButton.addEventListener('click', () => deleteTask(task.id));
+    
+    // 要素を追加
+    li.appendChild(checkbox);
+    li.appendChild(span);
+    li.appendChild(deleteButton);
+    
+    // リストに追加
+    taskList.appendChild(li);
+  });
+}
+
+// イベントリスナーの設定
+addButton.addEventListener('click', addTask);
+taskInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    addTask();
+  }
+});
+
+// 初期表示
+renderTasks();`}</code></pre>
+              </div>
+              
+              <div class="bg-red-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-red-700 mb-2">JavaScriptの解説</h4>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <span class="text-red-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-red-700">DOM要素の取得</span>：HTML要素をJavaScriptで操作するために取得しています。
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-red-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-red-700">タスクの配列</span>：タスクを管理するための配列を作成しています。
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-red-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-red-700">addTask関数</span>：新しいタスクを追加する関数です。
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-red-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-red-700">toggleTask関数</span>：タスクの完了状態を切り替える関数です。
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-red-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-red-700 <span class="font-semibold text-red-700">toggleTask関数</span>：タスクの完了状態を切り替える関数です。
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-red-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-red-700">deleteTask関数</span>：タスクを削除する関数です。
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-red-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-red-700">renderTasks関数</span>：タスクリストを画面に表示する関数です。
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-red-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-red-700">イベントリスナー</span>：ボタンクリックやキー入力を検知するための設定です。
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="text-center text-sm text-red-700 bg-red-50 p-3 rounded-lg mt-4">
+              JavaScriptを追加することで、タスクの追加、完了、削除などの機能が実装できました。<br>
+              しかし、このままではページを更新するとタスクが消えてしまいます。<br>
+              次は、データを保存する方法を学びましょう。
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-lg shadow-md p-6 border-2 border-kinova-orange">
+            <h3 class="text-xl font-semibold text-kinova-orange mb-4">JavaScriptの動作の流れ</h3>
+            
+            <div class="relative">
+              <div class="flex flex-col items-center">
+                <div class="bg-kinova-orange/10 rounded-lg p-4 w-full max-w-md mb-4">
+                  <h4 class="font-semibold text-kinova-orange mb-2 text-center">タスク追加の流れ</h4>
+                  <ol class="relative border-l-2 border-kinova-orange ml-4">
+                    <li class="mb-4 ml-6">
+                      <span class="absolute flex items-center justify-center w-6 h-6 bg-kinova-orange rounded-full -left-3 ring-4 ring-white">
+                        <span class="text-white font-bold text-sm">1</span>
+                      </span>
+                      <p class="text-gray-700">ユーザーがタスクを入力して「追加」ボタンをクリック</p>
+                    </li>
+                    <li class="mb-4 ml-6">
+                      <span class="absolute flex items-center justify-center w-6 h-6 bg-kinova-orange rounded-full -left-3 ring-4 ring-white">
+                        <span class="text-white font-bold text-sm">2</span>
+                      </span>
+                      <p class="text-gray-700">addTask関数が実行される</p>
+                    </li>
+                    <li class="mb-4 ml-6">
+                      <span class="absolute flex items-center justify-center w-6 h-6 bg-kinova-orange rounded-full -left-3 ring-4 ring-white">
+                        <span class="text-white font-bold text-sm">3</span>
+                      </span>
+                      <p class="text-gray-700">新しいタスクオブジェクトが作成され、配列に追加される</p>
+                    </li>
+                    <li class="ml-6">
+                      <span class="absolute flex items-center justify-center w-6 h-6 bg-kinova-orange rounded-full -left-3 ring-4 ring-white">
+                        <span class="text-white font-bold text-sm">4</span>
+                      </span>
+                      <p class="text-gray-700">renderTasks関数が実行され、画面が更新される</p>
+                    </li>
+                  </ol>
+                </div>
+                
+                <div class="bg-kinova-teal/10 rounded-lg p-4 w-full max-w-md mb-4">
+                  <h4 class="font-semibold text-kinova-teal mb-2 text-center">タスク完了の流れ</h4>
+                  <ol class="relative border-l-2 border-kinova-teal ml-4">
+                    <li class="mb-4 ml-6">
+                      <span class="absolute flex items-center justify-center w-6 h-6 bg-kinova-teal rounded-full -left-3 ring-4 ring-white">
+                        <span class="text-white font-bold text-sm">1</span>
+                      </span>
+                      <p class="text-gray-700">ユーザーがチェックボックスをクリック</p>
+                    </li>
+                    <li class="mb-4 ml-6">
+                      <span class="absolute flex items-center justify-center w-6 h-6 bg-kinova-teal rounded-full -left-3 ring-4 ring-white">
+                        <span class="text-white font-bold text-sm">2</span>
+                      </span>
+                      <p class="text-gray-700">toggleTask関数が実行される</p>
+                    </li>
+                    <li class="mb-4 ml-6">
+                      <span class="absolute flex items-center justify-center w-6 h-6 bg-kinova-teal rounded-full -left-3 ring-4 ring-white">
+                        <span class="text-white font-bold text-sm">3</span>
+                      </span>
+                      <p class="text-gray-700">該当するタスクの完了状態が反転する</p>
+                    </li>
+                    <li class="ml-6">
+                      <span class="absolute flex items-center justify-center w-6 h-6 bg-kinova-teal rounded-full -left-3 ring-4 ring-white">
+                        <span class="text-white font-bold text-sm">4</span>
+                      </span>
+                      <p class="text-gray-700">renderTasks関数が実行され、画面が更新される</p>
+                    </li>
+                  </ol>
+                </div>
+                
+                <div class="bg-red-100 rounded-lg p-4 w-full max-w-md">
+                  <h4 class="font-semibold text-red-700 mb-2 text-center">タスク削除の流れ</h4>
+                  <ol class="relative border-l-2 border-red-500 ml-4">
+                    <li class="mb-4 ml-6">
+                      <span class="absolute flex items-center justify-center w-6 h-6 bg-red-500 rounded-full -left-3 ring-4 ring-white">
+                        <span class="text-white font-bold text-sm">1</span>
+                      </span>
+                      <p class="text-gray-700">ユーザーが「削除」ボタンをクリック</p>
+                    </li>
+                    <li class="mb-4 ml-6">
+                      <span class="absolute flex items-center justify-center w-6 h-6 bg-red-500 rounded-full -left-3 ring-4 ring-white">
+                        <span class="text-white font-bold text-sm">2</span>
+                      </span>
+                      <p class="text-gray-700">deleteTask関数が実行される</p>
+                    </li>
+                    <li class="mb-4 ml-6">
+                      <span class="absolute flex items-center justify-center w-6 h-6 bg-red-500 rounded-full -left-3 ring-4 ring-white">
+                        <span class="text-white font-bold text-sm">3</span>
+                      </span>
+                      <p class="text-gray-700">該当するタスクが配列から削除される</p>
+                    </li>
+                    <li class="ml-6">
+                      <span class="absolute flex items-center justify-center w-6 h-6 bg-red-500 rounded-full -left-3 ring-4 ring-white">
+                        <span class="text-white font-bold text-sm">4</span>
+                      </span>
+                      <p class="text-gray-700">renderTasks関数が実行され、画面が更新される</p>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- データを保存しよう -->
+        <section id="storage" class="bg-white rounded-lg shadow-md p-8">
+          <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center">
+            <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">5</span>
+            データを保存しよう
+          </h2>
+          
+          <p class="text-gray-700 mb-6">
+            現在のTODOアプリは、ページを更新するとタスクが消えてしまいます。
+            ブラウザのローカルストレージを使って、タスクを保存する機能を追加しましょう。
+          </p>
+          
+          <div class="bg-gradient-to-r from-purple-100 to-indigo-100 p-6 rounded-lg mb-6">
+            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-purple-300">
+              <h3 class="text-xl font-semibold text-purple-700 mb-4 flex items-center">
+                <span class="text-3xl mr-3">💾</span>
+                ローカルストレージを使ってデータを保存する
+              </h3>
+              
+              <p class="text-gray-700 mb-4">
+                script.jsファイルを以下のように修正して、ローカルストレージを使ったデータ保存機能を追加しましょう：
+              </p>
+              
+              <div class="bg-gray-800 text-white rounded-lg p-4 font-mono text-sm mb-4 overflow-x-auto">
+                <pre><code class="language-javascript">{String.raw`// DOM要素の取得
+const taskInput = document.getElementById('task-input');
+const addButton = document.getElementById('add-button');
+const taskList = document.getElementById('task-list');
+const taskCounter = document.getElementById('task-counter');
+
+// タスクの配列
+let tasks = [];
+
+// ローカルストレージからタスクを読み込む
+function loadTasks() {
+  const savedTasks = localStorage.getItem('tasks');
+  if (savedTasks) {
+    tasks = JSON.parse(savedTasks);
+  }
+}
+
+// ローカルストレージにタスクを保存する
+function saveTasks() {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+// タスクを追加する関数
+function addTask() {
+  // 入力値を取得
+  const taskText = taskInput.value.trim();
+  
+  // 空の場合は何もしない
+  if (taskText === '') {
+    return;
+  }
+  
+  // 新しいタスクオブジェクトを作成
+  const task = {
+    id: Date.now(), // 一意のIDを生成
+    text: taskText,
+    completed: false
+  };
+  
+  // タスク配列に追加
+  tasks.push(task);
+  
+  // ローカルストレージに保存
+  saveTasks();
+  
+  // 入力フィールドをクリア
+  taskInput.value = '';
+  
+  // タスクリストを更新
+  renderTasks();
+}
+
+// タスクの完了状態を切り替える関数
+function toggleTask(id) {
+  // 該当するタスクを見つけて完了状態を反転
+  tasks = tasks.map(task => {
+    if (task.id === id) {
+      return { ...task, completed: !task.completed };
+    }
+    return task;
+  });
+  
+  // ローカルストレージに保存
+  saveTasks();
+  
+  // タスクリストを更新
+  renderTasks();
+}
+
+// タスクを削除する関数
+function deleteTask(id) {
+  // 該当するタスクを配列から削除
+  tasks = tasks.filter(task => task.id !== id);
+  
+  // ローカルストレージに保存
+  saveTasks();
+  
+  // タスクリストを更新
+  renderTasks();
+}
+
+// タスクリストを画面に表示する関数
+function renderTasks() {
+  // タスクリストをクリア
+  taskList.innerHTML = '';
+  
+  // タスク数を更新
+  taskCounter.textContent = \`タスク: \${tasks.length}件\`;
+  
+  // タスクがない場合
+  if (tasks.length === 0) {
+    const emptyMessage = document.createElement('li');
+    emptyMessage.textContent = 'タスクはありません。新しいタスクを追加してください。';
+    emptyMessage.style.textAlign = 'center';
+    emptyMessage.style.color = '#888';
+    emptyMessage.style.padding = '10px';
+    taskList.appendChild(emptyMessage);
+    return;
+  }
+  
+  // 各タスクを表示
+  tasks.forEach(task => {
+    // リスト項目を作成
+    const li = document.createElement('li');
+    
+    // チェックボックスを作成
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.checked = task.completed;
+    checkbox.addEventListener('change', () => toggleTask(task.id));
+    
+    // タスクテキストを作成
+    const span = document.createElement('span');
+    span.textContent = task.text;
+    span.className = 'task-text';
+    if (task.completed) {
+      span.classList.add('completed');
+    }
+    
+    // 削除ボタンを作成
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = '削除';
+    deleteButton.className = 'delete-button';
+    deleteButton.addEventListener('click', () => deleteTask(task.id));
+    
+    // 要素を追加
+    li.appendChild(checkbox);
+    li.appendChild(span);
+    li.appendChild(deleteButton);
+    
+    // リストに追加
+    taskList.appendChild(li);
+  });
+}
+
+// イベントリスナーの設定
+addButton.addEventListener('click', addTask);
+taskInput.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    addTask();
+  }
+});
+
+// 初期化処理
+loadTasks(); // ローカルストレージからタスクを読み込む
+renderTasks(); // タスクリストを表示`}</code></pre>
+              </div>
+              
+              <div class="bg-purple-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-purple-700 mb-2">ローカルストレージの解説</h4>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <span class="text-purple-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-purple-700">loadTasks関数</span>：ローカルストレージからタスクを読み込む関数です。
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-purple-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-purple-700">saveTasks関数</span>：ローカルストレージにタスクを保存する関数です。
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-purple-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-purple-700">localStorage.getItem</span>：ローカルストレージからデータを取得するメソッドです。
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-purple-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-purple-700">localStorage.setItem</span>：ローカルストレージにデータを保存するメソッドです。
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-purple-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-purple-700">JSON.stringify</span>：JavaScriptオブジェクトをJSON文字列に変換するメソッドです。
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-purple-500 mr-2">•</span>
+                    <div>
+                      <span class="font-semibold text-purple-700">JSON.parse</span>：JSON文字列をJavaScriptオブジェクトに変換するメソッドです。
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="text-center text-sm text-purple-700 bg-purple-50 p-3 rounded-lg mt-4">
+              ローカルストレージを使うことで、ページを更新してもタスクが消えなくなりました。<br>
+              これで、基本的なTODOアプリの機能が完成しました！<br>
+              次は、アプリをさらに改善する方法を考えてみましょう。
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-lg shadow-md p-6 border-2 border-indigo-300">
+            <h3 class="text-xl font-semibold text-indigo-700 mb-4 flex items-center">
+              <span class="text-3xl mr-3">🧠</span>
+              ローカルストレージとは？
+            </h3>
+            
+            <p class="text-gray-700 mb-4">
+              ローカルストレージは、Webブラウザが提供するデータ保存機能の一つです。
+              ブラウザ上でデータを保存し、ページを更新しても、ブラウザを閉じても、データが残ります。
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div class="bg-indigo-50 rounded-lg p-4">
+                <h4 class="font-semibold text-indigo-700 mb-2">ローカルストレージの特徴</h4>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <span class="text-indigo-500 mr-2">✓</span>
+                    <span>ブラウザに保存されるため、サーバーは不要</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-indigo-500 mr-2">✓</span>
+                    <span>ページを更新しても、ブラウザを閉じても、データが残る</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-indigo-500 mr-2">✓</span>
+                    <span>文字列のみ保存可能（オブジェクトはJSON変換が必要）</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-indigo-500 mr-2">✓</span>
+                    <span>容量は約5MBまで（ブラウザによって異なる）</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="bg-indigo-50 rounded-lg p-4">
+                <h4 class="font-semibold text-indigo-700 mb-2">ローカルストレージの使い方</h4>
+                <div class="bg-gray-800 text-white rounded-lg p-3 font-mono text-xs mb-2">
+                  <pre><code>// データの保存
+localStorage.setItem('キー', '値');
+
+// データの取得
+const 値 = localStorage.getItem('キー');
+
+// データの削除
+localStorage.removeItem('キー');
+
+// 全てのデータを削除
+localStorage.clear();</code></pre>
+                </div>
+                <p class="text-sm text-gray-700">
+                  オブジェクトを保存する場合は、JSON.stringifyで文字列に変換し、
+                  取得時にJSON.parseでオブジェクトに戻します。
+                </p>
+              </div>
+            </div>
+            
+            <div class="bg-indigo-50 p-4 rounded-lg">
+              <h4 class="font-semibold text-indigo-700 mb-2">ローカルストレージの注意点</h4>
+              <ul class="space-y-2">
+                <li class="flex items-start">
+                  <span class="text-indigo-500 mr-2">⚠️</span>
+                  <span>ブラウザごとに独立しているため、別のブラウザでは見れない</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-indigo-500 mr-2">⚠️</span>
+                  <span>ユーザーがブラウザの履歴やキャッシュを削除すると消える</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-indigo-500 mr-2">⚠️</span>
+                  <span>機密情報の保存には適さない（セキュリティ上の理由から）</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-indigo-500 mr-2">⚠️</span>
+                  <span>複数のユーザー間でデータを共有できない</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        
+        <!-- アプリを改善しよう -->
+        <section id="improvement" class="bg-white rounded-lg shadow-md p-8">
+          <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center">
+            <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">6</span>
+            アプリを改善しよう
+          </h2>
+          
+          <p class="text-gray-700 mb-6">
+            基本的なTODOアプリが完成しました！しかし、まだまだ改善できる点はたくさんあります。
+            ここでは、アプリをさらに良くするためのアイデアをいくつか紹介します。
+          </p>
+          
+          <div class="bg-gradient-to-r from-blue-100 to-cyan-100 p-6 rounded-lg mb-6">
+            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-blue-300">
+              <h3 class="text-xl font-semibold text-blue-700 mb-4 flex items-center">
+                <span class="text-3xl mr-3">✨</span>
+                TODOアプリの改善アイデア
+              </h3>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-blue-700 mb-2 flex items-center">
+                    <span class="text-xl mr-2">✏️</span>
+                    タスクの編集機能
+                  </h4>
+                  <p class="text-gray-700 mb-2">
+                    既存のタスクを編集できる機能を追加しましょう。
+                  </p>
+                  <div class="bg-blue-100 p-3 rounded-lg">
+                    <p class="text-sm text-blue-800">
+                      タスクをダブルクリックすると編集モードになり、内容を変更できるようにします。
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-blue-700 mb-2 flex items-center">
+                    <span class="text-xl mr-2">🗂️</span>
+                    カテゴリ分け
+                  </h4>
+                  <p class="text-gray-700 mb-2">
+                    タスクをカテゴリごとに分類できる機能を追加しましょう。
+                  </p>
+                  <div class="bg-blue-100 p-3 rounded-lg">
+                    <p class="text-sm text-blue-800">
+                      「仕事」「家事」「趣味」などのカテゴリを設定し、タスクを分類できるようにします。
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-blue-700 mb-2 flex items-center">
+                    <span class="text-xl mr-2">📅</span>
+                    期限の設定
+                  </h4>
+                  <p class="text-gray-700 mb-2">
+                    タスクに期限を設定できる機能を追加しましょう。
+                  </p>
+                  <div class="bg-blue-100 p-3 rounded-lg">
+                    <p class="text-sm text-blue-800">
+                      日付選択機能を追加し、期限が近づいたタスクには警告表示をします。
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-blue-700 mb-2 flex items-center">
+                    <span class="text-xl mr-2">🔍</span>
+                    検索・フィルタリング機能
+                  </h4>
+                  <p class="text-gray-700 mb-2">
+                    タスクを検索したり、条件でフィルタリングできる機能を追加しましょう。
+                  </p>
+                  <div class="bg-blue-100 p-3 rounded-lg">
+                    <p class="text-sm text-blue-800">
+                      「完了済み」「未完了」などの条件でタスクを絞り込めるようにします。
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-blue-700 mb-2 flex items-center">
+                    <span class="text-xl mr-2">🔄</span>
+                    ドラッグ＆ドロップで並べ替え
+                  </h4>
+                  <p class="text-gray-700 mb-2">
+                    タスクをドラッグ＆ドロップで並べ替えられる機能を追加しましょう。
+                  </p>
+                  <div class="bg-blue-100 p-3 rounded-lg">
+                    <p class="text-sm text-blue-800">
+                      優先度に応じてタスクの順番を自由に変更できるようにします。
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-blue-700 mb-2 flex items-center">
+                    <span class="text-xl mr-2">🔔</span>
+                    通知機能
+                  </h4>
+                  <p class="text-gray-700 mb-2">
+                    期限が近づいたタスクを通知する機能を追加しましょう。
+                  </p>
+                  <div class="bg-blue-100 p-3 rounded-lg">
+                    <p class="text-sm text-blue-800">
+                      ブラウザの通知機能を使って、期限が近いタスクを知らせます。
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="text-center text-sm text-blue-700 bg-blue-50 p-3 rounded-lg mt-4">
+              これらの機能を少しずつ追加していくことで、より使いやすいTODOアプリになります。<br>
+              自分のニーズに合わせて、必要な機能を実装してみましょう！
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-lg shadow-md p-6 border-2 border-cyan-300">
+            <h3 class="text-xl font-semibold text-cyan-700 mb-4 flex items-center">
+              <span class="text-3xl mr-3">🚀</span>
+              さらなる発展：サーバーとの連携
+            </h3>
+            
+            <p class="text-gray-700 mb-6">
+              現在のTODOアプリは、ブラウザのローカルストレージにデータを保存しています。
+              より本格的なアプリにするには、サーバーと連携してデータを保存する方法もあります。
+            </p>
+            
+            <div class="bg-gradient-to-r from-cyan-50 to-blue-50 p-4 rounded-lg">
+              <h4 class="font-semibold text-cyan-700 mb-2">サーバーと連携するメリット</h4>
+              <ul class="space-y-2">
+                <li class="flex items-start">
+                  <span class="text-cyan-500 mr-2">✓</span>
+                  <span>異なるデバイスからでも同じデータにアクセスできる</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-cyan-500 mr-2">✓</span>
+                  <span>複数のユーザーでデータを共有できる</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-cyan-500 mr-2">✓</span>
+                  <span>ブラウザのキャッシュを削除してもデータが消えない</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-cyan-500 mr-2">✓</span>
+                  <span>より大量のデータを保存できる</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        
+        <!-- まとめ -->
+        <div class="bg-white rounded-lg shadow-md p-8 mb-12">
+          <h2 class="text-2xl font-semibold text-kinova-gray mb-6">まとめ：TODOアプリを作ってみよう！</h2>
+          
+          <p class="text-gray-700 mb-6">
+            この記事では、HTML、CSS、JavaScriptを使って、シンプルなTODOアプリを作る方法を学びました。
+            基本的な機能から、ローカルストレージを使ったデータ保存まで、Webアプリ開発の一連の流れを体験できたと思います。
+          </p>
+          
+          <div class="bg-gradient-to-r from-kinova-teal to-kinova-orange p-6 rounded-lg text-white mb-6">
+            <h3 class="text-xl font-semibold mb-4">今回学んだこと</h3>
+            <ul class="space-y-2">
+              <li class="flex items-start">
+                <span class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">✓</span>
+                <span>Webアプリの企画と設計の基本</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">✓</span>
+                <span>HTMLとCSSを使った画面の作成</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">✓</span>
+                <span>JavaScriptを使った機能の実装</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">✓</span>
+                <span>ローカルストレージを使ったデータの保存</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">✓</span>
+                <span>アプリの改善アイデアと発展方法</span>
+              </li>
+            </ul>
+          </div>
+          
+          <p class="text-gray-700 mb-6">
+            TODOアプリは、Webアプリ開発の基本を学ぶのに最適なプロジェクトです。
+            ぜひ、この記事を参考に自分だけのTODOアプリを作ってみてください。
+            そして、自分のアイデアで機能を追加して、オリジナルのアプリに発展させてみましょう！
+          </p>
+          
+          <div class="flex justify-center">
+            <a href="/todo-app" class="inline-flex items-center px-6 py-3 bg-kinova-teal text-white rounded-md hover:bg-kinova-orange transition-colors">
+              実際のTODOアプリを試してみる
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

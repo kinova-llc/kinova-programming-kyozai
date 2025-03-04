@@ -1,0 +1,21 @@
+@startuml
+title 独自ドメインとサブドメインの構成
+
+node "インターネット" {
+    cloud "独自ドメイン (kinova.jp)" as MainDomain
+    cloud "サブドメイン (app.kinova.jp)" as SubDomain
+}
+
+node "ロリポップ" {
+    folder "メインサイト (kinova.jp)" as LolipopSite
+}
+
+node "Vercel" {
+    folder "アプリ (app.kinova.jp)" as VercelApp
+}
+
+MainDomain --> LolipopSite : ホームページ
+MainDomain --> SubDomain : サブドメイン設定 (DNS)
+SubDomain --> VercelApp : サブドメインサービス
+
+@enduml

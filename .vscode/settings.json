@@ -1,0 +1,12 @@
+{
+    "editor.formatOnSave": true,
+    "[astro]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "tailwindCSS.experimental.classRegex": [
+      "tw`([^`]*)",
+      "tw\\([^)]*\\)",
+      "class=\\\"([^\"]*)\\\""
+    ]
+  }
+  

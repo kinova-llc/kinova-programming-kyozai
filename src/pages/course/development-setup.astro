@@ -1,0 +1,1062 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Newsletter from '../../components/Newsletter.astro';
+---
+
+<Layout title="開発の準備をしよう！ - 初心者向け Webアプリ開発講座">
+  <div class="container mx-auto px-4 py-12">
+    <div class="max-w-4xl mx-auto">
+      
+      <!-- ヘッダーセクション -->
+      <div class="bg-gradient-to-r from-kinova-teal to-kinova-orange rounded-lg shadow-lg overflow-hidden mb-12">
+        <div class="p-8 text-white">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-sm bg-white/20 px-3 py-1 rounded-full">Web開発</span>
+            <span class="text-sm">2025年1月10日</span>
+          </div>
+          <h1 class="text-4xl font-bold mb-4">開発の準備をしよう！</h1>
+          <p class="text-xl opacity-90 mb-6">
+            Webアプリ開発を始めるために必要なツールのインストール方法と基本的な使い方を解説します。初心者でも分かりやすく、実際に手を動かしながら学べる内容です。
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-kinova-teal">
+              <span class="text-xl">👨‍💻</span>
+            </div>
+            <div>
+              <p class="font-medium">Kinova編集部</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 目次 -->
+      <div class="bg-white rounded-lg shadow-md p-6 mb-12">
+        <h2 class="text-xl font-semibold mb-4 text-kinova-gray">目次</h2>
+        <ul class="space-y-3">
+          <li>
+            <a href="#intro" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors">
+              <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">1</span>
+              開発環境とは？
+            </a>
+          </li>
+          <li>
+            <a href="#vscode" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors">
+              <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">2</span>
+              Visual Studio Code（VS Code）をインストールしよう
+            </a>
+          </li>
+          <li>
+            <a href="#nodejs" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors">
+              <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">3</span>
+              Node.jsをインストールしよう
+            </a>
+          </li>
+          <li>
+            <a href="#git" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors">
+              <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">4</span>
+              Gitを使ってみよう
+            </a>
+          </li>
+          <li>
+            <a href="#project" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors">
+              <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">5</span>
+              最初のプロジェクトを作ってみよう
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- 本文 -->
+      <div class="space-y-12">
+        <!-- 開発環境とは -->
+        <section id="intro" class="bg-white rounded-lg shadow-md p-8">
+          <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center">
+            <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">1</span>
+            開発環境とは？
+          </h2>
+          
+          <p class="text-gray-700 mb-6">
+            「開発環境」とは、プログラムを書いたり、テストしたり、実行したりするために必要なツールやソフトウェアの集まりのことです。
+            適切な開発環境を整えることで、効率よく、快適にプログラミングを行うことができます。
+          </p>
+          
+          <div class="bg-gradient-to-r from-blue-100 to-indigo-100 p-6 rounded-lg mb-6">
+            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-blue-300">
+              <h3 class="text-xl font-semibold text-blue-700 mb-4 flex items-center">
+                <span class="text-3xl mr-3">🛠️</span>
+                Webアプリ開発に必要なもの
+              </h3>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-blue-700 mb-2 flex items-center">
+                    <span class="text-xl mr-2">📝</span>
+                    コードエディタ
+                  </h4>
+                  <p class="text-gray-700 mb-2">
+                    プログラムコードを書くための専用エディタ。
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Visual Studio Code</span>
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Atom</span>
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Sublime Text</span>
+                  </div>
+                </div>
+                
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-blue-700 mb-2 flex items-center">
+                    <span class="text-xl mr-2">🌐</span>
+                    Webブラウザ
+                  </h4>
+                  <p class="text-gray-700 mb-2">
+                    作成したWebアプリを表示・テストするためのブラウザ。
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Google Chrome</span>
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Firefox</span>
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Edge</span>
+                  </div>
+                </div>
+                
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-blue-700 mb-2 flex items-center">
+                    <span class="text-xl mr-2">⚙️</span>
+                    Node.js
+                  </h4>
+                  <p class="text-gray-700 mb-2">
+                    JavaScriptをサーバーサイドで実行するための環境。
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">npm</span>
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">パッケージ管理</span>
+                  </div>
+                </div>
+                
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-blue-700 mb-2 flex items-center">
+                    <span class="text-xl mr-2">🔄</span>
+                    バージョン管理システム
+                  </h4>
+                  <p class="text-gray-700 mb-2">
+                    コードの変更履歴を管理するためのツール。
+                  </p>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Git</span>
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">GitHub</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="bg-indigo-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-indigo-700 mb-2">なぜ開発環境が重要なの？</h4>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <span class="text-indigo-500 mr-2">✓</span>
+                    <span>効率的にコードを書くことができる</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-indigo-500 mr-2">✓</span>
+                    <span>エラーを早期に発見できる</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-indigo-500 mr-2">✓</span>
+                    <span>チームでの共同作業がスムーズになる</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-indigo-500 mr-2">✓</span>
+                    <span>コードの品質を維持しやすくなる</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="text-center text-sm text-indigo-700 bg-indigo-50 p-3 rounded-lg mt-4">
+              適切な開発環境を整えることで、プログラミングの学習や開発作業がスムーズになります。<br>
+              初心者のうちは、シンプルな環境から始めて、徐々に必要なツールを追加していくとよいでしょう。
+            </div>
+          </div>
+        </section>
+        
+        <!-- VS Code -->
+        <section id="vscode" class="bg-white rounded-lg shadow-md p-8">
+          <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center">
+            <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">2</span>
+            Visual Studio Code（VS Code）をインストールしよう
+          </h2>
+          
+          <p class="text-gray-700 mb-6">
+            Visual Studio Code（VS Code）は、Microsoft社が開発した無料のコードエディタです。
+            多くの言語に対応し、拡張機能も豊富で、初心者から上級者まで幅広く使われています。
+            まずは、このVS Codeをインストールしてみましょう。
+          </p>
+          
+          <div class="bg-gradient-to-r from-purple-100 to-violet-100 p-6 rounded-lg mb-6">
+            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-purple-300 mb-6">
+              <h3 class="text-xl font-semibold text-purple-700 mb-4 flex items-center">
+                <span class="text-3xl mr-3">💻</span>
+                VS Codeのインストール手順
+              </h3>
+              
+              <ol class="space-y-4">
+                <li class="flex items-start">
+                  <span class="bg-purple-100 text-purple-800 rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">1</span>
+                  <div>
+                    <h4 class="font-semibold text-purple-700 mb-2">公式サイトにアクセス</h4>
+                    <p class="text-gray-700 mb-2">
+                      <a href="https://code.visualstudio.com/" target="_blank" class="text-purple-600 hover:underline">https://code.visualstudio.com/</a> にアクセスします。
+                    </p>
+                    <div class="bg-purple-50 rounded-lg p-3">
+                      <p class="text-sm text-purple-700">
+                        トップページに表示されている「Download for Windows/Mac/Linux」ボタンをクリックします。
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                
+                <li class="flex items-start">
+                  <span class="bg-purple-100 text-purple-800 rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">2</span>
+                  <div>
+                    <h4 class="font-semibold text-purple-700 mb-2">インストーラーをダウンロード</h4>
+                    <p class="text-gray-700 mb-2">
+                      お使いのOSに合わせたインストーラーがダウンロードされます。
+                    </p>
+                    <div class="bg-purple-50 rounded-lg p-3">
+                      <p class="text-sm text-purple-700">
+                        Windowsの場合は「.exe」ファイル、Macの場合は「.dmg」ファイルがダウンロードされます。
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                
+                <li class="flex items-start">
+                  <span class="bg-purple-100 text-purple-800 rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">3</span>
+                  <div>
+                    <h4 class="font-semibold text-purple-700 mb-2">インストーラーを実行</h4>
+                    <p class="text-gray-700 mb-2">
+                      ダウンロードしたインストーラーをダブルクリックして実行します。
+                    </p>
+                    <div class="bg-purple-50 rounded-lg p-3">
+                      <p class="text-sm text-purple-700">
+                        基本的には、画面の指示に従って「次へ」をクリックしていくだけでOKです。
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                
+                <li class="flex items-start">
+                  <span class="bg-purple-100 text-purple-800 rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">4</span>
+                  <div>
+                    <h4 class="font-semibold text-purple-700 mb-2">インストール完了</h4>
+                    <p class="text-gray-700 mb-2">
+                      インストールが完了したら、VS Codeを起動してみましょう。
+                    </p>
+                    <div class="bg-purple-50 rounded-lg p-3">
+                      <p class="text-sm text-purple-700">
+                        初回起動時に、いくつかの設定画面が表示されることがありますが、基本的にはデフォルトのままで問題ありません。
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-violet-300">
+              <h3 class="text-xl font-semibold text-violet-700 mb-4 flex items-center">
+                <span class="text-3xl mr-3">🔌</span>
+                おすすめの拡張機能
+              </h3>
+              
+              <p class="text-gray-700 mb-4"> VS Codeは、拡張機能（Extensions）をインストールすることで、機能を追加できます。
+                Webアプリ開発に役立つ拡張機能をいくつか紹介します。
+              </p>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div class="bg-violet-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-violet-700 mb-2">Live Server</h4>
+                  <p class="text-sm text-gray-700">
+                    HTMLファイルをリアルタイムでプレビューできる拡張機能。ファイルを保存すると自動的にブラウザが更新されます。
+                  </p>
+                </div>
+                
+                <div class="bg-violet-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-violet-700 mb-2">Prettier</h4>
+                  <p class="text-sm text-gray-700">
+                    コードを自動的に整形してくれる拡張機能。コードの見た目を統一し、読みやすくします。
+                  </p>
+                </div>
+                
+                <div class="bg-violet-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-violet-700 mb-2">ESLint</h4>
+                  <p class="text-sm text-gray-700">
+                    JavaScriptのコードを分析し、問題点を指摘してくれる拡張機能。バグの早期発見に役立ちます。
+                  </p>
+                </div>
+                
+                <div class="bg-violet-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-violet-700 mb-2">Auto Rename Tag</h4>
+                  <p class="text-sm text-gray-700">
+                    HTMLタグの名前を変更すると、対応する閉じタグも自動的に変更してくれる拡張機能。
+                  </p>
+                </div>
+              </div>
+              
+              <div class="bg-violet-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-violet-700 mb-2">拡張機能のインストール方法</h4>
+                <ol class="space-y-2 text-sm">
+                  <li class="flex items-start">
+                    <span class="text-violet-500 mr-2">1.</span>
+                    <span>VS Codeの左側のメニューから「Extensions」アイコン（四角が4つ並んだアイコン）をクリックします。</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-violet-500 mr-2">2.</span>
+                    <span>検索ボックスに拡張機能の名前を入力します。</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-violet-500 mr-2">3.</span>
+                    <span>目的の拡張機能が表示されたら、「Install」ボタンをクリックします。</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-violet-500 mr-2">4.</span>
+                    <span>インストール完了後、必要に応じてVS Codeを再起動します。</span>
+                  </li>
+                </ol>
+              </div>
+            </div>
+            
+            <div class="text-center text-sm text-violet-700 bg-violet-50 p-3 rounded-lg mt-4">
+              VS Codeは非常に多機能なエディタですが、最初から全ての機能を使いこなす必要はありません。<br>
+              基本的な機能から少しずつ慣れていき、必要に応じて拡張機能を追加していくとよいでしょう。
+            </div>
+          </div>
+          
+          <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm text-blue-700">
+                  <strong>VS Codeのショートカットキー：</strong> 効率的にコーディングするために、よく使うショートカットキーを覚えておくと便利です。例えば、<code>Ctrl+S</code>（保存）、<code>Ctrl+Z</code>（元に戻す）、<code>Ctrl+F</code>（検索）などは基本的なショートカットです。VS Codeの「Help」メニューから「Keyboard Shortcuts Reference」を選ぶと、ショートカットキーの一覧を確認できます。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Node.js -->
+        <section id="nodejs" class="bg-white rounded-lg shadow-md p-8">
+          <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center">
+            <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">3</span>
+            Node.jsをインストールしよう
+          </h2>
+          
+          <p class="text-gray-700 mb-6">
+            Node.jsは、JavaScriptをブラウザの外で実行するための環境です。
+            Webアプリ開発では、サーバーサイドのプログラミングやツールの実行に使われます。
+            また、npmというパッケージマネージャーも一緒にインストールされ、様々なJavaScriptライブラリを簡単に利用できるようになります。
+          </p>
+          
+          <div class="bg-gradient-to-r from-green-100 to-teal-100 p-6 rounded-lg mb-6">
+            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-green-300 mb-6">
+              <h3 class="text-xl font-semibold text-green-700 mb-4 flex items-center">
+                <span class="text-3xl mr-3">📦</span>
+                Node.jsとは？
+              </h3>
+              
+              <div class="flex flex-col md:flex-row gap-6 mb-6">
+                <div class="md:w-1/2">
+                  <div class="bg-green-50 rounded-lg p-4 h-full">
+                    <h4 class="font-semibold text-green-700 mb-2">Node.jsの特徴</h4>
+                    <ul class="space-y-2">
+                      <li class="flex items-start">
+                        <span class="text-green-500 mr-2">✓</span>
+                        <span>JavaScriptをサーバーサイドで実行できる</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-green-500 mr-2">✓</span>
+                        <span>非同期I/Oを採用し、高速な処理が可能</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-green-500 mr-2">✓</span>
+                        <span>npmを使って豊富なパッケージを利用できる</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-green-500 mr-2">✓</span>
+                        <span>クロスプラットフォーム（Windows、Mac、Linuxで動作）</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                  <div class="bg-green-50 rounded-lg p-4 h-full">
+                    <h4 class="font-semibold text-green-700 mb-2">npmとは？</h4>
+                    <p class="text-gray-700 mb-2">
+                      npm（Node Package Manager）は、Node.jsに付属するパッケージマネージャーです。
+                    </p>
+                    <ul class="space-y-2">
+                      <li class="flex items-start">
+                        <span class="text-green-500 mr-2">✓</span>
+                        <span>JavaScriptのライブラリやフレームワークを簡単にインストールできる</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-green-500 mr-2">✓</span>
+                        <span>プロジェクトの依存関係を管理できる</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-green-500 mr-2">✓</span>
+                        <span>スクリプトを定義して実行できる</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="bg-teal-50 p-4 rounded-lg">
+                <h4 class="font-semibold text-teal-700 mb-2">なぜNode.jsが必要なの？</h4>
+                <p class="text-gray-700 mb-4">
+                  Webアプリ開発では、以下のような場面でNode.jsが活躍します：
+                </p>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <span class="text-teal-500 mr-2">•</span>
+                    <span>開発サーバーの起動（ライブリロード機能付き）</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-teal-500 mr-2">•</span>
+                    <span>ビルドツールの実行（Webpack、Vite、Parcelなど）</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-teal-500 mr-2">•</span>
+                    <span>サーバーサイドのプログラミング（Express.jsなど）</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-teal-500 mr-2">•</span>
+                    <span>APIの作成と実行</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-teal-500 mr-2">•</span>
+                    <span>テスト自動化</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-teal-300">
+              <h3 class="text-xl font-semibold text-teal-700 mb-4 flex items-center">
+                <span class="text-3xl mr-3">⬇️</span>
+                Node.jsのインストール手順
+              </h3>
+              
+              <ol class="space-y-4">
+                <li class="flex items-start">
+                  <span class="bg-teal-100 text-teal-800 rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">1</span>
+                  <div>
+                    <h4 class="font-semibold text-teal-700 mb-2">公式サイトにアクセス</h4>
+                    <p class="text-gray-700 mb-2">
+                      <a href="https://nodejs.org/" target="_blank" class="text-teal-600 hover:underline">https://nodejs.org/</a> にアクセスします。
+                    </p>
+                    <div class="bg-teal-50 rounded-lg p-3">
+                      <p class="text-sm text-teal-700">
+                        通常は「LTS」（Long Term Support）バージョンをダウンロードすることをおすすめします。LTSバージョンは安定性が高く、長期間サポートされます。
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                
+                <li class="flex items-start">
+                  <span class="bg-teal-100 text-teal-800 rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">2</span>
+                  <div>
+                    <h4 class="font-semibold text-teal-700 mb-2">インストーラーをダウンロード</h4>
+                    <p class="text-gray-700 mb-2">
+                      お使いのOSに合わせたインストーラーをダウンロードします。
+                    </p>
+                    <div class="bg-teal-50 rounded-lg p-3">
+                      <p class="text-sm text-teal-700">
+                        Windowsの場合は「.msi」ファイル、Macの場合は「.pkg」ファイルがダウンロードされます。
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                
+                <li class="flex items-start">
+                  <span class="bg-teal-100 text-teal-800 rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">3</span>
+                  <div>
+                    <h4 class="font-semibold text-teal-700 mb-2">インストーラーを実行</h4>
+                    <p class="text-gray-700 mb-2">
+                      ダウンロードしたインストーラーをダブルクリックして実行します。
+                    </p>
+                    <div class="bg-teal-50 rounded-lg p-3">
+                      <p class="text-sm text-teal-700">
+                        基本的には、画面の指示に従って「次へ」をクリックしていくだけでOKです。特別な設定は必要ありません。
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                
+                <li class="flex items-start">
+                  <span class="bg-teal-100 text-teal-800 rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">4</span>
+                  <div>
+                    <h4 class="font-semibold text-teal-700 mb-2">インストールの確認</h4>
+                    <p class="text-gray-700 mb-2">
+                      インストールが完了したら、コマンドプロンプト（Windows）またはターミナル（Mac/Linux）を開いて、以下のコマンドを実行してみましょう：
+                    </p>
+                    <div class="bg-gray-800 text-white rounded-lg p-3 font-mono mb-2">
+                      node --version<br>
+                      npm --version
+                    </div>
+                    <div class="bg-teal-50 rounded-lg p-3">
+                      <p class="text-sm text-teal-700">
+                        それぞれのバージョン番号が表示されれば、インストールは成功です！
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            
+            <div class="text-center text-sm text-teal-700 bg-teal-50 p-3 rounded-lg mt-4">
+              Node.jsとnpmがインストールされたことで、JavaScriptのライブラリやフレームワークを使った<br>
+              本格的なWebアプリ開発の準備が整いました。次のステップでは、これらのツールを使って<br>
+              実際にプロジェクトを作成していきます。
+            </div>
+          </div>
+          
+          <div class="bg-green-50 border-l-4 border-green-400 p-4">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm text-green-700">
+                  <strong>npmの基本的な使い方：</strong> npmを使ってパッケージをインストールするには、コマンドプロンプトやターミナルで <code>npm install パッケージ名</code> と入力します。例えば、人気のJavaScriptライブラリであるReactをインストールするには、<code>npm install react</code> と入力します。また、<code>npm init</code> コマンドを使うと、新しいNode.jsプロジェクトを初期化できます。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Git -->
+        <section id="git" class="bg-white rounded-lg shadow-md p-8">
+          <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center">
+            <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">4</span>
+            Gitを使ってみよう
+          </h2>
+          
+          <p class="text-gray-700 mb-6">
+            Gitは、プログラムのソースコードを管理するためのバージョン管理システムです。
+            複数人での開発や、コードの変更履歴の管理、バックアップなどに役立ちます。
+          </p>
+          
+          <div class="bg-gradient-to-r from-amber-100 to-yellow-100 p-6 rounded-lg mb-6">
+            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-amber-300 mb-6">
+              <h3 class="text-xl font-semibold text-amber-700 mb-4 flex items-center">
+                <span class="text-3xl mr-3">🔄</span>
+                Gitとは？
+              </h3>
+              
+              <div class="flex flex-col md:flex-row gap-6 mb-4">
+                <div class="md:w-1/2">
+                  <img src="https://git-scm.com/images/logos/downloads/Git-Logo-2Color.png" alt="Git ロゴ" class="w-full max-w-xs mx-auto p-4" />
+                  
+                  <div class="bg-amber-50 rounded-lg p-4 mt-4">
+                    <h4 class="font-semibold text-amber-700 mb-2">Gitの主なメリット</h4>
+                    <ul class="space-y-2">
+                      <li class="flex items-start">
+                        <span class="text-amber-500 mr-2 mt-1">✓</span>
+                        <span>変更履歴の管理（いつ、誰が、何を変更したか）</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-amber-500 mr-2 mt-1">✓</span>
+                        <span>複数人での共同作業が可能</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-amber-500 mr-2 mt-1">✓</span>
+                        <span>バックアップとしての機能</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-amber-500 mr-2 mt-1">✓</span>
+                        <span>異なるバージョンの管理（ブランチ機能）</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                  <p class="text-gray-700 mb-4">
+                    Gitは、Linuxの開発者であるリーナス・トーバルズによって開発されたバージョン管理システムです。現在、世界中の開発者に広く使われています。
+                  </p>
+                  
+                  <p class="text-gray-700 mb-4">
+                    Gitを使うと、ファイルの変更履歴を記録できるため、「いつ」「誰が」「どのように」コードを変更したかを追跡できます。また、複数の開発者が同時に同じプロジェクトで作業する際の衝突を管理するのにも役立ちます。
+                  </p>
+                  
+                  <div class="bg-yellow-50 rounded-lg p-4 mb-4">
+                    <h4 class="font-semibold text-yellow-700 mb-2">GitとGitHubの違い</h4>
+                    <p class="text-gray-700">
+                      <span class="font-semibold text-yellow-700">Git</span>：ローカルコンピュータで動作するバージョン管理システム。
+                    </p>
+                    <p class="text-gray-700">
+                      <span class="font-semibold text-yellow-700">GitHub</span>：Gitリポジトリをホスティングするウェブサービス。コードの共有や共同作業を容易にします。
+                    </p>
+                  </div>
+                  
+                  <p class="text-gray-700">
+                    初心者の方は、まずGitの基本的な使い方を覚え、その後GitHubなどのサービスを利用して、他の開発者と協力する方法を学ぶとよいでしょう。
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-yellow-300">
+              <h3 class="text-xl font-semibold text-yellow-700 mb-4 flex items-center">
+                <span class="text-3xl mr-3">📥</span>
+                Gitのインストールと基本的な使い方
+              </h3>
+              
+              <h4 class="font-semibold text-yellow-700 mb-3">インストール手順</h4>
+              <ol class="space-y-4 mb-6">
+                <li class="flex items-start">
+                  <span class="bg-yellow-100 text-yellow-800 rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">1</span>
+                  <div>
+                    <p class="text-gray-700 mb-2">
+                      <a href="https://git-scm.com/downloads" target="_blank" class="text-yellow-600 hover:underline">https://git-scm.com/downloads</a> にアクセスし、お使いのOSに合わせたインストーラーをダウンロードします。
+                    </p>
+                  </div>
+                </li>
+                
+                <li class="flex items-start">
+                  <span class="bg-yellow-100 text-yellow-800 rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">2</span>
+                  <div>
+                    <p class="text-gray-700 mb-2">
+                      ダウンロードしたインストーラーを実行し、基本的には初期設定のまま「次へ」をクリックしていきます。
+                    </p>
+                    <div class="bg-yellow-50 rounded-lg p-3">
+                      <p class="text-sm text-yellow-700">
+                        Windowsの場合、「Git Bashを含める」オプションを選択しておくと便利です。
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                
+                <li class="flex items-start">
+                  <span class="bg-yellow-100 text-yellow-800 rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">3</span>
+                  <div>
+                    <p class="text-gray-700 mb-2">
+                      インストールが完了したら、コマンドプロンプト（Windows）またはターミナル（Mac/Linux）を開いて、以下のコマンドを実行してみましょう：
+                    </p>
+                    <div class="bg-gray-800 text-white rounded-lg p-3 font-mono mb-2">
+                      git --version
+                    </div>
+                    <p class="text-gray-700">
+                      バージョン番号が表示されれば、インストールは成功です！
+                    </p>
+                  </div>
+                </li>
+              </ol>
+              
+              <h4 class="font-semibold text-yellow-700 mb-3">Gitの基本的な使い方</h4>
+              <div class="bg-yellow-50 rounded-lg <div class="bg-yellow-50 rounded-lg p-4 mb-4">
+                <h5 class="font-medium text-yellow-700 mb-2">最初の設定</h5>
+                <p class="text-gray-700 mb-2">
+                  Gitをインストールしたら、まず自分の名前とメールアドレスを設定します：
+                </p>
+                <div class="bg-gray-800 text-white rounded-lg p-3 font-mono mb-2">
+                  git config --global user.name "あなたの名前"<br>
+                  git config --global user.email "あなたのメールアドレス"
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div class="bg-yellow-50 rounded-lg p-4">
+                  <h5 class="font-medium text-yellow-700 mb-2">新しいリポジトリを作成</h5>
+                  <div class="bg-gray-800 text-white rounded-lg p-3 font-mono mb-2">
+                    mkdir myproject<br>
+                    cd myproject<br>
+                    git init
+                  </div>
+                  <p class="text-sm text-gray-700">
+                    これで「myproject」フォルダがGitリポジトリになります。
+                  </p>
+                </div>
+                
+                <div class="bg-yellow-50 rounded-lg p-4">
+                  <h5 class="font-medium text-yellow-700 mb-2">変更を記録する</h5>
+                  <div class="bg-gray-800 text-white rounded-lg p-3 font-mono mb-2">
+                    git add .<br>
+                    git commit -m "最初のコミット"
+                  </div>
+                  <p class="text-sm text-gray-700">
+                    「add」でステージング、「commit」で変更を記録します。
+                  </p>
+                </div>
+              </div>
+              
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-yellow-50 rounded-lg p-4">
+                  <h5 class="font-medium text-yellow-700 mb-2">変更履歴を確認</h5>
+                  <div class="bg-gray-800 text-white rounded-lg p-3 font-mono mb-2">
+                    git log
+                  </div>
+                  <p class="text-sm text-gray-700">
+                    これまでのコミット履歴が表示されます。
+                  </p>
+                </div>
+                
+                <div class="bg-yellow-50 rounded-lg p-4">
+                  <h5 class="font-medium text-yellow-700 mb-2">変更状態を確認</h5>
+                  <div class="bg-gray-800 text-white rounded-lg p-3 font-mono mb-2">
+                    git status
+                  </div>
+                  <p class="text-sm text-gray-700">
+                    現在の変更状態（未コミットの変更など）を確認できます。
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="text-center text-sm text-amber-700 bg-amber-50 p-3 rounded-lg mt-4">
+              Gitの使い方は最初は少し複雑に感じるかもしれませんが、基本的なコマンドだけでも覚えておくと、<br>
+              コードの変更履歴 を管理できるようになります。また、VS Codeには便利なGit連携機能があり、<br>
+              GUIでGitを操作することもできます。
+            </div>
+          </div>
+          
+          <div class="bg-green-50 border-l-4 border-green-400 p-4">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm text-green-700">
+                  <strong>GitHubアカウントの作成：</strong> Gitの基本を理解したら、次のステップとして<a href="https://github.com/" target="_blank" class="text-green-600 hover:underline">GitHub</a>のアカウントを作成してみましょう。GitHubを使うと、自分のコードをオンラインで管理したり、他の開発者と共有したりできます。また、多くのオープンソースプロジェクトがGitHubで公開されているため、他の人のコードを参考にすることもできます。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- 最初のプロジェクト -->
+        <section id="project" class="bg-white rounded-lg shadow-md p-8">
+          <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center">
+            <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">5</span>
+            最初のプロジェクトを作ってみよう
+          </h2>
+          
+          <p class="text-gray-700 mb-6">
+            必要なツールがインストールできたら、実際に簡単なWebプロジェクトを作ってみましょう。
+            ここでは、HTML、CSS、JavaScriptを使った簡単なWebページの作り方を紹介します。
+          </p>
+          
+          <div class="bg-gradient-to-r from-pink-100 to-red-100 p-6 rounded-lg mb-6">
+            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-pink-300 mb-6">
+              <h3 class="text-xl font-semibold text-pink-700 mb-4 flex items-center">
+                <span class="text-3xl mr-3">🚀</span>
+                シンプルなWebページを作ってみよう
+              </h3>
+              
+              <p class="text-gray-700 mb-4">
+                まずは、最もシンプルなWebページを作成してみましょう。以下の手順で進めます：
+              </p>
+              
+              <ol class="space-y-4 mb-4">
+                <li class="flex items-start">
+                  <span class="bg-pink-100 text-pink-800 rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">1</span>
+                  <div>
+                    <h4 class="font-semibold text-pink-700 mb-2">プロジェクトフォルダを作成</h4>
+                    <p class="text-gray-700 mb-2">
+                      デスクトップなど、分かりやすい場所に「my-first-website」というフォルダを作成します。
+                    </p>
+                    <div class="bg-gray-800 text-white rounded-lg p-3 font-mono mb-2">
+                      mkdir my-first-website<br>
+                      cd my-first-website
+                    </div>
+                  </div>
+                </li>
+                
+                <li class="flex items-start">
+                  <span class="bg-pink-100 text-pink-800 rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">2</span>
+                  <div>
+                    <h4 class="font-semibold text-pink-700 mb-2">VS Codeでフォルダを開く</h4>
+                    <p class="text-gray-700 mb-2">
+                      VS Codeを起動し、「ファイル」→「フォルダを開く」から、作成したフォルダを選択します。
+                    </p>
+                    <div class="bg-pink-50 rounded-lg p-3">
+                      <p class="text-sm text-pink-700">
+                        または、コマンドラインで <code>code .</code> と入力すると、現在のフォルダをVS Codeで開けます。
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                
+                <li class="flex items-start">
+                  <span class="bg-pink-100 text-pink-800 rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">3</span>
+                  <div>
+                    <h4 class="font-semibold text-pink-700 mb-2">HTMLファイルを作成</h4>
+                    <p class="text-gray-700 mb-2">
+                      VS Codeで新しいファイルを作成し、「index.html」という名前で保存します。
+                    </p>
+                    <div class="bg-pink-50 rounded-lg p-3">
+                      <p class="text-sm text-pink-700">
+                        「index.html」は、Webサイトのトップページとして認識される特別なファイル名です。
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                
+                <li class="flex items-start">
+                  <span class="bg-pink-100 text-pink-800 rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">4</span>
+                  <div>
+                    <h4 class="font-semibold text-pink-700 mb-2">HTMLコードを書く</h4>
+                    <p class="text-gray-700 mb-2">
+                      以下のHTMLコードを<code>index.html</code> に貼り付けます：
+                    </p>
+                    <div class="bg-gray-800 text-white rounded-lg p-3 font-mono text-sm mb-2 overflow-x-auto">
+                      <pre><code class="language-html">{String.raw`<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>私の最初のWebページ</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .container {
+      width: 80%;
+      margin: auto;
+      overflow: hidden;
+      padding: 20px;
+    }
+    header {
+      background: #3CBFC8;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    button {
+      background: #FFBB55;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>私の最初のWebページへようこそ！</h1>
+  </header>
+                
+  <div class="container">
+    <h2>このページについて</h2>
+    <p>これは私が作った最初のWebページです。
+    HTML、CSS、JavaScriptを使って作りました。</p>
+                
+    <h2>JavaScriptのデモ</h2>
+    <p>以下のボタンをクリックすると、JavaScriptが実行されます。</p>
+    <button id="demo-button">ここをクリック！</button>
+    <p id="result"></p>
+  </div>
+                
+  <script>
+    document.getElementById('demo-button')
+    .addEventListener('click', function() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString();
+      document.getElementById('result').textContent 
+      = \`現在の時刻: \${timeString}\`;
+    });
+  </script>
+</body>
+</html>
+`}</code></pre>
+                    </div>
+                  </div>
+                  
+                </li>
+                
+                <li class="flex items-start">
+                  <span class="bg-pink-100 text-pink-800 rounded-full w-8 h-8 flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">5</span>
+                  <div>
+                    <h4 class="font-semibold text-pink-700 mb-2">ブラウザで表示</h4>
+                    <p class="text-gray-700 mb-2">
+                      index.htmlファイルをダブルクリックするか、VS Codeで右クリックして「ブラウザで開く」を選択します。
+                    </p>
+                    <div class="bg-pink-50 rounded-lg p-3">
+                      <p class="text-sm text-pink-700">
+                        VS Codeに「Live Server」拡張機能をインストールしていると、右下の「Go Live」ボタンをクリックするだけで、自動更新機能付きのサーバーが起動します。
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              </ol>
+              
+              <div class="bg-pink-50 rounded-lg p-4">
+                <h4 class="font-semibold text-pink-700 mb-2">このサンプルコードの説明</h4>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <span class="text-pink-500 mr-2 mt-1">✓</span>
+                    <span><strong>HTML</strong>：ページの構造を定義しています（見出し、段落、ボタンなど）。</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-pink-500 mr-2 mt-1">✓</span>
+                    <span><strong>CSS</strong>：&lt;style&gt;タグ内に記述されており、ページのデザインを定義しています。</span>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-pink-500 mr-2 mt-1">✓</span>
+                    <span><strong>JavaScript</strong>：&lt;script&gt;タグ内に記述されており、ボタンをクリックしたときの動作を定義しています。</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-red-300">
+              <h3 class="text-xl font-semibold text-red-700 mb-4 flex items-center">
+                <span class="text-3xl mr-3">🔍</span>
+                コードを理解しよう
+              </h3>
+              
+              <p class="text-gray-700 mb-4">
+                上記のコードは、HTML、CSS、JavaScriptの基本的な使い方を示しています。それぞれの役割を簡単に説明します：
+              </p>
+              
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div class="bg-red-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-red-700 mb-2">HTML</h4>
+                  <p class="text-gray-700">
+                    Webページの「骨組み」を作ります。見出し、段落、ボタンなどの要素を定義します。
+                  </p>
+                  <div class="mt-2 text-sm text-gray-600">
+                    <code>&lt;h1&gt;</code>、<code>&lt;p&gt;</code>、<code>&lt;button&gt;</code>などのタグを使います。
+                  </div>
+                </div>
+                
+                <div class="bg-red-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-red-700 mb-2">CSS</h4>
+                  <p class="text-gray-700">
+                    Webページの「見た目」を整えます。色、サイズ、配置などのスタイルを定義します。
+                  </p>
+                  <div class="mt-2 text-sm text-gray-600">
+                    <code>color</code>、<code>background-color</code>、<code>padding</code>などのプロパティを使います。
+                  </div>
+                </div>
+                
+                <div class="bg-red-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-red-700 mb-2">JavaScript</h4>
+                  <p class="text-gray-700">
+                    Webページに「動き」をつけます。ユーザーの操作に応じた処理を定義します。
+                  </p>
+                  <div class="mt-2 text-sm text-gray-600">
+                    <code>addEventListener</code>、<code>getElementById</code>などの関数を使います。
+                  </div>
+                </div>
+              </div>
+              
+              <p class="text-gray-700 mb-4">
+                このシンプルなWebページを作成したら、次のステップとして以下のことに挑戦してみましょう：
+              </p>
+              
+              <ul class="space-y-2">
+                <li class="flex items-start">
+                  <span class="text-red-500 mr-2 mt-1">✓</span>
+                  <span>HTMLに新しい要素（画像、リスト、リンクなど）を追加する</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-red-500 mr-2 mt-1">✓</span>
+                  <span>CSSでスタイルを変更する（色、フォント、レイアウトなど）</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-red-500 mr-2 mt-1">✓</span>
+                  <span>JavaScriptで新しい機能を追加する（カウンター、フォーム処理など）</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-red-500 mr-2 mt-1">✓</span>
+                  <span>Gitを使ってコードの変更履歴を管理する</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="text-center text-sm text-red-700 bg-red-50 p-3 rounded-lg mt-4">
+              プログラミングは実際に手を動かして学ぶのが一番です。<br>
+              まずは小さなプロジェクトから始めて、少しずつ機能を追加していきましょう。<br>
+              エラーが出ても大丈夫！エラーから学ぶことも多いので、恐れずに挑戦してください。
+            </div>
+          </div>
+          
+          <div class="bg-purple-50 border-l-4 border-purple-400 p-4">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-purple-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm text-purple-700">
+                  <strong>学習リソース：</strong> HTML、CSS、JavaScriptの基本を学ぶには、以下のサイトがおすすめです：
+                  <ul class="mt-2 space-y-1">
+                    <li>• <a href="https://developer.mozilla.org/ja/" target="_blank" class="text-purple-600 hover:underline">MDN Web Docs</a> - Webテクノロジーの詳細なドキュメント</li>
+                    <li>• <a href="https://www.w3schools.com/" target="_blank" class="text-purple-600 hover:underline">W3Schools</a> - 初心者向けのチュートリアルと例</li>
+                    <li>• <a href="https://www.freecodecamp.org/" target="_blank" class="text-purple-600 hover:underline">freeCodeCamp</a> - 無料のインタラクティブな学習プラットフォーム</li>
+                  </ul>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- まとめ -->
+        <div class="bg-white rounded-lg shadow-md p-8 mb-12">
+          <h2 class="text-2xl font-semibold text-kinova-gray mb-6">まとめ：開発の準備ができました！</h2>
+          
+          <p class="text-gray-700 mb-6">
+            おめでとうございます！これで、Webアプリ開発を始めるための基本的な環境が整いました。
+            この記事で紹介したツールと知識を使って、自分だけのWebアプリケーションを作り始めることができます。
+          </p>
+          
+          <div class="bg-gradient-to-r from-kinova-teal to-kinova-orange p-6 rounded-lg text-white mb-6">
+            <h3 class="text-xl font-semibold mb-4">今回学んだこと</h3>
+            <ul class="space-y-2">
+              <li class="flex items-start">
+                <span class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">✓</span>
+                <span>開発環境とは何か、なぜ必要なのか</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">✓</span>
+                <span>VS Code（コードエディタ）のインストールと基本的な使い方</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">✓</span>
+                <span>Node.jsのインストールと役割</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">✓</span>
+                <span>Gitを使ったコード管理の基本</span>
+              </li>
+              <li class="flex items-start">
+                <span class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">✓</span>
+                <span>シンプルなWebページの作り方</span>
+              </li>
+            </ul>
+          </div>
+          
+          <p class="text-gray-700 mb-6">
+            プログラミングの学習は、一歩一歩着実に進めていくことが大切です。
+            最初は難しく感じることもあるかもしれませんが、少しずつ理解を深めていきましょう。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
