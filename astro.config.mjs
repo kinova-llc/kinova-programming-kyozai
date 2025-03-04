@@ -4,7 +4,7 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://kinova-llc.github.io',
+  site: 'https://kinova-llc.github.io/kinova-programming-blog/',
   base: '/kinova-programming-blog',
   integrations: [tailwind()]
 });
