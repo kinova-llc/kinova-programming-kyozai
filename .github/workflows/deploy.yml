@@ -3,7 +3,7 @@ name: Deploy Astro to GitHub Pages
 on:
   push:
     branches:
-      - main  # メインブランチに push したときにデプロイ
+      - main
 
 permissions:
   contents: write
