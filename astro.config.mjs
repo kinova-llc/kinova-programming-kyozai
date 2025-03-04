@@ -1,12 +1,8 @@
-import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
+// @ts-check
+import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
 
+// https://astro.build/config
 export default defineConfig({
-  site: "https://kinova-llc.github.io/kinova-programming-blog/",
-  base: "/kinova-programming-blog/", // 必須
-  integrations: [tailwind()],
-  output: "static",
-  build: {
-    outDir: "docs", // GitHub Pages 用に "docs" を指定
-  },
+  integrations: [tailwind()]
 });
