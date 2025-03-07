@@ -1,0 +1,416 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Webアプリってどんな仕組み？ - 初心者向け Webアプリ開発講座">
+  <div class="container mx-auto px-4 py-12">
+    <div class="max-w-4xl mx-auto">
+      <!-- ヘッダーセクション -->
+      <div class="bg-gradient-to-r from-kinova-teal to-kinova-orange rounded-lg shadow-lg overflow-hidden mb-12">
+        <div class="p-8 text-white">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-sm bg-white/20 px-3 py-1 rounded-full">プログラミング入門</span>
+            <span class="text-sm">2025年1月15日</span>
+          </div>
+          <h1 class="text-4xl font-bold mb-4">Webアプリってどんな仕組み？</h1>
+          <p class="text-xl opacity-90 mb-6">
+            スマホやパソコンで毎日使っているWebアプリ。その裏側では何が起きているの？初心者にも分かりやすく、Webアプリの基本的な仕組みを解説します！
+          </p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-kinova-teal">
+              <span class="text-xl">👩‍💻</span>
+            </div>
+            <div>
+              <p class="font-medium">Kinova編集部</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 目次 -->
+      <div class="bg-white rounded-lg shadow-md p-6 mb-12">
+        <h2 class="text-xl font-semibold mb-4 text-kinova-gray">目次</h2>
+        <ul class="space-y-3">
+          <li>
+            <a href="#intro" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors">
+              <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">1</span>
+              はじめに：WebサイトとWebアプリの違い
+            </a>
+          </li>
+          <li>
+            <a href="#request-response" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors">
+              <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">2</span>
+              インターネットのしくみ（リクエスト・レスポンス）
+            </a>
+          </li>
+          <li>
+            <a href="#server" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors">
+              <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">3</span>
+              サーバーって何？どこで動いてるの？
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- 本文 -->
+      <div class="space-y-12">
+        <!-- はじめに -->
+        <section id="intro" class="bg-white rounded-lg shadow-md p-8">
+          <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center">
+            <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">1</span>
+            はじめに：WebサイトとWebアプリの違い
+          </h2>
+          
+          <h3 class="text-xl font-semibold text-kinova-gray mb-4">インターネットの進化とWebアプリの誕生</h3>
+          <p class="text-gray-700 mb-6">
+            インターネットが一般に普及し始めた1990年代、Webサイトは主に企業の情報を掲載する「電子パンフレット」のような存在でした。
+            ユーザーは情報を読むことしかできず、一方通行のコミュニケーションでした。
+          </p>
+          
+          <div class="bg-blue-50 rounded-lg p-6 mb-6">
+            <h4 class="font-semibold text-blue-700 mb-3">なぜWebアプリが必要になったの？</h4>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="bg-blue-100 rounded-full p-2 mr-3 flex-shrink-0">
+                  <span class="text-2xl">📱</span>
+                </div>
+                <div>
+                  <h5 class="font-medium text-blue-800">情報を見るだけじゃ物足りない</h5>
+                  <p class="text-gray-700">最初のWebサイトは情報を表示するだけ。ユーザーは「もっと便利に使いたい！」と感じていました。</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="bg-blue-100 rounded-full p-2 mr-3 flex-shrink-0">
+                  <span class="text-2xl">🔍</span>
+                </div>
+                <div>
+                  <h5 class="font-medium text-blue-800">情報を探したい</h5>
+                  <p class="text-gray-700">増え続けるWebサイトの中から必要な情報を見つけるため、検索機能が必要になりました。</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="bg-blue-100 rounded-full p-2 mr-3 flex-shrink-0">
+                  <span class="text-2xl">🛒</span>
+                </div>
+                <div>
+                  <h5 class="font-medium text-blue-800">インターネットで買い物がしたい</h5>
+                  <p class="text-gray-700">オンラインショッピングの需要が高まり、商品の注文や決済の機能が必要になりました。</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="bg-blue-100 rounded-full p-2 mr-3 flex-shrink-0">
+                  <span class="text-2xl">💬</span>
+                </div>
+                <div>
+                  <h5 class="font-medium text-blue-800">みんなと交流したい</h5>
+                  <p class="text-gray-700">SNSの登場により、投稿やコメント、「いいね」など、双方向のやり取りが必要になりました。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-gray-700 mb-6">
+            このように、ユーザーのニーズに応えるため、単なる情報表示だけでなく、さまざまな機能を持つ「Webアプリケーション」が生まれました。
+            では、従来の「Webサイト」と「Webアプリ」には、どのような違いがあるのでしょうか？
+          </p>
+          
+          <div class="bg-gradient-to-r from-blue-100 to-purple-100 p-6 rounded-lg mb-6">
+            <div class="flex flex-col md:flex-row items-center gap-8 mb-4">
+              <div class="md:w-1/2">
+                <div class="bg-white rounded-lg shadow-sm p-4 border-2 border-blue-300">
+                  <div class="flex items-center mb-3">
+                    <span class="text-3xl mr-3">🏠</span>
+                    <h4 class="text-lg font-semibold text-blue-600">Webサイト</h4>
+                  </div>
+                  <p class="text-gray-700">
+                    主に<span class="font-semibold text-blue-600">情報を提供</span>することが目的で、基本的には<span class="font-semibold text-blue-600">静的</span>なコンテンツを表示します。
+                  </p>
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">企業HP</span>
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">ブログ</span>
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">ニュースサイト</span>
+                  </div>
+                </div>
+              </div>
+              <div class="md:w-1/2">
+                <div class="bg-white rounded-lg shadow-sm p-4 border-2 border-purple-300">
+                  <div class="flex items-center mb-3">
+                    <span class="text-3xl mr-3">📱</span>
+                    <h4 class="text-lg font-semibold text-purple-600">Webアプリ</h4>
+                  </div>
+                  <p class="text-gray-700">
+                    ユーザーの操作に応じて<span class="font-semibold text-purple-600">動的</span>にコンテンツが変化し、<span class="font-semibold text-purple-600">機能やサービス</span>を提供します。
+                  </p>
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">SNS</span>
+                    <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">ショッピングサイト</span>
+                    <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full">メールサービス</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="text-center text-sm text-gray-600 italic">
+              現代では、多くのWebサイトがアプリケーションの要素を持ち、両者の境界は徐々にあいまいになってきています。
+            </p>
+          </div>
+          
+          <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm text-yellow-700">
+                  この記事では、ユーザーとインタラクション（やりとり）できる「Webアプリケーション」の仕組みに焦点を当てていきます。
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-semibold text-kinova-gray mb-4">なぜWebアプリが必要になったのか？</h3>
+          <p class="text-gray-700 mb-6">
+            インターネットの黎明期、Webサイトは「電子パンフレット」のようなものに過ぎませんでした。ユーザーはただ情報を読むだけでした。
+            しかし、検索エンジンの登場や、Eコマースの発展により、ユーザーが情報を「検索」し、商品の購入や予約を「操作」する必要が生まれました。
+            こうして、単なる情報提供ではなく、<span class="font-semibold text-kinova-gray">ユーザーと双方向のやりとりを行うWebアプリが必要</span>になったのです。
+          </p>
+
+          <h3 class="text-xl font-semibold text-kinova-gray mb-4">現代におけるWebアプリの役割</h3>
+          <p class="text-gray-700">
+            今やWebアプリは、SNS、クラウドツール、オンラインショッピングなど、<span class="font-semibold text-kinova-gray">日常生活に不可欠なもの</span>となっています。
+            企業にとっても、顧客との接点を増やし、サービスを提供する重要な手段となっています。
+          </p>
+        </section>
+        
+        <!-- インターネットのしくみ -->
+        <section id="request-response" class="bg-white rounded-lg shadow-md p-8">
+          <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center">
+            <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">2</span>
+            インターネットのしくみ（リクエスト・レスポンス）
+          </h2>
+          
+          <p class="text-gray-700 mb-6">
+            Webアプリの仕組みを理解するには、まずインターネットがどのように動いているかを知る必要があります。
+            インターネットの基本的な仕組みは「リクエスト」と「レスポンス」という概念で説明できます。
+          </p>
+          
+          <div class="bg-gradient-to-r from-green-100 to-teal-100 p-6 rounded-lg mb-6">
+            <h3 class="text-lg font-semibold text-center text-teal-700 mb-4">クライアント・サーバーモデル</h3>
+            
+            <div class="relative">
+              <!-- Animation container -->
+              <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-6 relative">
+                <!-- Client side -->
+                <div class="text-center relative">
+                  <div class="bg-white rounded-lg shadow-md p-4 border-2 border-green-300 relative z-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto mb-2 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <p class="font-medium text-green-800">クライアント<br>(ブラウザ)</p>
+                  </div>
+                  
+                  <!-- User icon -->
+                  <div class="absolute -top-4 -left-4 bg-white rounded-full p-2 shadow-md border-2 border-green-300 z-20">
+                    <span class="text-2xl">👩‍💻</span>
+                  </div>
+                </div>
+                
+                <!-- Arrows -->
+                <div class="flex flex-col items-center relative z-10">
+                  <div class="bg-kinova-teal text-white px-4 py-2 rounded-lg mb-2 shadow-md animate-pulse">
+                    <span class="whitespace-nowrap">リクエスト →</span>
+                  </div>
+                  <div class="bg-kinova-orange text-white px-4 py-2 rounded-lg shadow-md animate-pulse" style="animation-delay: 1s;">
+                    <span class="whitespace-nowrap">← レスポンス</span>
+                  </div>
+                </div>
+                
+                <!-- Server side -->
+                <div class="text-center">
+                  <div class="bg-white rounded-lg shadow-md p-4 border-2 border-teal-300 relative z-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto mb-2 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                    </svg>
+                    <p class="font-medium text-teal-800">サーバー</p>
+                  </div>
+                  
+                  <!-- Database icon -->
+                  <div class="absolute -top-4 -right-4 bg-white rounded-full p-2 shadow-md border-2 border-teal-300 z-20">
+                    <span class="text-2xl">💾</span>
+                  </div>
+                </div>
+                
+                <!-- Cloud background -->
+                <div class="absolute inset-0 flex items-center justify-center opacity-10 z-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-full w-full text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                  </svg>
+                </div>
+              </div>
+              
+              <!-- Process steps -->
+              <div class="bg-white rounded-lg p-4 shadow-md">
+                <ol class="list-decimal ml-6 space-y-3 text-gray-700">
+                  <li class="flex items-start">
+                    <span class="bg-green-100 text-green-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">1</span>
+                    <div>
+                      <span class="font-semibold text-green-800">リクエスト</span>：ユーザーがブラウザでURLを入力したり、ボタンをクリックしたりすると、ブラウザ（クライアント）からサーバーに対して「リクエスト」が送られます。
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="bg-blue-100 text-blue-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">2</span>
+                    <div>
+                      <span class="font-semibold text-blue-800">処理</span>：サーバーはリクエストを受け取り、必要な処理（データの取得、計算など）を行います。
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="bg-orange-100 text-orange-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">3</span>
+                    <div>
+                      <span class="font-semibold text-orange-800">レスポンス</span>：処理が完了すると、サーバーはその結果を「レスポンス」としてクライアントに返します。
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span class="bg-purple-100 text-purple-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">4</span>
+                    <div>
+                      <span class="font-semibold text-purple-800">表示</span>：ブラウザはレスポンスを受け取り、HTMLやCSS、JavaScriptを解釈して画面に表示します。
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+            
+            <div class="mt-4 text-center text-sm text-teal-700 bg-teal-50 p-3 rounded-lg">
+              この一連の流れが、Webページを表示するたびに繰り返されています。<br>
+              Webアプリケーションは、このリクエスト・レスポンスの仕組みを利用して、<br>
+              ユーザーとインタラクティブなやり取りを実現しているのです。
+            </div>
+          </div>
+          
+          <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm text-blue-700">
+                  <strong>豆知識：</strong> 「クライアント」とは、サービスを利用する側のことで、Webの場合はブラウザのことを指します。「サーバー」は、サービスを提供する側のコンピュータのことです。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- サーバーって何？ -->
+        <section id="server" class="bg-white rounded-lg shadow-md p-8">
+          <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center">
+            <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">3</span>
+            サーバーって何？どこで動いてるの？
+          </h2>
+          
+          <p class="text-gray-700 mb-6">
+            「サーバー」という言葉はよく聞くけれど、実際にどんなものなのか、どこにあるのか疑問に思ったことはありませんか？
+            ここでは、サーバーの基本的な概念と、実際にどこで動いているのかを説明します。
+          </p>
+          
+          <div class="bg-gradient-to-r from-indigo-100 to-blue-100 p-6 rounded-lg mb-6">
+            <div class="flex flex-col md:flex-row gap-6 mb-6">
+              <div class="md:w-1/3 flex justify-center items-center">
+                <div class="bg-white p-4 rounded-lg shadow-md border-2 border-indigo-300 text-center">
+                  <span class="text-5xl block mb-2">🖥️</span>
+                  <h4 class="font-semibold text-indigo-700">サーバーとは？</h4>
+                  <p class="text-gray-700 mt-2">
+                    「サービスを提供する<br>特殊なコンピュータ」
+                  </p>
+                </div>
+              </div>
+              
+              <div class="md:w-2/3">
+                <div class="bg-white p-4 rounded-lg shadow-md border-2 border-blue-300">
+                  <h4 class="font-semibold text-blue-700 mb-2">サーバーの特徴</h4>
+                  <ul class="space-y-2">
+                    <li class="flex items-start">
+                      <span class="text-blue-500 mr-2">✓</span>
+                      <span>24時間365日稼働し続けるように設計されている</span>
+                    </li>
+                    <li class="flex items-start">
+                      <span class="text-blue-500 mr-2">✓</span>
+                      <span>大量のリクエストを同時に処理できる</span>
+                    </li>
+                    <li class="flex items-start">
+                      <span class="text-blue-500 mr-2">✓</span>
+                      <span>セキュリティ対策が施されている</span>
+                    </li>
+                    <li class="flex items-start">
+                      <span class="text-blue-500 mr-2">✓</span>
+                      <span>大容量のデータを保存・管理できる</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <h4 class="font-semibold text-center text-indigo-700 mb-4">サーバーはどこにある？</h4>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="bg-white p-4 rounded-lg shadow-md border-2 border-indigo-200 text-center">
+                <span class="text-3xl block mb-2">🏢</span>
+                <h5 class="font-semibold text-indigo-600">データセンター</h5>
+                <p class="text-sm text-gray-700 mt-2">
+                  多数のサーバーを集中管理するための専用施設
+                </p>
+              </div>
+              
+              <div class="bg-white p-4 rounded-lg shadow-md border-2 border-indigo-200 text-center">
+                <span class="text-3xl block mb-2">☁️</span>
+                <h5 class="font-semibold text-indigo-600">クラウド</h5>
+                <p class="text-sm text-gray-700 mt-2">
+                  AWS、Google Cloud、Azureなどのクラウドサービス上の仮想サーバー
+                </p>
+              </div>
+              
+              <div class="bg-white p-4 rounded-lg shadow-md border-2 border-indigo-200 text-center">
+                <span class="text-3xl block mb-2">🏭</span>
+                <h5 class="font-semibold text-indigo-600">オンプレミス</h5>
+                <p class="text-sm text-gray-700 mt-2">
+                  企業や組織が自社内に設置・管理するサーバー
+                </p>
+              </div>
+            </div>
+            
+            <div class="mt-4 text-center text-sm text-indigo-700 bg-indigo-50 p-3 rounded-lg">
+              現代のWebサービスの多くは、クラウド上の仮想サーバーで動いています。<br>
+              これにより、物理的なサーバーの管理や保守の手間を省き、必要に応じて簡単にリソースを増減できるようになっています。
+            </div>
+          </div>
+          
+          <div class="bg-purple-50 border-l-4 border-purple-400 p-4">
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-purple-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a 1 0 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                </svg>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm text-purple-700">
+                  <strong>例えるなら：</strong> サーバーは、レストランのキッチンのようなものです。お客さん（ユーザー）は注文（リクエスト）をし、キッチン（サーバー）で料理（処理）が作られ、完成した料理（レスポンス）がお客さんに提供されます。
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="flex justify-between items-center">
+        <a href="/course/web-app-basics2" class="inline-flex items-center text-kinova-teal hover:text-kinova-orange transition-colors">
+          後編
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
