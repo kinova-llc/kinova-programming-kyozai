@@ -1,0 +1,150 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="開発の準備をしよう！ - 初心者向け Webアプリ開発講座">
+  <div class="container mx-auto px-4 py-12">
+    <div class="max-w-3xl mx-auto">
+      <div class="mb-8">
+        <a href="/kinova-programming-kyozai/course" class="inline-flex items-center text-kinova-teal hover:text-kinova-orange transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+          </svg>
+          講座一覧に戻る
+        </a>
+      </div>
+      
+      <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+        <div class="flex items-center mb-6">
+          <div class="bg-kinova-teal text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mr-4">2</div>
+          <h1 class="text-3xl font-bold text-kinova-gray">開発の準備をしよう！</h1>
+        </div>
+        
+        <p class="text-gray-700 mb-8">
+          Webアプリを開発するためには、いくつかのツールやソフトウェアが必要です。
+          この章では、開発環境の構築から、コードの管理方法まで、
+          Webアプリ開発を始めるための準備について学んでいきます。
+        </p>
+      </div>
+      
+      <!-- 開発環境とは -->
+      <section class="bg-white rounded-lg shadow-md p-8 mb-8">
+        <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center">
+          <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">1</span>
+          開発環境とは？
+        </h2>
+        
+        <p class="text-gray-700 mb-6">
+          「開発環境」とは、プログラムを書いたり、テストしたり、実行したりするために必要なツールやソフトウェアの集まりのことです。
+          適切な開発環境を整えることで、効率よく、快適にプログラミングを行うことができます。
+        </p>
+        
+        <div class="bg-gradient-to-r from-blue-100 to-indigo-100 p-6 rounded-lg mb-6">
+          <div class="bg-white rounded-lg shadow-md p-6 border-2 border-blue-300">
+            <h3 class="text-xl font-semibold text-blue-700 mb-4 flex items-center">
+              <span class="text-3xl mr-3">🛠️</span>
+              Webアプリ開発に必要なもの
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div class="bg-blue-50 rounded-lg p-4">
+                <h4 class="font-semibold text-blue-700 mb-2 flex items-center">
+                  <span class="text-xl mr-2">📝</span>
+                  コードエディタ
+                </h4>
+                <p class="text-gray-700 mb-2">
+                  プログラムコードを書くための専用エディタ。
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Visual Studio Code</span>
+                  <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Atom</span>
+                  <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Sublime Text</span>
+                </div>
+              </div>
+              
+              <div class="bg-blue-50 rounded-lg p-4">
+                <h4 class="font-semibold text-blue-700 mb-2 flex items-center">
+                  <span class="text-xl mr-2">🌐</span>
+                  Webブラウザ
+                </h4>
+                <p class="text-gray-700 mb-2">
+                  作成したWebアプリを表示・テストするためのブラウザ。
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Google Chrome</span>
+                  <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Firefox</span>
+                  <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Edge</span>
+                </div>
+              </div>
+              
+              <div class="bg-blue-50 rounded-lg p-4">
+                <h4 class="font-semibold text-blue-700 mb-2 flex items-center">
+                  <span class="text-xl mr-2">⚙️</span>
+                  Node.js
+                </h4>
+                <p class="text-gray-700 mb-2">
+                  JavaScriptをサーバーサイドで実行するための環境。
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">npm</span>
+                  <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">パッケージ管理</span>
+                </div>
+              </div>
+              
+              <div class="bg-blue-50 rounded-lg p-4">
+                <h4 class="font-semibold text-blue-700 mb-2 flex items-center">
+                  <span class="text-xl mr-2">🔄</span>
+                  バージョン管理システム
+                </h4>
+                <p class="text-gray-700 mb-2">
+                  コードの変更履歴を管理するためのツール。
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Git</span>
+                  <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">GitHub</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-indigo-50 p-4 rounded-lg">
+              <h4 class="font-semibold text-indigo-700 mb-2">なぜ開発環境が重要なの？</h4>
+              <ul class="space-y-2">
+                <li class="flex items-start">
+                  <span class="text-indigo-500 mr-2">✓</span>
+                  <span>効率的にコードを書くことができる</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-indigo-500 mr-2">✓</span>
+                  <span>エラーを早期に発見できる</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-indigo-500 mr-2">✓</span>
+                  <span>チームでの共同作業がスムーズになる</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-indigo-500 mr-2">✓</span>
+                  <span>コードの品質を維持しやすくなる</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="text-center text-sm text-indigo-700 bg-indigo-50 p-3 rounded-lg mt-4">
+            適切な開発環境を整えることで、プログラミングの学習や開発作業がスムーズになります。<br>
+            初心者のうちは、シンプルな環境から始めて、徐々に必要なツールを追加していくとよいでしょう。
+          </div>
+        </div>
+      </section>
+
+      <div class="flex justify-between items-center">
+        <span></span>
+        <a href="/kinova-programming-kyozai/course/development-setup2" class="inline-flex items-center text-kinova-teal hover:text-kinova-orange transition-colors">
+          次のページ：VS Codeのインストール
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>

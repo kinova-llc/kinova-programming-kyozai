@@ -1,7 +1,6 @@
 # build output
 dist/
 .output/
-.astro/
 
 # dependencies
 node_modules/
@@ -15,11 +14,9 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
-.env.local
-.env.development
 
 # macOS-specific files
 .DS_Store
 
-# Vercel
-.vercel
+# Local Netlify folder
+.netlify

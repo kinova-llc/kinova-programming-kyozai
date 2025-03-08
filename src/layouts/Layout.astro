@@ -23,10 +23,18 @@ const { title, description = "初心者向け Webアプリ開発講座 - Kinova"
   <body class="min-h-screen bg-gray-50">
     <header class="bg-white shadow-sm">
       <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-        <a class="flex items-center gap-2">
-          <img src="https://kinova.jp/assets/img/logo.png" alt="Kinova Logo" class="h-10" />
+        <a href="/kinova-programming-kyozai/" class="flex items-center gap-2">
+          <img src="/kinova-programming-kyozai/logo.png" alt="Kinova Logo" class="h-10" />
           <span class="text-kinova-gray font-semibold text-xl">Webアプリ開発講座</span>
         </a>
+        <nav>
+          <ul class="flex gap-6">
+            <li><a href="/kinova-programming-kyozai/" class="text-kinova-gray hover:text-kinova-teal transition-colors">ホーム</a></li>
+            <li><a href="/kinova-programming-kyozai/kinova-programming-kyozai/course" class="text-kinova-gray hover:text-kinova-teal transition-colors">講座一覧</a></li>
+            <li><a href="/kinova-programming-kyozai/todo-app" class="text-kinova-gray hover:text-kinova-teal transition-colors">Todoアプリ</a></li>
+            <li><a href="/kinova-programming-kyozai/about" class="text-kinova-gray hover:text-kinova-teal transition-colors">サイトについて</a></li>
+          </ul>
+        </nav>
       </div>
     </header>
     
@@ -38,8 +46,17 @@ const { title, description = "初心者向け Webアプリ開発講座 - Kinova"
       <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row justify-between gap-8">
           <div class="md:w-1/3">
-            <img src="https://kinova.jp/assets/img/logo.png" alt="Kinova Logo" class="h-12 mb-4" />
+            <img src="/kinova-programming-kyozai//logo.png" alt="Kinova Logo" class="h-12 mb-4" />
             <p class="text-gray-300">初心者の方でも分かりやすいWebアプリ開発の情報を提供します。</p>
+          </div>
+          <div>
+            <h3 class="font-semibold text-lg mb-4">リンク</h3>
+            <ul class="space-y-2">
+              <li><a href="/kinova-programming-kyozai/kinova-programming-kyozai/course" class="text-gray-300 hover:text-white transition-colors">講座一覧</a></li>
+              <li><a href="/kinova-programming-kyozai/todo-app" class="text-gray-300 hover:text-white transition-colors">Todoアプリ</a></li>
+              <li><a href="/kinova-programming-kyozai/about" class="text-gray-300 hover:text-white transition-colors">サイトについて</a></li>
+              <li><a href="https://kinova.jp" class="text-gray-300 hover:text-white transition-colors">Kinova公式サイト</a></li>
+            </ul>
           </div>
         </div>
         <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
