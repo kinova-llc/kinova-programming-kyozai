@@ -1,25 +1,29 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Newsletter from '../../components/Newsletter.astro';
+import Layout from "../../layouts/Layout.astro";
 ---
 
-<Layout title="画面を作ってアプリっぽくしよう - 初心者向け Webアプリ開発講座">
+<Layout title="画面の作り方を学ぼう - 初心者向け Webアプリ開発講座">
   <div class="container mx-auto px-4 py-12">
     <div class="max-w-4xl mx-auto">
-      
       <!-- ヘッダーセクション -->
-      <div class="bg-gradient-to-r from-kinova-teal to-kinova-orange rounded-lg shadow-lg overflow-hidden mb-12">
+      <div
+        class="bg-gradient-to-r from-kinova-teal to-kinova-orange rounded-lg shadow-lg overflow-hidden mb-12"
+      >
         <div class="p-8 text-white">
           <div class="flex items-center gap-2 mb-4">
-            <span class="text-sm bg-white/20 px-3 py-1 rounded-full">Web開発</span>
-            <span class="text-sm">2025年2月15日</span>
+            <span class="text-sm bg-white/20 px-3 py-1 rounded-full"
+              >UI開発入門</span
+            >
+            <span class="text-sm">2025年1月30日</span>
           </div>
-          <h1 class="text-4xl font-bold mb-4">画面を作ってアプリっぽくしよう</h1>
+          <h1 class="text-4xl font-bold mb-4">画面の作り方を学ぼう</h1>
           <p class="text-xl opacity-90 mb-6">
-            ユーザーが使いやすいWebアプリの画面を作るための基本的な知識と実践的なテクニックを解説します。HTMLとCSSの基礎から、JavaScriptを使った動的な画面の作り方まで、初心者にも分かりやすく説明します。
+            シンプルなTodoアプリを作りながら、画面の作り方を一緒に学んでいきましょう。
           </p>
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-kinova-teal">
+            <div
+              class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-kinova-teal"
+            >
               <span class="text-xl">👩‍💻</span>
             </div>
             <div>
@@ -28,1883 +32,783 @@ import Newsletter from '../../components/Newsletter.astro';
           </div>
         </div>
       </div>
-      
+
       <!-- 目次 -->
       <div class="bg-white rounded-lg shadow-md p-6 mb-12">
         <h2 class="text-xl font-semibold mb-4 text-kinova-gray">目次</h2>
         <ul class="space-y-3">
           <li>
-            <a href="#html-basics" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors">
-              <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">1</span>
-              HTMLでページの骨組みを作る
+            <a
+              href="#intro"
+              class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors"
+            >
+              <span
+                class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal"
+                >1</span
+              >
+              画面を作る前に：設計の重要性
             </a>
           </li>
           <li>
-            <a href="#css-basics" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors">
-              <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">2</span>
-              CSSで見た目を整える
+            <a
+              href="#todo-app"
+              class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors"
+            >
+              <span
+                class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal"
+                >2</span
+              >
+              Todoアプリを作ってみよう
             </a>
           </li>
           <li>
-            <a href="#form-elements" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors">
-              <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">3</span>
-              フォームを作って、ユーザーが入力できるようにする
+            <a
+              href="#step1"
+              class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors"
+            >
+              <span
+                class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal"
+                >3</span
+              >
+              STEP 1: 基本的な画面構造を作る
             </a>
           </li>
           <li>
-            <a href="#js-interaction" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors">
-              <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">4</span>
-              JavaScriptで画面に動きをつける
+            <a
+              href="#step2"
+              class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors"
+            >
+              <span
+                class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal"
+                >4</span
+              >
+              STEP 2: タスクの入力フォームを作る
             </a>
           </li>
           <li>
-            <a href="#error-handling" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors">
-              <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">5</span>
-              エラーが起きたときの対応を考える
-            </a>
-          </li>
-          <li>
-            <a href="#responsive-design" class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors">
-              <span class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal">6</span>
-              レスポンシブデザインで様々な画面サイズに対応する
+            <a
+              href="#step3"
+              class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors"
+            >
+              <span
+                class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal"
+                >5</span
+              >
+              STEP 3: タスクリストを表示する
             </a>
           </li>
         </ul>
       </div>
-      
+
       <!-- 本文 -->
       <div class="space-y-12">
-        <!-- HTMLでページの骨組みを作る -->
-        <section id="html-basics" class="bg-white rounded-lg shadow-md p-8">
-          <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center">
-            <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">1</span>
-            HTMLでページの骨組みを作る
+        <!-- 画面を作る前に -->
+        <section id="intro" class="bg-white rounded-lg shadow-md p-8">
+          <h2
+            class="text-2xl font-bold text-kinova-gray mb-6 flex items-center"
+          >
+            <span
+              class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm"
+              >1</span
+            >
+            画面を作る前に：設計の重要性
           </h2>
-          
+
           <p class="text-gray-700 mb-6">
-            Webページの基本となるのは、HTML（HyperText Markup Language）です。HTMLは、Webページの構造や内容を定義するためのマークアップ言語です。
-            まずは、HTMLの基本的な構造と、よく使われる要素について見ていきましょう。
+            画面を作る前に、まずは「何を作るのか」「どんな機能が必要か」をしっかり考えることが大切です。
+            家を建てる時に設計図が必要なように、画面にも設計が必要です。
           </p>
-          
-          <div class="bg-gradient-to-r from-blue-100 to-indigo-100 p-6 rounded-lg mb-6">
-            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-blue-300">
-              <h3 class="text-xl font-semibold text-blue-700 mb-4 flex items-center">
-                <span class="text-3xl mr-3">🏗️</span>
-                HTMLの基本構造
+
+          <div
+            class="bg-gradient-to-r from-blue-100 to-indigo-100 p-6 rounded-lg mb-6"
+          >
+            <div class="bg-white rounded-lg p-6 border-2 border-blue-300">
+              <h3 class="text-xl font-semibold text-blue-700 mb-4">
+                画面設計のポイント
               </h3>
-              
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <div class="bg-gray-100 p-4 rounded-lg font-mono text-sm overflow-x-auto mb-2">
-                    <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="ja"&gt;
-&lt;head&gt;
-  &lt;meta charset="UTF-8"&gt;
-  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-  &lt;title&gt;ページのタイトル&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;!-- ここにページの内容を書きます --&gt;
-  &lt;h1&gt;見出し&lt;/h1&gt;
-  &lt;p&gt;段落のテキスト&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                  </div>
-                  <p class="text-sm text-gray-600 italic">
-                    HTMLの基本的な構造。&lt;head&gt;にはメタ情報、&lt;body&gt;には実際に表示される内容を記述します。
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-blue-700 mb-2">
+                    ❌ よくない例
+                  </h4>
+                  <p class="text-gray-700 mb-4">
+                    いきなりコードを書き始めると...
                   </p>
-                </div>
-                
-                <div class="bg-blue-50 rounded-lg p-4">
-                  <h4 class="font-semibold text-blue-700 mb-2">HTMLの基本要素</h4>
-                  <ul class="space-y-2">
+                  <ul class="space-y-2 text-gray-600">
                     <li class="flex items-start">
-                      <span class="text-blue-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-blue-100 px-1 rounded">&lt;h1&gt;〜&lt;h6&gt;</code>：見出し（重要度に応じて1〜6まであります）
-                      </div>
+                      <span class="text-red-500 mr-2">•</span>
+                      <span>必要な機能が抜け落ちる</span>
                     </li>
                     <li class="flex items-start">
-                      <span class="text-blue-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-blue-100 px-1 rounded">&lt;p&gt;</code>：段落
-                      </div>
+                      <span class="text-red-500 mr-2">•</span>
+                      <span>後から大幅な修正が必要になる</span>
                     </li>
                     <li class="flex items-start">
-                      <span class="text-blue-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-blue-100 px-1 rounded">&lt;a&gt;</code>：リンク
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-blue-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-blue-100 px-1 rounded">&lt;img&gt;</code>：画像
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-blue-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-blue-100 px-1 rounded">&lt;div&gt;</code>：コンテンツをグループ化するための汎用コンテナ
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-blue-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-blue-100 px-1 rounded">&lt;span&gt;</code>：インラインテキストをグループ化するための要素
-                      </div>
+                      <span class="text-red-500 mr-2">•</span>
+                      <span>使いにくい画面になってしまう</span>
                     </li>
                   </ul>
                 </div>
-              </div>
-              
-              <div class="bg-indigo-50 p-4 rounded-lg">
-                <h4 class="font-semibold text-indigo-700 mb-2">HTMLの書き方のポイント</h4>
-                <ul class="space-y-2">
-                  <li class="flex items-start">
-                    <span class="text-indigo-500 mr-2">✓</span>
-                    <span>要素は <code class="bg-indigo-100 px-1 rounded">&lt;タグ名&gt;内容&lt;/タグ名&gt;</code> の形式で記述します</span>
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-indigo-500 mr-2">✓</span>
-                    <span>要素には属性を追加できます：<code class="bg-indigo-100 px-1 rounded">&lt;a href="https://example.com"&gt;リンク&lt;/a&gt;</code></span>
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-indigo-500 mr-2">✓</span>
-                    <span>一部の要素は閉じタグが不要です：<code class="bg-indigo-100 px-1 rounded">&lt;img src="image.jpg" alt="説明"&gt;</code></span>
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-indigo-500 mr-2">✓</span>
-                    <span>要素は入れ子にできますが、適切に閉じる必要があります</span>
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-indigo-500 mr-2">✓</span>
-                    <span>インデントを使って、コードの階層構造を分かりやすくしましょう</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-indigo-300 mt-6">
-              <h3 class="text-xl font-semibold text-indigo-700 mb-4 flex items-center">
-                <span class="text-3xl mr-3">🧩</span>
-                よく使われるHTML要素
-              </h3>
-              
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div class="bg-indigo-50 rounded-lg p-4">
-                  <h4 class="font-semibold text-indigo-700 mb-2">コンテンツ構造化</h4>
-                  <ul class="space-y-2">
+
+                <div class="bg-blue-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-blue-700 mb-2">✅ 良い例</h4>
+                  <p class="text-gray-700 mb-4">最初に設計をしっかりと行う</p>
+                  <ul class="space-y-2 text-gray-600">
                     <li class="flex items-start">
-                      <span class="text-indigo-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-indigo-100 px-1 rounded">&lt;header&gt;</code>：ページやセクションのヘッダー
-                      </div>
+                      <span class="text-green-500 mr-2">•</span>
+                      <span>必要な機能を洗い出す</span>
                     </li>
                     <li class="flex items-start">
-                      <span class="text-indigo-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-indigo-100 px-1 rounded">&lt;nav&gt;</code>：ナビゲーションリンクのセクション
-                      </div>
+                      <span class="text-green-500 mr-2">•</span>
+                      <span>画面の構成を考える</span>
                     </li>
                     <li class="flex items-start">
-                      <span class="text-indigo-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-indigo-100 px-1 rounded">&lt;main&gt;</code>：メインコンテンツ
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-indigo-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-indigo-100 px-1 rounded">&lt;section&gt;</code>：コンテンツのセクション
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-indigo-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-indigo-100 px-1 rounded">&lt;article&gt;</code>：独立したコンテンツ
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-indigo-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-indigo-100 px-1 rounded">&lt;aside&gt;</code>：補足情報
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-indigo-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-indigo-100 px-1 rounded">&lt;footer&gt;</code>：ページやセクションのフッター
-                      </div>
+                      <span class="text-green-500 mr-2">•</span>
+                      <span>ユーザーの操作の流れを考える</span>
                     </li>
                   </ul>
                 </div>
-                
-                <div class="bg-indigo-50 rounded-lg p-4">
-                  <h4 class="font-semibold text-indigo-700 mb-2">リスト</h4>
-                  <ul class="space-y-2">
-                    <li class="flex items-start">
-                      <span class="text-indigo-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-indigo-100 px-1 rounded">&lt;ul&gt;</code>：順序なしリスト（箇条書き）
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-indigo-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-indigo-100 px-1 rounded">&lt;ol&gt;</code>：順序付きリスト（番号付き）
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-indigo-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-indigo-100 px-1 rounded">&lt;li&gt;</code>：リストアイテム
-                      </div>
-                    </li>
-                  </ul>
-                  
-                  <h4 class="font-semibold text-indigo-700 mt-4 mb-2">テーブル</h4>
-                  <ul class="space-y-2">
-                    <li class="flex items-start">
-                      <span class="text-indigo-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-indigo-100 px-1 rounded">&lt;table&gt;</code>：テーブル
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-indigo-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-indigo-100 px-1 rounded">&lt;tr&gt;</code>：テーブルの行
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-indigo-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-indigo-100 px-1 rounded">&lt;th&gt;</code>：ヘッダーセル
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-indigo-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-indigo-100 px-1 rounded">&lt;td&gt;</code>：データセル
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              
-              <div class="bg-blue-50 p-4 rounded-lg">
-                <h4 class="font-semibold text-blue-700 mb-2">セマンティックHTML</h4>
-                <p class="text-gray-700 mb-2">
-                  「セマンティックHTML」とは、要素の見た目だけでなく、その意味や役割に合わせてHTMLタグを選ぶことです。
-                  これにより、以下のメリットがあります：
-                </p>
-                <ul class="space-y-1 text-sm">
-                  <li class="flex items-start">
-                    <span class="text-blue-500 mr-2">✓</span>
-                    <span>検索エンジンがコンテンツを理解しやすくなる（SEO対策）</span>
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-blue-500 mr-2">✓</span>
-                    <span>スクリーンリーダーなどの支援技術でアクセスしやすくなる（アクセシビリティ）</span>
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-blue-500 mr-2">✓</span>
-                    <span>コードが読みやすく、メンテナンスしやすくなる</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <div class="text-center text-sm text-indigo-700 bg-indigo-50 p-3 rounded-lg mt-4">
-              HTMLは、Webページの「骨組み」を作るための言語です。<br>
-              適切なタグを使って、コンテンツの構造を明確に定義することが大切です。<br>
-              次のステップでは、CSSを使ってこの骨組みに「肉付け」していきます。
-            </div>
-          </div>
-          
-          <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
-            <div class="flex">
-              <div class="flex-shrink-0">
-                <svg class="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
-                </svg>
-              </div>
-              <div class="ml-3">
-                <p class="text-sm text-blue-700">
-                  <strong>HTMLを学ぶためのリソース：</strong> HTMLの詳細を学ぶには、<a href="https://developer.mozilla.org/ja/docs/Learn/HTML" target="_blank" class="text-blue-600 hover:underline">MDN Web Docs</a>がおすすめです。また、<a href="https://www.w3schools.com/html/" target="_blank" class="text-blue-600 hover:underline">W3Schools</a>では、実際に試しながら学ぶことができます。
-                </p>
               </div>
             </div>
           </div>
         </section>
-        
-        <!-- CSSで見た目を整える -->
-        <section id="css-basics" class="bg-white rounded-lg shadow-md p-8">
-          <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center">
-            <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">2</span>
-            CSSで見た目を整える
-          </h2>
-          
-          <p class="text-gray-700 mb-6">
-            HTMLで骨組みを作ったら、次はCSSを使って見た目を整えていきます。
-            CSS（Cascading Style Sheets）は、Webページのレイアウト、色、フォント、間隔などのスタイルを定義するための言語です。
-          </p>
-          
-          <div class="bg-gradient-to-r from-pink-100 to-purple-100 p-6 rounded-lg mb-6">
-            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-pink-300">
-              <h3 class="text-xl font-semibold text-pink-700 mb-4 flex items-center">
-                <span class="text-3xl mr-3">🎨</span>
-                CSSの基本
-              </h3>
-              
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <div class="bg-gray-100 p-4 rounded-lg font-mono text-sm overflow-x-auto mb-2">
-                    <pre><code>{String.raw`/* CSSの基本的な書き方 */
-セレクタ {
-  プロパティ: 値;
-  プロパティ: 値;
-}
 
-/* 例: 段落のスタイル */
-p {
-  color: #333333;
-  font-size: 16px;
-  line-height: 1.5;
-  margin-bottom: 1em;
-}`}</code></pre>
-                  </div>
-                  <p class="text-sm text-gray-600 italic">
-                    CSSの基本的な構文。セレクタで要素を選択し、プロパティと値でスタイルを指定します。
-                  </p>
-                </div>
-                
-                <div class="bg-pink-50 rounded-lg p-4">
-                  <h4 class="font-semibold text-pink-700 mb-2">CSSの3つの適用方法</h4>
-                  <ul class="space-y-2">
-                    <li class="flex items-start">
-                      <span class="text-pink-500 mr-2">1.</span>
-                      <div>
-                        <p class="font-medium">インラインスタイル</p>
-                        <code class="bg-pink-100 px-1 rounded text-xs">&lt;p style="color: blue; font-size: 16px;"&gt;テキスト&lt;/p&gt;</code>
-                        <p class="text-sm text-gray-600 mt-1">個別の要素に直接スタイルを適用します。再利用性が低いため、あまり推奨されません。</p>
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-pink-500 mr-2">2.</span>
-                      <div>
-                        <p class="font-medium">内部スタイルシート</p>
-                        <code class="bg-pink-100 px-1 rounded text-xs">{String.raw`&lt;style&gt; p { color: blue; } &lt;/style&gt;`}</code>
-                        <p class="text-sm text-gray-600 mt-1">HTMLファイルの&lt;head&gt;内に&lt;style&gt;タグを使って記述します。</p>
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-pink-500 mr-2">3.</span>
-                      <div>
-                        <p class="font-medium">外部スタイルシート（推奨）</p>
-                        <code class="bg-pink-100 px-1 rounded text-xs">&lt;link rel="stylesheet" href="styles.css"&gt;</code>
-                        <p class="text-sm text-gray-600 mt-1">別ファイル（.css）にスタイルを記述し、HTMLからリンクします。最も再利用性が高く、メンテナンスしやすい方法です。</p>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              
-              <div class="bg-purple-50 p-4 rounded-lg">
-                <h4 class="font-semibold text-purple-700 mb-2">よく使われるCSSセレクタ</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <ul class="space-y-2">
-                      <li class="flex items-start">
-                        <span class="text-purple-500 mr-2">•</span>
-                        <div>
-                          <code class="bg-purple-100 px-1 rounded">要素</code>：タグ名で選択
-                          <p class="text-xs text-gray-600">例: <code>{String.raw`p { color: blue; }`}</code></p>
-                        </div>
-                      </li>
-                      <li class="flex items-start">
-                        <span class="text-purple-500 mr-2">•</span>
-                        <div>
-                          <code class="bg-purple-100 px-1 rounded">.クラス名</code>：クラスで選択
-                          <p class="text-xs text-gray-600">例: <code>{String.raw`.highlight { background: yellow; }`}</code></p>
-                        </div>
-                      </li>
-                      <li class="flex items-start">
-                        <span class="text-purple-500 mr-2">•</span>
-                        <div>
-                          <code class="bg-purple-100 px-1 rounded">#ID名</code>：IDで選択
-                          <p class="text-xs text-gray-600">例: <code>{String.raw`#header { height: 80px; }`}</code></p>
-                        </div>
-                      </li>
+        <!-- Todoアプリを作ってみよう -->
+        <section id="todo-app" class="bg-white rounded-lg shadow-md p-8">
+          <h2
+            class="text-2xl font-bold text-kinova-gray mb-6 flex items-center"
+          >
+            <span
+              class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm"
+              >2</span
+            >
+            Todoアプリを作ってみよう
+          </h2>
+
+          <p class="text-gray-700 mb-6">
+            実際に簡単なTodoアプリを作りながら、画面の作り方を学んでいきましょう。
+            まずは、必要な機能を考えてみます。
+          </p>
+
+          <div
+            class="bg-gradient-to-r from-purple-100 to-pink-100 p-6 rounded-lg mb-6"
+          >
+            <div class="bg-white rounded-lg p-6 border-2 border-purple-300">
+              <h3 class="text-xl font-semibold text-purple-700 mb-4">
+                Todoアプリに必要な機能
+              </h3>
+
+              <div class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div class="bg-purple-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-purple-700 mb-2">
+                      <span class="text-2xl mr-2">1️⃣</span>
+                      タスクの追加
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                      <li>• タスクの入力欄</li>
+                      <li>• 追加ボタン</li>
                     </ul>
                   </div>
-                  <div>
-                    <ul class="space-y-2">
-                      <li class="flex items-start">
-                        <span class="text-purple-500 mr-2">•</span>
-                        <div>
-                          <code class="bg-purple-100 px-1 rounded">親 > 子</code>：直接の子要素を選択
-                          <p class="text-xs text-gray-600">例: <code>{String.raw`nav > ul { margin: 0; }`}</code></p>
-                        </div>
-                      </li>
-                      <li class="flex items-start">
-                        <span class="text-purple-500 mr-2">•</span>
-                        <div>
-                          <code class="bg-purple-100 px-1 rounded">要素1, 要素2</code>：複数の要素を選択
-                          <p class="text-xs text-gray-600">例: <code>{String.raw`h1, h2 { font-weight: bold; }`}</code></p>
-                        </div>
-                      </li>
-                      <li class="flex items-start">
-                        <span class="text-purple-500 mr-2">•</span>
-                        <div>
-                          <code class="bg-purple-100 px-1 rounded">要素:hover</code>：疑似クラス
-                          <p class="text-xs text-gray-600">例: <code>{String.raw`a:hover { text-decoration: underline; }`}</code></p>
-                        </div>
-                      </li>
+
+                  <div class="bg-purple-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-purple-700 mb-2">
+                      <span class="text-2xl mr-2">2️⃣</span>
+                      タスクの表示
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                      <li>• タスクのリスト</li>
+                      <li>• 完了/未完了の状態</li>
+                    </ul>
+                  </div>
+
+                  <div class="bg-purple-50 p-4 rounded-lg">
+                    <h4 class="font-semibold text-purple-700 mb-2">
+                      <span class="text-2xl mr-2">3️⃣</span>
+                      タスクの操作
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                      <li>• 完了のチェック</li>
+                      <li>• 削除ボタン</li>
                     </ul>
                   </div>
                 </div>
-              </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-purple-300 mt-6">
-              <h3 class="text-xl font-semibold text-purple-700 mb-4 flex items-center">
-                <span class="text-3xl mr-3">📏</span>
-                よく使われるCSSプロパティ
-              </h3>
-              
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                <div class="bg-purple-50 rounded-lg p-4">
-                  <h4 class="font-semibold text-purple-700 mb-2">テキストのスタイル</h4>
-                  <ul class="space-y-1 text-sm">
-                    <li><code class="bg-purple-100 px-1 rounded">color</code>：文字色</li>
-                    <li><code class="bg-purple-100 px-1 rounded">font-family</code>：フォント</li>
-                    <li><code class="bg-purple-100 px-1 rounded">font-size</code>：文字サイズ</li>
-                    <li><code class="bg-purple-100 px-1 rounded">font-weight</code>：太さ</li>
-                    <li><code class="bg-purple-100 px-1 rounded">text-align</code>：配置</li>
-                    <li><code class="bg-purple-100 px-1 rounded">line-height</code>：行の高さ</li>
-                    <li><code class="bg-purple-100 px-1 rounded">text-decoration</code>：装飾</li>
-                  </ul>
-                </div>
-                
-                <div class="bg-purple-50 rounded-lg p-4">
-                  <h4 class="font-semibold text-purple-700 mb-2">ボックスモデル</h4>
-                  <ul class="space-y-1 text-sm">
-                    <li><code class="bg-purple-100 px-1 rounded">width</code>：幅</li>
-                    <li><code class="bg-purple-100 px-1 rounded">height</code>：高さ</li>
-                    <li><code class="bg-purple-100 px-1 rounded">padding</code>：内側の余白</li>
-                    <li><code class="bg-purple-100 px-1 rounded">margin</code>：外側の余白</li>
-                    <li><code class="bg-purple-100 px-1 rounded">border</code>：境界線</li>
-                    <li><code class="bg-purple-100 px-1 rounded">border-radius</code>：角の丸み</li>
-                    <li><code class="bg-purple-100 px-1 rounded">box-shadow</code>：影</li>
-                  </ul>
-                </div>
-                
-                <div class="bg-purple-50 rounded-lg p-4">
-                  <h4 class="font-semibold text-purple-700 mb-2">レイアウト</h4>
-                  <ul class="space-y-1 text-sm">
-                    <li><code class="bg-purple-100 px-1 rounded">display</code>：表示方法</li>
-                    <li><code class="bg-purple-100 px-1 rounded">position</code>：配置方法</li>
-                    <li><code class="bg-purple-100 px-1 rounded">top/right/bottom/left</code>：位置</li>
-                    <li><code class="bg-purple-100 px-1 rounded">float</code>：浮動</li>
-                    <li><code class="bg-purple-100 px-1 rounded">z-index</code>：重なり順序</li>
-                    <li><code class="bg-purple-100 px-1 rounded">overflow</code>：はみ出し処理</li>
-                  </ul>
-                </div>
-              </div>
-              
-              <div class="bg-pink-50 p-4 rounded-lg mb-6">
-                <h4 class="font-semibold text-pink-700 mb-2">ボックスモデルの図解</h4>
-                <div class="flex justify-center">
-                  <div class="relative w-64 h-64 border-4 border-dashed border-gray-400 p-4 bg-white">
-                    <div class="absolute inset-0 flex items-center justify-center text-gray-400">margin</div>
-                    <div class="relative w-full h-full border-4 border-dashed border-gray-500 p-4">
-                      <div class="absolute inset-0 flex items-center justify-center text-gray-500">border</div>
-                      <div class="relative w-full h-full border-4 border-dashed border-gray-600 p-4">
-                        <div class="absolute inset-0 flex items-center justify-center text-gray-600">padding</div>
-                        <div class="relative w-full h-full bg-pink-200 flex items-center justify-center text-pink-700 font-bold">
-                          content
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <p class="text-center text-sm text-gray-600 mt-2">
-                  CSSのボックスモデル：すべての要素は、コンテンツ、パディング、ボーダー、マージンで構成されています。
-                </p>
-              </div>
-              
-              <div class="bg-pink-50 p-4 rounded-lg">
-                <h4 class="font-semibold text-pink-700 mb-2">モダンなレイアウト技術</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <h5 class="font-medium text-pink-700 mb-1">Flexbox</h5>
-                    <p class="text-sm text-gray-700 mb-2">
-                      一次元（行または列）のレイアウトに最適。要素の配置や整列が簡単にできます。
-                    </p>
-                    <div class="bg-gray-100 p-2 rounded-lg font-mono text-xs overflow-x-auto">
-                      <pre><code>{String.raw`.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}`}</code></pre>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h5 class="font-medium text-pink-700 mb-1">Grid</h5>
-                    <p class="text-sm text-gray-700 mb-2">
-                      二次元（行と列）のレイアウトに最適。複雑なグリッドベースのデザインを作成できます。
-                    </p>
-                    <div class="bg-gray-100 p-2 rounded-lg font-mono text-xs overflow-x-auto">
-                      <pre><code>{String.raw`.container {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  gap: 20px;
-}`}</code></pre>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="text-center text-sm text-purple-700 bg-purple-50 p-3 rounded-lg mt-4">
-              CSSは、Webページの「見た目」を整えるための言語です。<br>
-              基本的なプロパティを覚えて、少しずつ試しながら学んでいくのがおすすめです。<br>
-              また、FlexboxやGridなどのモダンなレイアウト技術を使うと、複雑なデザインも簡単に実現できます。
-            </div>
-          </div>
-          
-          <div class="bg-pink-50 border-l-4 border-pink-400 p-4">
-            <div class="flex">
-              <div class="flex-shrink-0">
-                <svg class="h-5 w-5 text-pink-400" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
-                </svg>
-              </div>
-              <div class="ml-3">
-                <p class="text-sm text-pink-700">
-                  <strong>CSSフレームワーク：</strong> 一からCSSを書くのは大変なので、<a href="https://tailwindcss.com/" target="_blank" class="text-pink-600 hover:underline">Tailwind CSS</a>や<a href="https://getbootstrap.com/" target="_blank" class="text-pink-600 hover:underline">Bootstrap</a>などのCSSフレームワークを使うと、効率よく見栄えの良いデザインを作ることができます。これらのフレームワークは、あらかじめ用意されたクラスを使って、簡単にスタイルを適用できます。
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-        
-        <!-- フォームを作って、ユーザーが入力できるようにする -->
-        <section id="form-elements" class="bg-white rounded-lg shadow-md p-8">
-          <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center">
-            <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">3</span>
-            フォームを作って、ユーザーが入力できるようにする
-          </h2>
-          
-          <p class="text-gray-700 mb-6">
-            Webアプリケーションでは、ユーザーからの入力を受け付けるためにフォームを使用します。
-            フォームには、テキスト入力、チェックボックス、ラジオボタン、セレクトボックスなど、様々な入力要素があります。
-          </p>
-          
-          <div class="bg-gradient-to-r from-green-100 to-teal-100 p-6 rounded-lg mb-6">
-            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-green-300">
-              <h3 class="text-xl font-semibold text-green-700 mb-4 flex items-center">
-                <span class="text-3xl mr-3">📝</span>
-                HTMLフォームの基本
-              </h3>
-              
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <div class="bg-gray-100 p-4 rounded-lg font-mono text-sm overflow-x-auto mb-2">
-                    <pre><code>&lt;form action="/submit" method="post"&gt;
-  &lt;div&gt;
-    &lt;label for="username"&gt;ユーザー名:&lt;/label&gt;
-    &lt;input type="text" id="username" name="username" required&gt;
-  &lt;/div&gt;
-  
-  &lt;div&gt;
-    &lt;label for="email"&gt;メールアドレス:&lt;/label&gt;
-    &lt;input type="email" id="email" name="email" required&gt;
-  &lt;/div&gt;
-  
-  &lt;div&gt;
-    &lt;label for="password"&gt;パスワード:&lt;/label&gt;
-    &lt;input type="password" id="password" name="password" required&gt;
-  &lt;/div&gt;
-  
-  &lt;button type="submit"&gt;送信&lt;/button&gt;
-&lt;/form&gt;</code></pre>
-                  </div>
-                  <p class="text-sm text-gray-600 italic">
-                    基本的なHTMLフォームの例。ユーザー名、メールアドレス、パスワードの入力フィールドと送信ボタンがあります。
-                  </p>
-                </div>
-                
-                <div class="bg-green-50 rounded-lg p-4">
-                  <h4 class="font-semibold text-green-700 mb-2">フォームの主要な属性</h4>
-                  <ul class="space-y-2">
-                    <li class="flex items-start">
-                      <span class="text-green-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-green-100 px-1 rounded">action</code>：フォームの送信先URL
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-green-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-green-100 px-1 rounded">method</code>：送信方法（get/post）
-                        <ul class="mt-1 ml-4 space-y-1 text-xs">
-                          <li><code>get</code>：URLにデータを付加（検索などに適しています）</li>
-                          <li><code>post</code>：リクエストボディにデータを含める（機密データや大量のデータに適しています）</li>
-                        </ul>
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-green-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-green-100 px-1 rounded">name</code>：入力フィールドの名前（サーバー側で識別するために使用）
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-green-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-green-100 px-1 rounded">id</code>：要素のID（labelとの関連付けに使用）
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-green-500 mr-2">•</span>
-                      <div>
-                         <code class="bg-green-100 px-1 rounded">required</code>：必須入力フィールドを指定
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              
-              <div class="bg-teal-50 p-4 rounded-lg">
-                <h4 class="font-semibold text-teal-700 mb-2">フォームの基本的な構成要素</h4>
-                <p class="text-gray-700 mb-2">
-                  フォームは以下の要素で構成されます：
-                </p>
-                <ul class="space-y-2">
-                  <li class="flex items-start">
-                    <span class="text-teal-500 mr-2">•</span>
-                    <div>
-                      <code class="bg-teal-100 px-1 rounded">&lt;form&gt;</code>：フォーム全体を囲む要素
-                    </div>
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-teal-500 mr-2">•</span>
-                    <div>
-                      <code class="bg-teal-100 px-1 rounded">&lt;label&gt;</code>：入力フィールドのラベル（説明）
-                    </div>
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-teal-500 mr-2">•</span>
-                    <div>
-                      <code class="bg-teal-100 px-1 rounded">&lt;input&gt;</code>：入力フィールド
-                    </div>
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-teal-500 mr-2">•</span>
-                    <div>
-                      <code class="bg-teal-100 px-1 rounded">&lt;textarea&gt;</code>：複数行のテキスト入力
-                    </div>
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-teal-500 mr-2">•</span>
-                    <div>
-                      <code class="bg-teal-100 px-1 rounded">&lt;select&gt;</code>と<code class="bg-teal-100 px-1 rounded">&lt;option&gt;</code>：ドロップダウンリスト
-                    </div>
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-teal-500 mr-2">•</span>
-                    <div>
-                      <code class="bg-teal-100 px-1 rounded">&lt;button&gt;</code>：ボタン（送信、リセットなど）
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-teal-300 mt-6">
-              <h3 class="text-xl font-semibold text-teal-700 mb-4 flex items-center">
-                <span class="text-3xl mr-3">🔄</span>
-                様々な入力要素
-              </h3>
-              
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <h4 class="font-semibold text-teal-700 mb-2">テキスト入力</h4>
-                  <div class="bg-gray-100 p-3 rounded-lg font-mono text-sm overflow-x-auto mb-2">
-                    <pre><code>&lt;input type="text" placeholder="名前を入力"&gt;
-&lt;input type="email" placeholder="メールアドレス"&gt;
-&lt;input type="password" placeholder="パスワード"&gt;
-&lt;input type="number" min="0" max="100"&gt;
-&lt;input type="tel" placeholder="電話番号"&gt;
-&lt;textarea rows="4" placeholder="コメント"&gt;&lt;/textarea&gt;</code></pre>
-                  </div>
-                  
-                  <div class="bg-white border border-gray-300 rounded-lg p-4 mt-4">
-                    <h5 class="font-medium text-teal-700 mb-2">実際の表示例：</h5>
-                    <div class="space-y-2">
-                      <div>
-                        <label class="block text-sm text-gray-600 mb-1">名前：</label>
-                        <input type="text" placeholder="名前を入力" class="w-full px-3 py-2 border border-gray-300 rounded-md">
-                      </div>
-                      <div>
-                        <label class="block text-sm text-gray-600 mb-1">メールアドレス：</label>
-                        <input type="email" placeholder="メールアドレス" class="w-full px-3 py-2 border border-gray-300 rounded-md">
-                      </div>
-                      <div>
-                        <label class="block text-sm text-gray-600 mb-1">コメント：</label>
-                        <textarea rows="2" placeholder="コメント" class="w-full px-3 py-2 border border-gray-300 rounded-md"></textarea>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div>
-                  <h4 class="font-semibold text-teal-700 mb-2">選択肢</h4>
-                  <div class="bg-gray-100 p-3 rounded-lg font-mono text-sm overflow-x-auto mb-2">
-                    <pre><code>&lt;!-- チェックボックス --&gt;
-&lt;input type="checkbox" id="agree" name="agree"&gt;
-&lt;label for="agree"&gt;利用規約に同意する&lt;/label&gt;
 
-&lt;!-- ラジオボタン --&gt;
-&lt;input type="radio" id="male" name="gender" value="male"&gt;
-&lt;label for="male"&gt;男性&lt;/label&gt;
-&lt;input type="radio" id="female" name="gender" value="female"&gt;
-&lt;label for="female"&gt;女性&lt;/label&gt;
-
-&lt;!-- セレクトボックス --&gt;
-&lt;select name="country"&gt;
-  &lt;option value=""&gt;国を選択&lt;/option&gt;
-  &lt;option value="jp"&gt;日本&lt;/option&gt;
-  &lt;option value="us"&gt;アメリカ&lt;/option&gt;
-  &lt;option value="uk"&gt;イギリス&lt;/option&gt;
-&lt;/select&gt;</code></pre>
-                  </div>
-                  
-                  <div class="bg-white border border-gray-300 rounded-lg p-4 mt-4">
-                    <h5 class="font-medium text-teal-700 mb-2">実際の表示例：</h5>
+                <div class="bg-purple-50 p-4 rounded-lg">
+                  <h4 class="font-semibold text-purple-700 mb-2">
+                    画面のイメージ
+                  </h4>
+                  <div
+                    class="border-2 border-purple-200 rounded-lg p-4 bg-white"
+                  >
                     <div class="space-y-4">
-                      <div>
-                        <div class="flex items-center">
-                          <input type="checkbox" id="demo-agree" class="mr-2">
-                          <label for="demo-agree">利用規約に同意する</label>
-                        </div>
+                      <div class="flex gap-2">
+                        <input
+                          type="text"
+                          placeholder="新しいタスクを入力"
+                          class="flex-1 border rounded px-3 py-2"
+                          disabled
+                        />
+                        <button
+                          class="bg-purple-500 text-white px-4 py-2 rounded"
+                          disabled>追加</button
+                        >
                       </div>
-                      <div>
-                        <div class="space-y-1">
-                          <div class="flex items-center">
-                            <input type="radio" id="demo-male" name="demo-gender" class="mr-2">
-                            <label for="demo-male">男性</label>
-                          </div>
-                          <div class="flex items-center">
-                            <input type="radio" id="demo-female" name="demo-gender" class="mr-2">
-                            <label for="demo-female">女性</label>
-                          </div>
-                        </div>
-                      </div>
-                      <div>
-                        <label class="block text-sm text-gray-600 mb-1">国：</label>
-                        <select class="w-full px-3 py-2 border border-gray-300 rounded-md">
-                          <option value="">国を選択</option>
-                          <option value="jp">日本</option>
-                          <option value="us">アメリカ</option>
-                          <option value="uk">イギリス</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="bg-teal-50 p-4 rounded-lg">
-                <h4 class="font-semibold text-teal-700 mb-2">その他の入力タイプ</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <ul class="space-y-2">
-                      <li class="flex items-start">
-                        <span class="text-teal-500 mr-2">•</span>
-                        <div>
-                          <code class="bg-teal-100 px-1 rounded">type="date"</code>：日付選択
-                        </div>
-                      </li>
-                      <li class="flex items-start">
-                        <span class="text-teal-500 mr-2">•</span>
-                        <div>
-                          <code class="bg-teal-100 px-1 rounded">type="time"</code>：時間選択
-                        </div>
-                      </li>
-                      <li class="flex items-start">
-                        <span class="text-teal-500 mr-2">•</span>
-                        <div>
-                          <code class="bg-teal-100 px-1 rounded">type="color"</code>：色選択
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <ul class="space-y-2">
-                      <li class="flex items-start">
-                        <span class="text-teal-500 mr-2">•</span>
-                        <div>
-                          <code class="bg-teal-100 px-1 rounded">type="file"</code>：ファイル選択
-                        </div>
-                      </li>
-                      <li class="flex items-start">
-                        <span class="text-teal-500 mr-2">•</span>
-                        <div>
-                          <code class="bg-teal-100 px-1 rounded">type="range"</code>：スライダー
-                        </div>
-                      </li>
-                      <li class="flex items-start">
-                        <span class="text-teal-500 mr-2">•</span>
-                        <div>
-                          <code class="bg-teal-100 px-1 rounded">type="hidden"</code>：非表示フィールド
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-green-300 mt-6">
-              <h3 class="text-xl font-semibold text-green-700 mb-4 flex items-center">
-                <span class="text-3xl mr-3">✅</span>
-                フォームのバリデーション
-              </h3>
-              
-              <p class="text-gray-700 mb-4">
-                フォームバリデーション（入力値の検証）は、ユーザーが正しいデータを入力したかを確認するプロセスです。
-                HTMLの属性を使った基本的なバリデーションと、JavaScriptを使ったより高度なバリデーションがあります。
-              </p>
-              
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <h4 class="font-semibold text-green-700 mb-2">HTML5のバリデーション属性</h4>
-                  <div class="bg-gray-100 p-3 rounded-lg font-mono text-sm overflow-x-auto">
-                    <pre><code>&lt;input type="text" required&gt;
-&lt;!-- 必須項目 --&gt;
-
-&lt;input type="email" required&gt;
-&lt;!-- メール形式のチェック --&gt;
-
-&lt;input type="number" min="1" max="100"&gt;
-&lt;!-- 数値の範囲チェック --&gt;
-
-&lt;input type="text" pattern="[A-Za-z0-9]+"&gt;
-&lt;!-- 正規表現によるパターンチェック --&gt;
-
-&lt;input type="text" minlength="3" maxlength="20"&gt;
-&lt;!-- 文字数の制限 --&gt;</code></pre>
-                  </div>
-                </div>
-                
-                <div class="bg-green-50 rounded-lg p-4">
-                  <h4 class="font-semibold text-green-700 mb-2">バリデーションのメリット</h4>
-                  <ul class="space-y-2">
-                    <li class="flex items-start">
-                      <span class="text-green-500 mr-2">✓</span>
-                      <span>ユーザーが正しいデータを入力するようガイドできる</span>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-green-500 mr-2">✓</span>
-                      <span>不正なデータがサーバーに送信されるのを防ぐ</span>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-green-500 mr-2">✓</span>
-                      <span>セキュリティリスクを軽減できる</span>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-green-500 mr-2">✓</span>
-                      <span>ユーザー体験を向上させる</span>
-                    </li>
-                  </ul>
-                  
-                  <div class="mt-4 p-3 bg-yellow-50 border-l-4 border-yellow-400 text-sm">
-                    <p class="text-yellow-800">
-                      <strong>注意：</strong> HTML5のバリデーションはクライアント側で行われるため、セキュリティ対策としては不十分です。サーバー側でも必ずバリデーションを行いましょう。
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="text-center text-sm text-green-700 bg-green-50 p-3 rounded-lg mt-4">
-              フォームは、ユーザーからの入力を受け付けるための重要な要素です。<br>
-              適切な入力要素を選び、分かりやすいラベルを付け、バリデーションを設定することで、<br>
-              ユーザーが使いやすく、エラーの少ないフォームを作ることができます。
-            </div>
-          </div>
-          
-          <div class="bg-green-50 border-l-4 border-green-400 p-4">
-            <div class="flex">
-              <div class="flex-shrink-0">
-                <svg class="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
-                </svg>
-              </div>
-              <div class="ml-3">
-                <p class="text-sm text-green-700">
-                  <strong>アクセシビリティに配慮したフォーム：</strong> フォームを作成する際は、すべてのユーザーが使いやすいように配慮することが重要です。ラベルを適切に関連付け、十分なコントラストを確保し、キーボードでの操作に対応するなど、アクセシビリティに配慮したフォームを作成しましょう。詳しくは<a href="https://developer.mozilla.org/ja/docs/Web/Accessibility/ARIA" target="_blank" class="text-green-600 hover:underline">WAI-ARIA</a>のガイドラインを参考にしてください。
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-        
-        <!-- JavaScriptで画面に動きをつける -->
-        <section id="js-interaction" class="bg-white rounded-lg shadow-md p-8">
-          <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center">
-            <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">4</span>
-            JavaScriptで画面に動きをつける
-          </h2>
-          
-          <p class="text-gray-700 mb-6">
-            HTMLとCSSで静的なページを作成したら、JavaScriptを使って動的な要素を追加しましょう。
-            JavaScriptを使うことで、ユーザーの操作に応じて画面を更新したり、アニメーションを追加したりすることができます。
-          </p>
-          
-          <div class="bg-gradient-to-r from-yellow-100 to-amber-100 p-6 rounded-lg mb-6">
-            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-yellow-300">
-              <h3 class="text-xl font-semibold text-yellow-700 mb-4 flex items-center">
-                <span class="text-3xl mr-3">⚡</span>
-                JavaScriptの基本
-              </h3>
-              
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <h4 class="font-semibold text-yellow-700 mb-2">JavaScriptの追加方法</h4>
-                  <div class="bg-gray-100 p-3 rounded-lg font-mono text-sm overflow-x-auto mb-2">
-                    <pre><code>&lt;!-- 内部JavaScript --&gt;
-&lt;script&gt;
-  // JavaScriptコードをここに書く
-  console.log('Hello, World!');
-&lt;/script&gt;
-
-&lt;!-- 外部JavaScript --&gt;
-&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
-                  </div>
-                  <p class="text-sm text-gray-600 italic">
-                    JavaScriptは、HTMLファイル内に直接書く方法と、外部ファイルから読み込む方法があります。
-                  </p>
-                </div>
-                
-                <div class="bg-yellow-50 rounded-lg p-4">
-                  <h4 class="font-semibold text-yellow-700 mb-2">JavaScriptでできること</h4>
-                  <ul class="space-y-2">
-                    <li class="flex items-start">
-                      <span class="text-yellow-500 mr-2">•</span>
-                      <span>HTML要素の内容や属性を変更する</span>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-yellow-500 mr-2">•</span>
-                      <span>CSSスタイルを動的に変更する</span>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-yellow-500 mr-2">•</span>
-                      <span>ユーザーの操作（クリック、入力など）に反応する</span>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-yellow-500 mr-2">•</span>
-                      <span>サーバーとデータをやり取りする（Ajax）</span>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-yellow-500 mr-2">•</span>
-                      <span>アニメーションや視覚効果を作成する</span>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-yellow-500 mr-2">•</span>
-                      <span>フォームのバリデーションを行う</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              
-              <div class="bg-amber-50 p-4 rounded-lg">
-                <h4 class="font-semibold text-amber-700 mb-2">DOM操作の基本</h4>
-                <p class="text-gray-700 mb-2">
-                  DOM（Document Object Model）は、HTMLドキュメントをJavaScriptから操作するためのインターフェースです。
-                  DOMを使うことで、HTML要素の取得、追加、変更、削除などができます。
-                </p>
-                <div class="bg-gray-100 p-3 rounded-lg font-mono text-sm overflow-x-auto">
-                  <pre><code>// 要素の取得
-const element = document.getElementById('myElement');
-const elements = document.getElementsByClassName('myClass');
-const elements = document.getElementsByTagName('div');
-const element = document.querySelector('#myElement');
-const elements = document.querySelectorAll('.myClass');
-
-// 要素の内容を変更
-element.textContent = '新しいテキスト';
-element.innerHTML = '&lt;strong&gt;新しいHTML&lt;/strong&gt;';
-
-// 属性の変更
-element.setAttribute('src', 'new-image.jpg');
-element.id = 'newId';
-
-// スタイルの変更
-element.style.color = 'red';
-element.style.fontSize = '20px';
-element.classList.add('highlight');
-element.classList.remove('old-class');
-element.classList.toggle('active');
-
-// 新しい要素の作成と追加
-const newElement = document.createElement('div');
-newElement.textContent = '新しい要素';
-document.body.appendChild(newElement);
-
-// 要素の削除
-element.remove();
-// または
-element.parentNode.removeChild(element);</code></pre>
-                </div>
-              </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-amber-300 mt-6">
-              <h3 class="text-xl font-semibold text-amber-700 mb-4 flex items-center">
-                <span class="text-3xl mr-3">👂</span>
-                イベント処理
-              </h3>
-              
-              <p class="text-gray-700 mb-4">
-                JavaScriptでは、ユーザーの操作（クリック、入力、スクロールなど）に反応するために、イベントリスナーを使用します。
-                イベントリスナーは、特定のイベントが発生したときに実行される関数です。
-              </p>
-              
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <h4 class="font-semibold text-amber-700 mb-2">イベントリスナーの追加方法</h4>
-                  <div class="bg-gray-100 p-3 rounded-lg font-mono text-sm overflow-x-auto">
-                    <pre><code>{String.raw`// 方法1: addEventListener
-const button = document.getElementById('myButton');
-button.addEventListener('click', function() {
-  alert('ボタンがクリックされました！');
-});
-
-// 方法2: HTML属性（あまり推奨されません）
-&lt;button onclick="alert('ボタンがクリックされました！')"&gt;
-  クリックしてください
-&lt;/button&gt;
-
-// 方法3: プロパティ
-button.onclick = function() {
-  alert('ボタンがクリックされました！');
-};`}</code></pre>
-                  </div>
-                </div>
-                
-                <div class="bg-amber-50 rounded-lg p-4">
-                  <h4 class="font-semibold text-amber-700 mb-2">よく使われるイベント</h4>
-                  <ul class="space-y-2">
-                    <li class="flex items-start">
-                      <span class="text-amber-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-amber-100 px-1 rounded">click</code>：要素がクリックされたとき
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-amber-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-amber-100 px-1 rounded">submit</code>：フォームが送信されたとき
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-amber-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-amber-100 px-1 rounded">input</code>：入力フィールドの値が変更されたとき
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-amber-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-amber-100 px-1 rounded">change</code>：選択肢が変更されたとき
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-amber-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-amber-100 px-1 rounded">mouseover</code>/<code class="bg-amber-100 px-1 rounded">mouseout</code>：マウスが要素の上に乗った/離れたとき
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-amber-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-amber-100 px-1 rounded">keydown</code>/<code class="bg-amber-100 px-1 rounded">keyup</code>：キーが押された/離されたとき
-                      </div>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-amber-500 mr-2">•</span>
-                      <div>
-                        <code class="bg-amber-100 px-1 rounded">load</code>：ページや画像が読み込まれたとき
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              
-              <div class="bg-yellow-50 p-4 rounded-lg">
-                <h4 class="font-semibold text-yellow-700 mb-2">実践的な例：タブ切り替え</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <div class="bg-gray-100 p-3 rounded-lg font-mono text-sm overflow-x-auto">
-                      <pre><code>{String.raw`&lt;!-- HTML --&gt;
-&lt;div class="tabs"&gt;
-  &lt;div class="tab-buttons"&gt;
-    &lt;button class="tab-button active" data-tab="tab1"&gt;タブ1&lt;/button&gt;
-    &lt;button class="tab-button" data-tab="tab2"&gt;タブ2&lt;/button&gt;
-    &lt;button class="tab-button" data-tab="tab3"&gt;タブ3&lt;/button&gt;
-  &lt;/div&gt;
-  &lt;div class="tab-contents"&gt;
-    &lt;div id="tab1" class="tab-content active"&gt;タブ1の内容&lt;/div&gt;
-    &lt;div id="tab2" class="tab-content"&gt;タブ2の内容&lt;/div&gt;
-    &lt;div id="tab3" class="tab-content"&gt;タブ3の内容&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;`}</code></pre>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="bg-gray-100 p-3 rounded-lg font-mono text-sm overflow-x-auto">
-                      <pre><code>{String.raw`// JavaScript
-document.addEventListener('DOMContentLoaded', function() {
-  const tabButtons = document.querySelectorAll('.tab-button');
-  
-  tabButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      // アクティブなタブボタンを切り替え
-      document.querySelector('.tab-button.active')
-        .classList.remove('active');
-      this.classList.add('active');
-      
-      // アクティブなタブコンテンツを切り替え
-      const tabId = this.getAttribute('data-tab');
-      document.querySelector('.tab-content.active')
-        .classList.remove('active');
-      document.getElementById(tabId)
-        .classList.add('active');
-    });
-  });
-});`}</code></pre>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="mt-4 bg-white border border-gray-300 rounded-lg p-4">
-                  <h5 class="font-medium text-yellow-700 mb-2">実際の表示例：</h5>
-                  <div class="tabs">
-                    <div class="flex border-b">
-                      <button class="px-4 py-2 border-b-2 border-yellow-500 text-yellow-600 font-medium">タブ1</button>
-                      <button class="px-4 py-2 border-b-2 border-transparent text-gray-500 hover:text-yellow-600">タブ2</button>
-                      <button class="px-4 py-2 border-b-2 border-transparent text-gray-500 hover:text-yellow-600">タブ3</button>
-                    </div>
-                    <div class="p-4 bg-gray-50 rounded-b-lg">
-                      タブ1の内容がここに表示されます。
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-yellow-300 mt-6">
-              <h3 class="text-xl font-semibold text-yellow-700 mb-4 flex items-center">
-                <span class="text-3xl mr-3">🔄</span>
-                データの表示と更新
-              </h3>
-              
-              <p class="text-gray-700 mb-4">
-                Webアプリケーションでは、データを表示し、ユーザーの操作に応じて更新することが重要です。
-                JavaScriptを使って、データの表示と更新を行う方法を見ていきましょう。
-              </p>
-              
-              <div class="bg-yellow-50 p-4 rounded-lg mb-6">
-                <h4 class="font-semibold text-yellow-700 mb-2">TODOリストの例</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <div class="bg-gray-100 p-3 rounded-lg font-mono text-sm overflow-x-auto">
-                      <pre><code>{String.raw`&lt;!-- HTML --&gt;
-&lt;div class="todo-app"&gt;
-  &lt;h2&gt;TODOリスト&lt;/h2&gt;
-  &lt;form id="todo-form"&gt;
-    &lt;input type="text" id="todo-input" placeholder="新しいタスク"&gt;
-    &lt;button type="submit"&gt;追加&lt;/button&gt;
-  &lt;/form&gt;
-  &lt;ul id="todo-list"&gt;
-    &lt;!-- タスクはJavaScriptで動的に追加 --&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;`}`</code></pre>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="bg-gray-100 p-3 rounded-lg font-mono text-sm overflow-x-auto">
-                      <pre><code>{String.raw`// JavaScript
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('todo-form');
-  const input = document.getElementById('todo-input');
-  const list = document.getElementById('todo-list');
-  
-  // タスクの配列
-  let tasks = [];
-  
-  // フォーム送信時の処理
-  form.addEventListener('submit', function(e) {
-    e.preventDefault(); // デフォルトの送信をキャンセル
-    
-    const text = input.value.trim();
-    if (text) {
-      // 新しいタスクを追加
-      tasks.push({
-        id: Date.now(),
-        text: text,
-        completed: false
-      });
-      
-      // 入力フィールドをクリア
-      input.value = '';
-      
-      // タスクリストを更新
-      renderTasks();
-    }
-  });
-  
-  // タスクリストを表示する関数
-  function renderTasks() {
-    list.innerHTML = '';
-    
-    tasks.forEach(task => {
-      const li = document.createElement('li');
-      li.innerHTML = \`
-        <input type="checkbox" \${task.completed ? 'checked' : ''}>
-        <span class="\${task.completed ? 'completed' : ''}">\${task.text}</span>
-        <button class="delete-btn">削除</button>
-      \`;
-      
-      // チェックボックスのイベント
-      const checkbox = li.querySelector('input');
-      checkbox.addEventListener('change', function() {
-        task.completed = this.checked;
-        renderTasks();
-      });
-      
-      // 削除ボタンのイベント
-      const deleteBtn = li.querySelector('.delete-btn');
-      deleteBtn.addEventListener('click', function() {
-        tasks = tasks.filter(t => t.id !== task.id);
-        renderTasks();
-      });
-      
-      list.appendChild(li);
-    });
-  }
-});`}</code></pre>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="mt-4 bg-white border border-gray-300 rounded-lg p-4">
-                  <h5 class="font-medium text-yellow-700 mb-2">実際の表示例：</h5>
-                  <div class="todo-app">
-                    <h3 class="text-lg font-medium mb-2">TODOリスト</h3>
-                    <div class="flex mb-4">
-                      <input type="text" placeholder="新しいタスク" class="flex-grow px-3 py-2 border border-gray-300 rounded-l-md">
-                      <button class="bg-yellow-500 text-white px-4 py-2 rounded-r-md hover:bg-yellow-600 transition-colors">追加</button>
-                    </div>
-                    <ul class="space-y-2">
-                      <li class="flex items-center justify-between bg-gray-50 p-2 rounded">
-                        <div class="flex items-center">
-                          <input type="checkbox" class="mr-2">
+                      <ul class="space-y-2">
+                        <li class="flex items-center gap-2 p-2 border rounded">
+                          <input type="checkbox" disabled />
                           <span>買い物に行く</span>
-                        </div>
-                        <button class="text-red-500 hover:text-red-700">削除</button>
-                      </li>
-                      <li class="flex items-center justify-between bg-gray-50 p-2 rounded">
-                        <div class="flex items-center">
-                          <input type="checkbox" checked class="mr-2">
-                          <span class="line-through text-gray-500">メールを確認する</span>
-                        </div>
-                        <button class="text-red-500 hover:text-red-700">削除</button>
-                      </li>
-                    </ul>
+                          <button class="ml-auto text-red-500" disabled
+                            >削除</button
+                          >
+                        </li>
+                        <li class="flex items-center gap-2 p-2 border rounded">
+                          <input type="checkbox" checked disabled />
+                          <span class="line-through">本を返却する</span>
+                          <button class="ml-auto text-red-500" disabled
+                            >削除</button
+                          >
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            
-            <div class="text-center text-sm text-yellow-700 bg-yellow-50 p-3 rounded-lg mt-4">
-              JavaScriptを使うことで、静的なHTMLページに動きを追加し、<br>
-              ユーザーの操作に応じて画面を更新することができます。<br>
-              DOM操作とイベント処理の基本を理解すれば、様々なインタラクティブな要素を作成できます。
-            </div>
-          </div>
-          
-          <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
-            <div class="flex">
-              <div class="flex-shrink-0">
-                <svg class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
-                </svg>
-              </div>
-              <div class="ml-3">
-                <p class="text-sm text-yellow-700">
-                  <strong>JavaScriptフレームワーク：</strong> 大規模なWebアプリケーションを開発する場合は、<a href="https://reactjs.org/" target="_blank" class="text-yellow-600 hover:underline">React</a>、<a href="https://vuejs.org/" target="_blank" class="text-yellow-600 hover:underline">Vue.js</a>、<a href="https://angular.io/" target="_blank" class="text-yellow-600 hover:underline">Angular</a>などのJavaScriptフレームワークを使うと効率的です。これらのフレームワークは、コンポーネントベースの開発や状態管理など、複雑なUIを構築するための機能を提供しています。
-                </p>
               </div>
             </div>
           </div>
         </section>
-        
-        <!-- エラーが起きたときの対応を考える -->
-        <section id="error-handling" class="bg-white rounded-lg shadow-md p-8">
-          <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center">
-            <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">5</span>
-            エラーが起きたときの対応を考える
-          </h2>
-          
-          <p class="text-gray-700 mb-6">
-            Webアプリケーションでは、様々なエラーが発生する可能性があります。
-            ユーザーの入力ミスやネットワークエラー、サーバーエラーなど、予期せぬ状況に適切に対応することで、
-            ユーザー体験を向上させることができます。
-          </p>
-          
-          <div class="bg-gradient-to-r from-red-100 to-pink-100 p-6 rounded-lg mb-6">
-            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-red-300">
-              <h3 class="text-xl font-semibold text-red-700 mb-4 flex items-center">
-                <span class="text-3xl mr-3">⚠️</span>
-                エラーの種類と対応方法
-              </h3>
-              
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <h4 class="font-semibold text-red-700 mb-2">入力エラー</h4>
-                  <p class="text-gray-700 mb-2">
-                    ユーザーの入力が不正な場合に発生するエラーです。
-                    フォームバリデーションを使って、入力エラーを事前に検出し、ユーザーに適切なフィードバックを提供しましょう。
-                  </p>
-                  <div class="bg-gray-100 p-3 rounded-lg font-mono text-sm overflow-x-auto">
-                    <pre><code>{String.raw`// 入力エラーの例
-form.addEventListener('submit', function(e) {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  let hasError = false;
-  
-  // メールアドレスのバリデーション
-  if (!isValidEmail(email)) {
-    showError('email', '有効なメールアドレスを入力してください');
-    hasError = true;
-  } else {
-    clearError('email');
-  }
-  
-  // パスワードのバリデーション
-  if (password.length < 8) {
-    showError('password', 'パスワードは8文字以上必要です');
-    hasError = true;
-  } else {
-    clearError('password');
-  }
-  
-  // エラーがある場合は送信をキャンセル
-  if (hasError) {
-    e.preventDefault();
-  }
-});`}</code></pre>
-                  </div>
-                </div>
-                
-                <div>
-                  <h4 class="font-semibold text-red-700 mb-2">ネットワークエラー</h4>
-                  <p class="text-gray-700 mb-2">
-                    サーバーとの通信中に発生するエラーです。
-                    ネットワーク接続の問題やサーバーの応答がない場合などに発生します。
-                  </p>
-                  <div class="bg-gray-100 p-3 rounded-lg font-mono text-sm overflow-x-auto">
-                    <pre><code>{String.raw`// ネットワークエラーの例
-fetch('/api/data')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('サーバーエラー: ' + response.status);
-    }
-    return response.json();
-  })
-  .then(data => {
-    // データの処理
-    displayData(data);
-  })
-  .catch(error => {
-    // エラー処理
-    console.error('データの取得に失敗しました:', error);
-    showErrorMessage('データの取得に失敗しました。後でもう一度お試しください。');
-  });`}`</code></pre>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="bg-red-50 p-4 rounded-lg">
-                <h4 class="font-semibold text-red-700 mb-2">エラーメッセージの表示方法</h4>
-                <p class="text-gray-700 mb-2">
-                  エラーが発生した場合は、ユーザーに分かりやすく伝えることが重要です。
-                  以下は、エラーメッセージを表示するための一般的な方法です：
-                </p>
-                <ul class="space-y-2">
-                  <li class="flex items-start">
-                    <span class="text-red-500 mr-2">1.</span>
-                    <div>
-                      <p class="font-medium">インラインエラー</p>
-                      <p class="text-sm text-gray-600">入力フィールドの近くにエラーメッセージを表示します。特定のフィールドに関連するエラーに適しています。</p>
-                    </div>
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-red-500 mr-2">2.</span>
-                    <div>
-                      <p class="font-medium">エラーサマリー</p>
-                      <p class="text-sm text-gray-600">フォームの上部や下部に、すべてのエラーをまとめて表示します。複数のエラーがある場合に便利です。</p>
-                    </div>
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-red-500 mr-2 ">3.</span>
-                    <div>
-                      <p class="font-medium">トースト通知</p>
-                      <p class="text-sm text-gray-600">画面の一部に一時的に表示される通知です。一般的なエラーメッセージに適しています。</p>
-                    </div>
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-red-500 mr-2">4.</span>
-                    <div>
-                      <p class="font-medium">モーダルダイアログ</p>
-                      <p class="text-sm text-gray-600">重大なエラーや、ユーザーの注意が必要なエラーに使用します。</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-pink-300 mt-6">
-              <h3 class="text-xl font-semibold text-pink-700 mb-4 flex items-center">
-                <span class="text-3xl mr-3">🔍</span>
-                エラーの予防と対策
-              </h3>
-              
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <h4 class="font-semibold text-pink-700 mb-2">入力ガイダンス</h4>
-                  <p class="text-gray-700 mb-2">
-                    エラーを防ぐために、ユーザーに適切なガイダンスを提供しましょう。
-                  </p>
-                  <ul class="space-y-2">
-                    <li class="flex items-start">
-                      <span class="text-pink-500 mr-2">•</span>
-                      <span>プレースホルダーテキストで入力例を示す</span>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-pink-500 mr-2">•</span>
-                      <span>ヘルプテキストで入力要件を説明する</span>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-pink-500 mr-2">•</span>
-                      <span>入力フォーマットを明示する（例：「yyyy-mm-dd」）</span>
-                    </li>
-                    <li class="flex items-start">
-                      <span class="text-pink-500 mr-2">•</span>
-                      <span>適切な入力タイプを使用する（例：type="email"）</span>
-                    </li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <h4 class="font-semibold text-pink-700 mb-2">リアルタイムバリデーション</h4>
-                  <p class="text-gray-700 mb-2">
-                    ユーザーが入力している最中にバリデーションを行い、即座にフィードバックを提供します。
-                  </p>
-                  <div class="bg-gray-100 p-3 rounded-lg font-mono text-sm overflow-x-auto">
-                    <pre><code>{String.raw`// リアルタイムバリデーションの例
-const passwordInput = document.getElementById('password');
-const passwordStrength = document.getElementById('password-strength');
 
-passwordInput.addEventListener('input', function() {
-  const password = this.value;
-  let strength = 0;
-  
-  // パスワードの強度をチェック
-  if (password.length >= 8) strength++;
-  if (/[A-Z]/.test(password)) strength++;
-  if (/[a-z]/.test(password)) strength++;
-  if (/[0-9]/.test(password)) strength++;
-  if (/[^A-Za-z0-9]/.test(password)) strength++;
-  
-  // 強度に応じてフィードバックを表示
-  switch(strength) {
-    case 0:
-    case 1:
-      passwordStrength.textContent = '弱い';
-      passwordStrength.className = 'text-red-500';
-      break;
-    case 2:
-    case 3:
-      passwordStrength.textContent = '普通';
-      passwordStrength.className = 'text-yellow-500';
-      break;
-    case 4:
-    case 5:
-      passwordStrength.textContent = '強い';
-      passwordStrength.className = 'text-green-500';
-      break;
-  }
-});`}</code></pre>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="bg-pink-50 p-4 rounded-lg">
-                <h4 class="font-semibold text-pink-700 mb-2">エラーメッセージの書き方</h4>
-                <p class="text-gray-700 mb-2">
-                  エラーメッセージは、ユーザーが問題を理解し、解決できるように書きましょう。
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- STEP 1: 基本的な画面構造を作る -->
+        <section id="step1" class="bg-white rounded-lg shadow-md p-8">
+          <h2
+            class="text-2xl font-bold text-kinova-gray mb-6 flex items-center"
+          >
+            <span
+              class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm"
+              >3</span
+            >
+            STEP 1: 基本的な画面構造を作る
+          </h2>
+
+          <p class="text-gray-700 mb-6">
+            まずは、画面の基本的な構造を作ります。
+            HTMLを使って、必要な要素を配置していきましょう。
+          </p>
+
+          <div
+            class="bg-gradient-to-r from-green-100 to-teal-100 p-6 rounded-lg mb-6"
+          >
+            <div class="space-y-6">
+              <!-- コードと説明 -->
+              <div class="bg-white rounded-lg p-6 border-2 border-green-300">
+                <h3 class="text-xl font-semibold text-green-700 mb-4">
+                  基本的なHTML構造
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <h5 class="font-medium text-pink-700 mb-1">良いエラーメッセージの例</h5>
-                    <ul class="space-y-1 text-sm">
-                      <li class="flex items-start">
-                        <span class="text-green-500 mr-2">✓</span>
-                        <span>「パスワードは8文字以上で、大文字、小文字、数字を含める必要があります」</span>
-                      </li>
-                      <li class="flex items-start">
-                        <span class="text-green-500 mr-2">✓</span>
-                        <span>「このメールアドレスは既に登録されています。ログインするか、別のメールアドレスを使用してください」</span>
-                      </li>
-                      <li class="flex items-start">
-                        <span class="text-green-500 mr-2">✓</span>
-                        <span>「サーバーに接続できませんでした。インターネット接続を確認して、もう一度お試しください」</span>
-                      </li>
-                    </ul>
+                    <h4 class="font-semibold text-green-700 mb-2">コード</h4>
+                    <pre
+                      class="bg-gray-800 text-white p-4 rounded-lg text-sm overflow-x-auto">
+<code>&lt;div class="container"&gt;
+  &lt;h1&gt;Todoリスト&lt;/h1&gt;
+  
+  &lt;div class="input-area"&gt;
+    &lt;!-- ここにタスク入力欄を追加 --&gt;
+  &lt;/div&gt;
+
+  &lt;div class="task-list"&gt;
+    &lt;!-- ここにタスクリストを追加 --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
                   </div>
+
                   <div>
-                    <h5 class="font-medium text-pink-700 mb-1">悪いエラーメッセージの例</h5>
-                    <ul class="space-y-1 text-sm">
+                    <h4 class="font-semibold text-green-700 mb-2">説明</h4>
+                    <ul class="space-y-2 text-gray-600">
                       <li class="flex items-start">
-                        <span class="text-red-500 mr-2">✗</span>
-                        <span>「エラーが発生しました」</span>
+                        <span class="text-green-500 mr-2">•</span>
+                        <span>containerで全体を囲む</span>
                       </li>
                       <li class="flex items-start">
-                        <span class="text-red-500 mr-2">✗</span>
-                        <span>「無効な入力です」</span>
+                        <span class="text-green-500 mr-2">•</span>
+                        <span>h1でタイトルを表示</span>
                       </li>
                       <li class="flex items-start">
-                        <span class="text-red-500 mr-2">✗</span>
-                        <span>「エラーコード: E1234」</span>
+                        <span class="text-green-500 mr-2">•</span>
+                        <span>input-areaに入力欄を配置</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-green-500 mr-2">•</span>
+                        <span>task-listにタスクを表示</span>
                       </li>
                     </ul>
                   </div>
                 </div>
               </div>
-            </div>
-            
-            <div class="text-center text-sm text-red-700 bg-red-50 p-3 rounded-lg mt-4">
-              エラー処理は、ユーザー体験の重要な部分です。<br>
-              適切なエラーメッセージと予防策を提供することで、<br>
-              ユーザーがスムーズにアプリケーションを使用できるようにしましょう。
-            </div>
-          </div>
-          
-          <div class="bg-red-50 border-l-4 border-red-400 p-4">
-            <div class="flex">
-              <div class="flex-shrink-0">
-                <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
-                </svg>
-              </div>
-              <div class="ml-3">
-                <p class="text-sm text-red-700">
-                  <strong>デバッグのヒント：</strong> JavaScriptのエラーをデバッグするには、ブラウザの開発者ツールを使用しましょう。F12キーを押すか、右クリックして「検証」を選択すると、開発者ツールが開きます。「Console」タブでエラーメッセージを確認したり、「Sources」タブでブレークポイントを設定してコードを一行ずつ実行したりできます。
-                </p>
+
+              <!-- スタイルの適用 -->
+              <div class="bg-white rounded-lg p-6 border-2 border-teal-300">
+                <h3 class="text-xl font-semibold text-teal-700 mb-4">
+                  基本的なスタイルを適用する
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-teal-700 mb-2">CSS</h4>
+                    <pre
+                      class="bg-gray-800 text-white p-4 rounded-lg text-sm overflow-x-auto">
+<code>{`.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.input-area {
+  margin-bottom: 20px;
+}
+
+.task-list {
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 20px;
+}`}</code></pre>
+                  </div>
+
+                  <div>
+                    <h4 class="font-semibold text-teal-700 mb-2">
+                      スタイルの効果
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                      <li class="flex items-start">
+                        <span class="text-teal-500 mr-2">•</span>
+                        <span>画面中央に配置</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-teal-500 mr-2">•</span>
+                        <span>適切な余白を設定</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-teal-500 mr-2">•</span>
+                        <span>見やすい色使い</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-teal-500 mr-2">•</span>
+                        <span>角を丸くして柔らかい印象に</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
-        
-        <!-- レスポンシブデザイン -->
-        <section id="responsive-design" class="bg-white rounded-lg shadow-md p-8">
-          <h2 class="text-2xl font-bold text-kinova-gray mb-6 flex items-center">
-            <span class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm">6</span>
-            レスポンシブデザインで様々な画面サイズに対応する
+
+        <!-- STEP 2: タスクの入力フォームを作る -->
+        <section id="step2" class="bg-white rounded-lg shadow-md p-8">
+          <h2
+            class="text-2xl font-bold text-kinova-gray mb-6 flex items-center"
+          >
+            <span
+              class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm"
+              >4</span
+            >
+            STEP 2: タスクの入力フォームを作る
           </h2>
-          
+
           <p class="text-gray-700 mb-6">
-            現代のWebアプリケーションは、スマートフォン、タブレット、デスクトップなど、様々な画面サイズのデバイスで利用されます。
-            レスポンシブデザインを使って、どのデバイスでも使いやすいUIを提供しましょう。
+            次に、新しいタスクを追加するための入力フォームを作ります。
+            入力欄とボタンを配置して、スタイルを整えましょう。
           </p>
-          
-          <div class="bg-gradient-to-r from-purple-100 to-indigo-100 p-6 rounded-lg mb-6">
-            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-purple-300">
-              <h3 class="text-xl font-semibold text-purple-700 mb-4 flex items-center">
-                <span class="text-3xl mr-3">📱</span>
-                レスポンシブデザインの基本
-              </h3>
-              
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <h4 class="font-semibold text-purple-700 mb-2">ビューポートの設定</h4>
-                  <p class="text-gray-700 mb-2">
-                    レスポンシブデザインの第一歩は、HTMLの<code>head</code>セクションにビューポートメタタグを追加することです。
-                  </p>
-                  <div class="bg-gray-100 p-3 rounded-lg font-mono text-sm overflow-x-auto">
-                    <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+
+          <div
+            class="bg-gradient-to-r from-yellow-100 to-amber-100 p-6 rounded-lg mb-6"
+          >
+            <div class="space-y-6">
+              <!-- 入力フォームのHTML -->
+              <div class="bg-white rounded-lg p-6 border-2 border-yellow-300">
+                <h3 class="text-xl font-semibold text-yellow-700 mb-4">
+                  入力フォームのHTML
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-yellow-700 mb-2">コード</h4>
+                    <pre
+                      class="bg-gray-800 text-white p-4 rounded-lg text-sm overflow-x-auto">
+<code>&lt;div class="input-area"&gt;
+  &lt;input
+    type="text"
+    class="task-input"
+    placeholder="新しいタスクを入力"
+  &gt;
+  &lt;button class="add-button"&gt;
+    追加
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
                   </div>
-                  <p class="text-sm text-gray-600 mt-1">
-                    このタグは、ページの幅をデバイスの画面幅に合わせ、初期のズームレベルを1.0（100%）に設定します。
-                  </p>
-                </div>
-                
-                <div>
-                  <h4 class="font-semibold text-purple-700 mb-2">メディアクエリ</h4>
-                  <p class="text-gray-700 mb-2">
-                    CSSのメディアクエリを使って、画面サイズに応じてスタイルを変更できます。
-                  </p>
-                  <div class="bg-gray-100 p-3 rounded-lg font-mono text-sm overflow-x-auto">
-                    <pre><code>{String.raw`/* モバイルファースト: 基本スタイル */
-.container {
-  width: 100%;
-  padding: 10px;
-}
 
-/* タブレット以上 */
-@media (min-width: 768px) {
-  .container {
-    width: 750px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-}
-
-/* デスクトップ */
-@media (min-width: 1024px) {
-  .container {
-    width: 980px;
-  }
-}`}</code></pre>
+                  <div>
+                    <h4 class="font-semibold text-yellow-700 mb-2">説明</h4>
+                    <ul class="space-y-2 text-gray-600">
+                      <li class="flex items-start">
+                        <span class="text-yellow-500 mr-2">•</span>
+                        <span>テキスト入力欄を配置</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-yellow-500 mr-2">•</span>
+                        <span>追加ボタンを配置</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-yellow-500 mr-2">•</span>
+                        <span>プレースホルダーで説明を表示</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
-              
-              <div class="bg-purple-50 p-4 rounded-lg">
-                <h4 class="font-semibold text-purple-700 mb-2">レスポンシブデザインの原則</h4>
-                <ul class="space-y-2">
-                  <li class="flex items-start">
-                    <span class="text-purple-500 mr-2">1.</span>
-                    <div>
-                      <p class="font-medium">フレキシブルなレイアウト</p>
-                      <p class="text-sm text-gray-600">固定幅ではなく、パーセンテージや相対単位（em, rem）を使用して、画面サイズに応じて要素のサイズが変わるようにします。</p>
-                    </div>
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-purple-500 mr-2">2.</span>
-                    <div>
-                      <p class="font-medium">フレキシブルな画像とメディア</p>
-                      <p class="text-sm text-gray-600">画像やビデオが親要素からはみ出さないようにします。</p>
-                      <div class="bg-gray-100 p-2 rounded-lg font-mono text-xs mt-1 overflow-x-auto">
-                        <pre><code>{String.raw`img {
-  max-width: 100%;
-  height: auto;
-}`}</code></pre>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-purple-500 mr-2">3.</span>
-                    <div>
-                      <p class="font-medium">メディアクエリ</p>
-                      <p class="text-sm text-gray-600">画面サイズに応じてスタイルを変更します。</p>
-                    </div>
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-purple-500 mr-2">4.</span>
-                    <div>
-                      <p class="font-medium">モバイルファーストアプローチ</p>
-                      <p class="text-sm text-gray-600">まずモバイル向けのスタイルを定義し、その後、より大きな画面サイズ向けのスタイルを追加していきます。</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow-md p-6 border-2 border-indigo-300 mt-6">
-              <h3 class="text-xl font-semibold text-indigo-700 mb-4 flex items-center">
-                <span class="text-3xl mr-3">🧩</span>
-                レスポンシブレイアウトの実装
-              </h3>
-              
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <h4 class="font-semibold text-indigo-700 mb-2">Flexboxを使ったレスポンシブレイアウト</h4>
-                  <div class="bg-gray-100 p-3 rounded-lg font-mono text-sm overflow-x-auto mb-2">
-                    <pre><code>{String.raw`&lt;!-- HTML --&gt;
-&lt;div class="flex-container"&gt;
-  &lt;div class="flex-item"&gt;アイテム1&lt;/div&gt;
-  &lt;div class="flex-item"&gt;アイテム2&lt;/div&gt;
-  &lt;div class="flex-item"&gt;アイテム3&lt;/div&gt;
-&lt;/div&gt;
 
-/* CSS */
-.flex-container {
+              <!-- 入力フォームのCSS -->
+              <div class="bg-white rounded-lg p-6 border-2 border-amber-300">
+                <h3 class="text-xl font-semibold text-amber-700 mb-4">
+                  入力フォームのスタイル
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-amber-700 mb-2">CSS</h4>
+                    <pre
+                      class="bg-gray-800 text-white p-4 rounded-lg text-sm overflow-x-auto">
+<code>{`.input-area {
   display: flex;
-  flex-wrap: wrap;
   gap: 10px;
 }
 
-.flex-item {
-  flex: 1 1 300px; /* 伸び、縮み、基本サイズ */
-  padding: 20px;
-  background-color: #f0f0f0;
-}`}</code></pre>
-                  </div>
-                  <p class="text-sm text-gray-600">
-                    Flexboxを使うと、アイテムが自動的に利用可能なスペースに合わせてサイズ変更されます。
-                    <code>flex-wrap: wrap</code>を使うと、画面が小さくなったときにアイテムが折り返されます。
-                  </p>
-                </div>
-                
-                <div>
-                  <h4 class="font-semibold text-indigo-700 mb-2">Gridを使ったレスポンシブレイアウト</h4>
-                  <div class="bg-gray-100 p-3 rounded-lg font-mono text-sm overflow-x-auto mb-2">
-                    <pre><code>{String.raw`&lt;!-- HTML --&gt;
-&lt;div class="grid-container"&gt;
-  &lt;div class="grid-item"&gt;アイテム1&lt;/div&gt;
-  &lt;div class="grid-item"&gt;アイテム2&lt;/div&gt;
-  &lt;div class="grid-item"&gt;アイテム3&lt;/div&gt;
-  &lt;div class="grid-item"&gt;アイテム4&lt;/div&gt;
-&lt;/div&gt;
-
-/* CSS */
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+.task-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
 }
 
-.grid-item {
-  padding: 20px;
-  background-color: #f0f0f0;
+.add-button {
+  padding: 8px 16px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background: #45a049;
 }`}</code></pre>
                   </div>
-                  <p class="text-sm text-gray-600">
-                    <code>repeat(auto-fit, minmax(250px, 1fr))</code>を使うと、画面サイズに応じて自動的に列数が調整されます。
-                    各アイテムは最小250px、最大1frの幅を持ちます。
-                  </p>
+
+                  <div>
+                    <h4 class="font-semibold text-amber-700 mb-2">
+                      スタイルの効果
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                      <li class="flex items-start">
+                        <span class="text-amber-500 mr-2">•</span>
+                        <span>入力欄とボタンを横並びに</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-amber-500 mr-2">•</span>
+                        <span>入力欄を広く取る</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-amber-500 mr-2">•</span>
+                        <span>ボタンの色で目立たせる</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-amber-500 mr-2">•</span>
+                        <span>ホバー時の効果を追加</span>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-              </div>
-              
-              <div class="bg-indigo-50 p-4 rounded-lg">
-                <h4 class="font-semibold text-indigo-700 mb-2">レスポンシブデザインのテスト</h4>
-                <p class="text-gray-700 mb-2">
-                  レスポンシブデザインをテストするには、以下の方法があります：
-                </p>
-                <ul class="space-y-2">
-                  <li class="flex items-start">
-                    <span class="text-indigo-500 mr-2">•</span>
-                    <span>ブラウザのウィンドウサイズを変更する</span>
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-indigo-500 mr-2">•</span>
-                    <span>ブラウザの開発者ツールのレスポンシブモードを使用する</span>
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-indigo-500 mr-2">•</span>
-                    <span>実際のモバイルデバイスでテストする</span>
-                  </li>
-                  <li class="flex items-start">
-                    <span class="text-indigo-500 mr-2">•</span>
-                    <span>オンラインのレスポンシブデザインテストツールを使用する</span>
-                  </li>
-                </ul>
-                
-                <div class="mt-4 p-3 bg-yellow-50 border-l-4 border-yellow-400 text-sm">
-                  <p class="text-yellow-800">
-                    <strong>ヒント：</strong> Chrome DevToolsでは、F12キーを押して開発者ツールを開き、左上のデバイスアイコンをクリックすると、様々なデバイスサイズでページをプレビューできます。
-                  </p>
+
+                <!-- 実際の表示例 -->
+                <div class="mt-6">
+                  <h4 class="font-semibold text-amber-700 mb-2">表示例</h4>
+                  <div class="bg-gray-50 p-4 rounded-lg">
+                    <div class="flex gap-2">
+                      <input
+                        type="text"
+                        class="flex-1 border rounded px-3 py-2"
+                        placeholder="新しいタスクを入力"
+                        disabled
+                      />
+                      <button
+                        class="bg-green-500 text-white px-4 py-2 rounded"
+                        disabled
+                      >
+                        追加
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            
-            <div class="text-center text-sm text-purple-700 bg-purple-50 p-3 rounded-lg mt-4">
-              レスポンシブデザインを実装することで、どのデバイスでも使いやすいWebアプリケーションを作成できます。<br>
-              フレキシブルなレイアウト、メディアクエリ、モバイルファーストアプローチを組み合わせて、<br>
-              様々な画面サイズに対応したデザインを実現しましょう。
-            </div>
-          </div>
-          
-          <div class="bg-purple-50 border-l-4 border-purple-400 p-4">
-            <div class="flex">
-              <div class="flex-shrink-0">
-                <svg class="h-5 w-5 text-purple-400" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
-                </svg>
-              </div>
-              <div class="ml-3">
-                <p class="text-sm text-purple-700">
-                  <strong>CSSフレームワークとレスポンシブデザイン：</strong> <a href="https://tailwindcss.com/" target="_blank" class="text-purple-600 hover:underline">Tailwind CSS</a>や<a href="https://getbootstrap.com/" target="_blank" class="text-purple-600 hover:underline">Bootstrap</a>などのCSSフレームワークには、レスポンシブデザインを簡単に実装するための機能が組み込まれています。例えば、Bootstrapのグリッドシステムや、Tailwind CSSのレスポンシブユーティリティクラスを使うと、少ないコードでレスポンシブなレイアウトを作成できます。
-                </p>
               </div>
             </div>
           </div>
         </section>
-      </div>
-      
-      <!-- まとめ -->
-      <div class="bg-white rounded-lg shadow-md p-8 mb-12">
-        <h2 class="text-2xl font-semibold text-kinova-gray mb-6">まとめ：使いやすいWebアプリの画面を作ろう</h2>
-        
-        <p class="text-gray-700 mb-6">
-          この記事では、Webアプリケーションの画面を作るための基本的な知識と実践的なテクニックを紹介しました。
-          HTMLでページの骨組みを作り、CSSで見た目を整え、JavaScriptで動きをつけることで、
-          ユーザーが使いやすいインターフェースを作ることができます。
-        </p>
-        
-        <div class="bg-gradient-to-r from-kinova-teal to-kinova-orange p-6 rounded-lg text-white mb-6">
-          <h3 class="text-xl font-semibold mb-4">今回学んだこと</h3>
-          <ul class="space-y-2">
-            <li class="flex items-start">
-              <span class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">✓</span>
-              <span>HTMLでページの骨組みを作る方法</span>
-            </li>
-            <li class="flex items-start">
-              <span class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">✓</span>
-              <span>CSSで見た目を整える方法</span>
-            </li>
-            <li class="flex items-start">
-              <span class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">✓</span>
-              <span>フォームを作って、ユーザーが入力できるようにする方法</span>
-            </li>
-            <li class="flex items-start">
-              <span class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">✓</span>
-              <span>JavaScriptで画面に動きをつける方法</span>
-            </li>
-            <li class="flex items-start">
-              <span class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">✓</span>
-              <span>エラーが起きたときの対応を考える方法</span>
-            </li>
-            <li class="flex items-start">
-              <span class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5">✓</span>
-              <span>レスポンシブデザインで様々な画面サイズに対応する方法</span>
-            </li>
-          </ul>
-        </div>
-        
-        <p class="text-gray-700 mb-6">
-          Webアプリケーションの画面作りは、技術的な知識だけでなく、ユーザー体験（UX）やユーザーインターフェース（UI）のデザインの知識も重要です。
-          ユーザーの視点に立って、使いやすく、分かりやすいインターフェースを設計することを心がけましょう。
-        </p>
-        
-        <div class="flex justify-center">
-          <a href="/kinova-programming-kyozai/course/ui-development" class="inline-flex items-center px-6 py-3 bg-kinova-teal text-white rounded-md hover:bg-kinova-orange transition-colors">
-            講座で詳しく学ぶ
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
-          </a>
+
+        <!-- STEP 3: タスクリストを表示する -->
+        <section id="step3" class="bg-white rounded-lg shadow-md p-8">
+          <h2
+            class="text-2xl font-bold text-kinova-gray mb-6 flex items-center"
+          >
+            <span
+              class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm"
+              >5</span
+            >
+            STEP 3: タスクリストを表示する
+          </h2>
+
+          <p class="text-gray-700 mb-6">
+            最後に、タスクを表示するリストを作ります。
+            チェックボックスと削除ボタンも追加しましょう。
+          </p>
+
+          <div
+            class="bg-gradient-to-r from-red-100 to-pink-100 p-6 rounded-lg mb-6"
+          >
+            <div class="space-y-6">
+              <!-- タスクリストのHTML -->
+              <div class="bg-white rounded-lg p-6 border-2 border-red-300">
+                <h3 class="text-xl font-semibold text-red-700 mb-4">
+                  タスクリストのHTML
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-red-700 mb-2">コード</h4>
+                    <pre
+                      class="bg-gray-800 text-white p-4 rounded-lg text-sm overflow-x-auto">
+<code>&lt;div class="task-list"&gt;
+  &lt;div class="task-item"&gt;
+    &lt;input
+      type="checkbox"
+      class="task-checkbox"
+    &gt;
+    &lt;span class="task-text"&gt;
+      買い物に行く
+    &lt;/span&gt;
+    &lt;button class="delete-button"&gt;
+      削除
+    &lt;/button&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="task-item completed"&gt;
+    &lt;input
+      type="checkbox"
+      class="task-checkbox"
+      checked
+    &gt;
+    &lt;span class="task-text"&gt;
+      本を返却する
+    &lt;/span&gt;
+    &lt;button class="delete-button"&gt;
+      削除
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </div>
+
+                  <div>
+                    <h4 class="font-semibold text-red-700 mb-2">説明</h4>
+                    <ul class="space-y-2 text-gray-600">
+                      <li class="flex items-start">
+                        <span class="text-red-500 mr-2">•</span>
+                        <span>タスクごとにdivで囲む</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-red-500 mr-2">•</span>
+                        <span>チェックボックスを配置</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-red-500 mr-2">•</span>
+                        <span>タスクのテキストを表示</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-red-500 mr-2">•</span>
+                        <span>削除ボタンを配置</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- タスクリストのCSS -->
+              <div class="bg-white rounded-lg p-6 border-2 border-pink-300">
+                <h3 class="text-xl font-semibold text-pink-700 mb-4">
+                  タスクリストのスタイル
+                </h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 class="font-semibold text-pink-700 mb-2">CSS</h4>
+                    <pre
+                      class="bg-gray-800 text-white p-4 rounded-lg text-sm overflow-x-auto">
+<code>{`.task-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.task-checkbox {
+  width: 20px;
+  height: 20px;
+}
+
+.task-text {
+  flex: 1;
+  font-size: 16px;
+}
+
+.completed .task-text {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.delete-button {
+  padding: 4px 8px;
+  background: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background: #cc0000;
+}`}</code></pre>
+                  </div>
+
+                  <div>
+                    <h4 class="font-semibold text-pink-700 mb-2">
+                      スタイルの効果
+                    </h4>
+                    <ul class="space-y-2 text-gray-600">
+                      <li class="flex items-start">
+                        <span class="text-pink-500 mr-2">•</span>
+                        <span>要素を横並びに配置</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-pink-500 mr-2">•</span>
+                        <span>適切な余白を設定</span>
+                      </li>
+
+                      <li class="flex items-start">
+                        <span class="text-pink-500 mr-2">•</span>
+                        <span>完了したタスクに打ち消し線</span>
+                      </li>
+                      <li class="flex items-start">
+                        <span class="text-pink-500 mr-2">•</span>
+                        <span>削除ボタンを目立たせる</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- 実際の表示例 -->
+                <div class="mt-6">
+                  <h4 class="font-semibold text-pink-700 mb-2">表示例</h4>
+                  <div class="bg-gray-50 p-4 rounded-lg">
+                    <ul class="space-y-2">
+                      <li class="flex items-center gap-2 p-2 border rounded">
+                        <input type="checkbox" disabled />
+                        <span>買い物に行く</span>
+                        <button class="ml-auto text-red-500" disabled
+                          >削除</button
+                        >
+                      </li>
+                      <li class="flex items-center gap-2 p-2 border rounded">
+                        <input type="checkbox" checked disabled />
+                        <span class="line-through text-gray-500"
+                          >本を返却する</span
+                        >
+                        <button class="ml-auto text-red-500" disabled
+                          >削除</button
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- まとめ -->
+        <div class="bg-white rounded-lg shadow-md p-8 mb-12">
+          <h2 class="text-2xl font-semibold text-kinova-gray mb-6">
+            まとめ：画面作りのポイント
+          </h2>
+
+          <p class="text-gray-700 mb-6">
+            画面を作る際は、段階的に組み立てていくことが大切です。
+            今回学んだポイントを整理してみましょう。
+          </p>
+
+          <div
+            class="bg-gradient-to-r from-kinova-teal to-kinova-orange p-6 rounded-lg text-white mb-6"
+          >
+            <h3 class="text-xl font-semibold mb-4">今回学んだこと</h3>
+            <ul class="space-y-2">
+              <li class="flex items-start">
+                <span
+                  class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5"
+                  >✓</span
+                >
+                <span>最初に画面の設計をしっかりと行う</span>
+              </li>
+              <li class="flex items-start">
+                <span
+                  class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5"
+                  >✓</span
+                >
+                <span>基本的な構造から作り始める</span>
+              </li>
+              <li class="flex items-start">
+                <span
+                  class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5"
+                  >✓</span
+                >
+                <span>必要な要素を段階的に追加していく</span>
+              </li>
+              <li class="flex items-start">
+                <span
+                  class="bg-white/20 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0 mt-0.5"
+                  >✓</span
+                >
+                <span>スタイルで見た目を整える</span>
+              </li>
+            </ul>
+          </div>
+
+          <p class="text-gray-700 mb-6">
+            実際のアプリ開発では、さらに多くの機能や複雑な画面が必要になりますが、
+            基本的な考え方は同じです。一つずつ着実に作り上げていきましょう。
+          </p>
         </div>
       </div>
     </div>
   </div>
 </Layout>
+
+<style>
+  /* スタイルは既存のまま */
+</style>

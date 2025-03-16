@@ -1,0 +1,641 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Webアプリってどんな仕組み？ - 初心者向け Webアプリ開発講座">
+  <div class="container mx-auto px-4 py-12">
+    <div class="max-w-4xl mx-auto">
+      <!-- ヘッダーセクション -->
+      <div
+        class="bg-gradient-to-r from-kinova-teal to-kinova-orange rounded-lg shadow-lg overflow-hidden mb-12"
+      >
+        <div class="p-8 text-white">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-sm bg-white/20 px-3 py-1 rounded-full"
+              >プログラミング入門</span
+            >
+            <span class="text-sm">2025年1月15日</span>
+          </div>
+          <h1 class="text-4xl font-bold mb-4">Webアプリってどんな仕組み？</h1>
+          <p class="text-xl opacity-90 mb-6">
+            スマホやパソコンで毎日使っているWebアプリ。その裏側では何が起きているの？実際のショッピングサイトを例に、分かりやすく解説します！
+          </p>
+          <div class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-kinova-teal"
+            >
+              <span class="text-xl">👩‍💻</span>
+            </div>
+            <div>
+              <p class="font-medium">Kinova編集部</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 目次 -->
+      <div class="bg-white rounded-lg shadow-md p-6 mb-12">
+        <h2 class="text-xl font-semibold mb-4 text-kinova-gray">目次</h2>
+        <ul class="space-y-3">
+          <li>
+            <a
+              href="#intro"
+              class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors"
+            >
+              <span
+                class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal"
+                >1</span
+              >
+              はじめに：WebサイトとWebアプリの違い
+            </a>
+          </li>
+          <li>
+            <a
+              href="#shopping-flow"
+              class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors"
+            >
+              <span
+                class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal"
+                >2</span
+              >
+              ショッピングサイトを例に見るWebアプリの仕組み
+            </a>
+          </li>
+          <li>
+            <a
+              href="#server"
+              class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors"
+            >
+              <span
+                class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal"
+                >3</span
+              >
+              サーバーって何？どこにあるの？
+            </a>
+          </li>
+          <li>
+            <a
+              href="#data-storage"
+              class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors"
+            >
+              <span
+                class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal"
+                >4</span
+              >
+              データはどこに保存されるの？
+            </a>
+          </li>
+          <li>
+            <a
+              href="#interaction"
+              class="flex items-center text-kinova-teal hover:text-kinova-orange transition-colors"
+            >
+              <span
+                class="w-6 h-6 rounded-full bg-kinova-teal/10 flex items-center justify-center mr-2 text-kinova-teal"
+                >5</span
+              >
+              ユーザーの操作で何が起きるの？
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 本文 -->
+      <div class="space-y-12">
+        <!-- はじめに -->
+        <section id="intro" class="bg-white rounded-lg shadow-md p-8">
+          <h2
+            class="text-2xl font-bold text-kinova-gray mb-6 flex items-center"
+          >
+            <span
+              class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm"
+              >1</span
+            >
+            はじめに：WebサイトとWebアプリの違い
+          </h2>
+
+          <p class="text-gray-700 mb-6">
+            皆さんは毎日のようにスマートフォンやパソコンでWebサイトを見たり、オンラインショッピングをしたりしていると思います。
+            まずは、単なる情報を表示するWebサイトと、買い物ができるようなWebアプリの違いを見ていきましょう。
+          </p>
+
+          <div
+            class="bg-gradient-to-r from-blue-100 to-purple-100 p-6 rounded-lg mb-6"
+          >
+            <div class="flex flex-col md:flex-row items-center gap-8 mb-4">
+              <div class="md:w-1/2">
+                <div
+                  class="bg-white rounded-lg shadow-sm p-4 border-2 border-blue-300"
+                >
+                  <div class="flex items-center mb-3">
+                    <span class="text-3xl mr-3">🏠</span>
+                    <h4 class="text-lg font-semibold text-blue-600">
+                      Webサイト
+                    </h4>
+                  </div>
+                  <p class="text-gray-700">
+                    主に<span class="font-semibold text-blue-600"
+                      >情報を見せる</span
+                    >ことが目的です。
+                  </p>
+                  <div class="mt-3">
+                    <p class="text-sm text-gray-600 mb-2">例えば...</p>
+                    <ul class="list-disc list-inside text-sm text-gray-700">
+                      <li>お店の営業時間を調べる</li>
+                      <li>ニュース記事を読む</li>
+                      <li>ブログの記事を見る</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="md:w-1/2">
+                <div
+                  class="bg-white rounded-lg shadow-sm p-4 border-2 border-purple-300"
+                >
+                  <div class="flex items-center mb-3">
+                    <span class="text-3xl mr-3">🛍️</span>
+                    <h4 class="text-lg font-semibold text-purple-600">
+                      Webアプリ
+                    </h4>
+                  </div>
+                  <p class="text-gray-700">
+                    ユーザーが<span class="font-semibold text-purple-600"
+                      >いろいろな操作ができる</span
+                    >のが特徴です。
+                  </p>
+                  <div class="mt-3">
+                    <p class="text-sm text-gray-600 mb-2">例えば...</p>
+                    <ul class="list-disc list-inside text-sm text-gray-700">
+                      <li>商品を買い物かごに入れる</li>
+                      <li>商品を注文して決済する</li>
+                      <li>注文履歴を確認する</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ショッピングサイトを例に見るWebアプリの仕組み -->
+        <section id="shopping-flow" class="bg-white rounded-lg shadow-md p-8">
+          <h2
+            class="text-2xl font-bold text-kinova-gray mb-6 flex items-center"
+          >
+            <span
+              class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm"
+              >2</span
+            >
+            ショッピングサイトを例に見るWebアプリの仕組み
+          </h2>
+
+          <p class="text-gray-700 mb-6">
+            オンラインショッピングを例に、Webアプリがどのように動いているのか見ていきましょう。
+            商品を購入する時、私たちから見えない部分で、実はたくさんのやり取りが行われています。
+          </p>
+
+          <div
+            class="bg-white rounded-lg shadow-md p-6 border-2 border-kinova-teal mb-6"
+          >
+            <h3 class="text-lg font-semibold text-kinova-teal mb-4">
+              商品を購入するまでの流れ
+            </h3>
+
+            <div class="space-y-6">
+              <!-- Step 1: 商品検索 -->
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center flex-shrink-0"
+                >
+                  1
+                </div>
+                <div>
+                  <h4 class="font-semibold text-kinova-gray mb-2">
+                    商品を検索する
+                  </h4>
+                  <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-700 mb-2">ユーザーの操作：</p>
+                    <ul class="list-disc list-inside text-sm text-gray-600">
+                      <li>検索ボックスに「スニーカー 白 26cm」と入力</li>
+                      <li>検索ボタンをクリック</li>
+                    </ul>
+                    <p class="text-sm text-gray-700 mt-2">
+                      裏側で起きていること：
+                    </p>
+                    <ul class="list-disc list-inside text-sm text-gray-600">
+                      <li>入力された検索キーワードがサーバーに送られる</li>
+                      <li>サーバーが商品データベースから該当する商品を探す</li>
+                      <li>見つかった商品の情報が画面に表示される</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2: 商品を選ぶ -->
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center flex-shrink-0"
+                >
+                  2
+                </div>
+                <div>
+                  <h4 class="font-semibold text-kinova-gray mb-2">
+                    商品を買い物かごに入れる
+                  </h4>
+                  <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-700 mb-2">ユーザーの操作：</p>
+                    <ul class="list-disc list-inside text-sm text-gray-600">
+                      <li>気に入った商品を見つける</li>
+                      <li>「買い物かごに入れる」ボタンをクリック</li>
+                    </ul>
+                    <p class="text-sm text-gray-700 mt-2">
+                      裏側で起きていること：
+                    </p>
+                    <ul class="list-disc list-inside text-sm text-gray-600">
+                      <li>
+                        選んだ商品の情報が一時的にブラウザに保存される（ローカルストレージ）
+                      </li>
+                      <li>買い物かごのアイコンの数字が更新される</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3: 注文手続き -->
+              <div class="flex items-start gap-4">
+                <div
+                  class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center flex-shrink-0"
+                >
+                  3
+                </div>
+                <div>
+                  <h4 class="font-semibold text-kinova-gray mb-2">
+                    注文手続きをする
+                  </h4>
+                  <div class="bg-gray-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-700 mb-2">ユーザーの操作：</p>
+                    <ul class="list-disc list-inside text-sm text-gray-600">
+                      <li>配送先住所を入力</li>
+                      <li>支払い方法を選択</li>
+                      <li>「注文を確定する」ボタンをクリック</li>
+                    </ul>
+                    <p class="text-sm text-gray-700 mt-2">
+                      裏側で起きていること：
+                    </p>
+                    <ul class="list-disc list-inside text-sm text-gray-600">
+                      <li>入力された情報がサーバーに送られる</li>
+                      <li>サーバーが在庫を確認</li>
+                      <li>決済処理が実行される</li>
+                      <li>注文情報がデータベースに保存される</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+            <p class="text-sm text-yellow-700">
+              <strong>ポイント：</strong>
+              このように、私たちが見ている画面の裏側では、たくさんのデータのやり取りが行われています。
+              入力した情報はサーバーに送られ（これを「リクエスト」と呼びます）、
+              サーバーでの処理結果が画面に返ってきます（これを「レスポンス」と呼びます）。
+            </p>
+          </div>
+        </section>
+
+        <!-- サーバーについて -->
+        <section id="server" class="bg-white rounded-lg shadow-md p-8">
+          <h2
+            class="text-2xl font-bold text-kinova-gray mb-6 flex items-center"
+          >
+            <span
+              class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm"
+              >3</span
+            >
+            サーバーって何？どこにあるの？
+          </h2>
+
+          <p class="text-gray-700 mb-6">
+            「サーバー」という言葉はよく聞きますが、実際にどんなものなのでしょうか？
+            簡単に言うと、サーバーは「お客様の注文を受け付けて、処理をする係」のようなものです。
+          </p>
+
+          <div
+            class="bg-gradient-to-r from-indigo-100 to-blue-100 p-6 rounded-lg mb-6"
+          >
+            <div class="flex flex-col md:flex-row gap-6">
+              <div class="md:w-1/2">
+                <div
+                  class="bg-white p-4 rounded-lg shadow-md border-2 border-indigo-300"
+                >
+                  <h4 class="font-semibold text-indigo-700 mb-3">
+                    サーバーの役割
+                  </h4>
+                  <ul class="space-y-2">
+                    <li class="flex items-start">
+                      <span class="text-indigo-500 mr-2">✓</span>
+                      <span>商品データベースを管理する</span>
+                    </li>
+                    <li class="flex items-start">
+                      <span class="text-indigo-500 mr-2">✓</span>
+                      <span>注文を受け付けて処理する</span>
+                    </li>
+                    <li class="flex items-start">
+                      <span class="text-indigo-500 mr-2">✓</span>
+                      <span>在庫を確認・更新する</span>
+                    </li>
+                    <li class="flex items-start">
+                      <span class="text-indigo-500 mr-2">✓</span>
+                      <span>決済処理を行う</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="md:w-1/2">
+                <div
+                  class="bg-white p-4 rounded-lg shadow-md border-2 border-blue-300"
+                >
+                  <h4 class="font-semibold text-blue-700 mb-3">
+                    サーバーの設置場所
+                  </h4>
+                  <ul class="space-y-4">
+                    <li class="flex items-start">
+                      <span class="text-3xl mr-3">🏢</span>
+                      <div>
+                        <p class="font-semibold text-blue-700">
+                          データセンター
+                        </p>
+                        <p class="text-sm text-gray-600">
+                          専用の建物で24時間365日稼働している大規模なコンピュータ施設
+                        </p>
+                      </div>
+                    </li>
+                    <li class="flex items-start">
+                      <span class="text-3xl mr-3">☁️</span>
+                      <div>
+                        <p class="font-semibold text-blue-700">
+                          クラウドサービス
+                        </p>
+                        <p class="text-sm text-gray-600">
+                          AmazonやGoogleなどが提供する、インターネット上のサーバー
+                        </p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- データの保存場所 -->
+        <section id="data-storage" class="bg-white rounded-lg shadow-md p-8">
+          <h2
+            class="text-2xl font-bold text-kinova-gray mb-6 flex items-center"
+          >
+            <span
+              class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm"
+              >4</span
+            >
+            データはどこに保存されるの？
+          </h2>
+
+          <p class="text-gray-700 mb-6">
+            Webアプリでは、さまざまなデータを扱います。
+            これらのデータは、用途に応じて異なる場所に保存されます。
+          </p>
+
+          <div
+            class="bg-gradient-to-r from-green-100 to-teal-100 p-6 rounded-lg mb-6"
+          >
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div
+                class="bg-white rounded-lg shadow-md p-4 border-2 border-green-300"
+              >
+                <h4 class="font-semibold text-green-700 mb-3 flex items-center">
+                  <span class="text-2xl mr-2">💾</span>
+                  サーバー側で保存するデータ
+                </h4>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <span
+                      class="bg-green-100 text-green-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0"
+                      >1</span
+                    >
+                    <div>
+                      <p class="font-semibold text-green-800">商品情報</p>
+                      <p class="text-sm text-gray-600">
+                        価格、在庫数、商品説明など
+                      </p>
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span
+                      class="bg-green-100 text-green-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0"
+                      >2</span
+                    >
+                    <div>
+                      <p class="font-semibold text-green-800">ユーザー情報</p>
+                      <p class="text-sm text-gray-600">
+                        会員登録情報、注文履歴など
+                      </p>
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span
+                      class="bg-green-100 text-green-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0"
+                      >3</span
+                    >
+                    <div>
+                      <p class="font-semibold text-green-800">注文情報</p>
+                      <p class="text-sm text-gray-600">
+                        注文内容、配送先、支払い情報など
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <div
+                class="bg-white rounded-lg shadow-md p-4 border-2 border-teal-300"
+              >
+                <h4 class="font-semibold text-teal-700 mb-3 flex items-center">
+                  <span class="text-2xl mr-2">🌐</span>
+                  ブラウザ側で保存するデータ
+                </h4>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <span
+                      class="bg-teal-100 text-teal-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0"
+                      >1</span
+                    >
+                    <div>
+                      <p class="font-semibold text-teal-800">
+                        買い物かごの中身
+                      </p>
+                      <p class="text-sm text-gray-600">
+                        選んだ商品の情報を一時的に保存
+                      </p>
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span
+                      class="bg-teal-100 text-teal-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0"
+                      >2</span
+                    >
+                    <div>
+                      <p class="font-semibold text-teal-800">ログイン情報</p>
+                      <p class="text-sm text-gray-600">
+                        ログイン状態を保持するための情報
+                      </p>
+                    </div>
+                  </li>
+                  <li class="flex items-start">
+                    <span
+                      class="bg-teal-100 text-teal-800 rounded-full w-6 h-6 flex items-center justify-center mr-2 flex-shrink-0"
+                      >3</span
+                    >
+                    <div>
+                      <p class="font-semibold text-teal-800">表示設定</p>
+                      <p class="text-sm text-gray-600">
+                        ダークモードの設定など、見た目の設定
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-blue-50 border-l-4 border-blue-400 p-4">
+            <p class="text-sm text-blue-700">
+              <strong>補足：</strong>
+              ブラウザ側のデータ（ローカルストレージ）は、そのパソコンやスマートフォンでしか見ることができません。
+              別のデバイスで同じショッピングサイトを開くと、買い物かごは空になっています。
+              一方、サーバー側のデータは、どのデバイスからアクセスしても同じ情報を見ることができます。
+            </p>
+          </div>
+        </section>
+
+        <!-- ユーザーの操作 -->
+        <section id="interaction" class="bg-white rounded-lg shadow-md p-8">
+          <h2
+            class="text-2xl font-bold text-kinova-gray mb-6 flex items-center"
+          >
+            <span
+              class="w-8 h-8 rounded-full bg-kinova-teal text-white flex items-center justify-center mr-3 text-sm"
+              >5</span
+            >
+            ユーザーの操作で何が起きるの？
+          </h2>
+
+          <p class="text-gray-700 mb-6">
+            最後に、具体的な例として「商品を買い物かごに入れる」ボタンを押したときに、
+            裏側で何が起きているのか見ていきましょう。
+          </p>
+
+          <div
+            class="bg-gradient-to-r from-pink-100 to-red-100 p-6 rounded-lg mb-6"
+          >
+            <div
+              class="bg-white rounded-lg shadow-md p-4 border-2 border-pink-300"
+            >
+              <div class="flex flex-col items-center mb-6">
+                <!-- 商品カードの例 -->
+                <div class="bg-gray-50 rounded-lg p-4 w-full max-w-md mb-6">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                      <div
+                        class="w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center"
+                      >
+                        👟
+                      </div>
+                      <div>
+                        <h5 class="font-medium">スニーカー（白）</h5>
+                        <p class="text-sm text-gray-500">サイズ：26cm</p>
+                        <p class="font-medium text-kinova-teal">¥12,800</p>
+                      </div>
+                    </div>
+                    <button
+                      class="bg-kinova-teal text-white px-4 py-2 rounded-lg hover:bg-kinova-teal/80 transition-colors"
+                    >
+                      買い物かごに入れる
+                    </button>
+                  </div>
+                </div>
+
+                <!-- 操作の流れ -->
+                <div class="w-full max-w-lg">
+                  <ol class="relative border-l-2 border-pink-400 ml-4">
+                    <li class="mb-6 ml-6">
+                      <span
+                        class="absolute flex items-center justify-center w-8 h-8 bg-pink-200 rounded-full -left-4 ring-4 ring-white"
+                      >
+                        <span class="text-pink-600 font-bold">1</span>
+                      </span>
+                      <h5 class="font-semibold text-pink-600">
+                        ボタンをクリック
+                      </h5>
+                      <p class="text-gray-700">
+                        ユーザーが「買い物かごに入れる」ボタンをクリックすると、
+                        ブラウザがそのクリックを検知します（これを「クリックイベント」と呼びます）。
+                      </p>
+                    </li>
+                    <li class="mb-6 ml-6">
+                      <span
+                        class="absolute flex items-center justify-center w-8 h-8 bg-pink-200 rounded-full -left-4 ring-4 ring-white"
+                      >
+                        <span class="text-pink-600 font-bold">2</span>
+                      </span>
+                      <h5 class="font-semibold text-pink-600">
+                        商品情報の保存
+                      </h5>
+                      <p class="text-gray-700">
+                        選んだ商品の情報（商品ID、サイズ、数量など）が
+                        ブラウザのローカルストレージに保存されます。
+                      </p>
+                    </li>
+                    <li class="mb-6 ml-6">
+                      <span
+                        class="absolute flex items-center justify-center w-8 h-8 bg-pink-200 rounded-full -left-4 ring-4 ring-white"
+                      >
+                        <span class="text-pink-600 font-bold">3</span>
+                      </span>
+                      <h5 class="font-semibold text-pink-600">在庫の確認</h5>
+                      <p class="text-gray-700">
+                        サーバーに在庫確認のリクエストが送られ、
+                        選んだ商品が購入可能かどうかチェックされます。
+                      </p>
+                    </li>
+                    <li class="mb-6 ml-6">
+                      <span
+                        class="absolute flex items-center justify-center w-8 h-8 bg-pink-200 rounded-full -left-4 ring-4 ring-white"
+                      >
+                        <span class="text-pink-600 font-bold">4</span>
+                      </span>
+                      <h5 class="font-semibold text-pink-600">画面の更新</h5>
+                      <p class="text-gray-700">
+                        在庫があることが確認できたら、買い物かごのアイコンの数字が
+                        更新され、「カートに追加されました」というメッセージが表示されます。
+                      </p>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-purple-50 border-l-4 border-purple-400 p-4">
+            <p class="text-sm text-purple-700">
+              <strong>まとめ：</strong>
+              このように、ボタン1つをクリックするだけでも、実は裏側でたくさんの処理が行われています。
+              これらの処理は一瞬で行われるため、私たちはストレ スなくショッピングを楽しむことができるのです。
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</Layout>
