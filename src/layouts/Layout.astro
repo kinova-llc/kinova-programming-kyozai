@@ -21,20 +21,30 @@ const { title, description = "初心者向け Webアプリ開発講座 - Kinova"
     <title>{title}</title>
   </head>
   <body class="min-h-screen bg-gray-50">
-    <header class="bg-white shadow-sm">
-      <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-        <a href="/kinova-programming-kyozai/" class="flex items-center gap-2">
-          <img src="/kinova-programming-kyozai/logo.png" alt="Kinova Logo" class="h-10" />
-          <span class="text-kinova-gray font-semibold text-xl">Webアプリ開発講座</span>
-        </a>
-        <nav>
-          <ul class="flex gap-6">
-            <li><a href="/kinova-programming-kyozai/" class="text-kinova-gray hover:text-kinova-teal transition-colors">ホーム</a></li>
-            <li><a href="/kinova-programming-kyozai/kinova-programming-kyozai/course" class="text-kinova-gray hover:text-kinova-teal transition-colors">講座一覧</a></li>
-            <li><a href="/kinova-programming-kyozai/todo-app" class="text-kinova-gray hover:text-kinova-teal transition-colors">Todoアプリ</a></li>
-            <li><a href="/kinova-programming-kyozai/about" class="text-kinova-gray hover:text-kinova-teal transition-colors">サイトについて</a></li>
-          </ul>
-        </nav>
+    <header class="bg-white shadow-sm relative">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+          <a href="/kinova-programming-kyozai/" class="flex items-center gap-2">
+            <img src="/kinova-programming-kyozai/logo.png" alt="Kinova Logo" class="h-8 md:h-10" />
+            <span class="text-kinova-gray font-semibold text-lg md:text-xl">Webアプリ開発講座</span>
+          </a>
+          
+          <!-- ハンバーガーメニュー -->
+          <button id="menu-button" class="md:hidden" aria-label="メニュー">
+            <svg class="w-6 h-6 text-kinova-gray" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+          
+          <nav id="menu" class="hidden md:block absolute left-0 right-0 top-full bg-white shadow-lg md:shadow-none md:static md:bg-transparent">
+            <ul class="flex flex-col md:flex-row gap-4 py-4 px-4 md:p-0">
+              <li><a href="/kinova-programming-kyozai/" class="block py-2 md:py-0 text-kinova-gray hover:text-kinova-teal transition-colors">ホーム</a></li>
+              <li><a href="/kinova-programming-kyozai/kinova-programming-kyozai/course" class="block py-2 md:py-0 text-kinova-gray hover:text-kinova-teal transition-colors">講座一覧</a></li>
+              <li><a href="/kinova-programming-kyozai/todo-app" class="block py-2 md:py-0 text-kinova-gray hover:text-kinova-teal transition-colors">Todoアプリ</a></li>
+              <li><a href="/kinova-programming-kyozai/about" class="block py-2 md:py-0 text-kinova-gray hover:text-kinova-teal transition-colors">サイトについて</a></li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </header>
     
@@ -64,6 +74,18 @@ const { title, description = "初心者向け Webアプリ開発講座 - Kinova"
         </div>
       </div>
     </footer>
+    
+    <script>
+      const menuButton = document.getElementById('menu-button');
+      const menu = document.getElementById('menu');
+      
+      if (!menuButton || !menu) {
+        throw new Error('Menu button or menu element not found');
+      }
+      menuButton.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+      });
+    </script>
   </body>
 </html>
 
